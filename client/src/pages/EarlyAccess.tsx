@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { trpc } from "@/lib/trpc";
+import { toast } from "sonner";
 
 export default function EarlyAccess() {
   const [fullName, setFullName] = useState("");
@@ -39,14 +41,70 @@ export default function EarlyAccess() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  
+  const joinWaitlist = trpc.waitlist.join.useMutation({
+    onSuccess: (data) => {
+      if (data.success) {
+        setSubmitted(true);
+        toast.success("Welcome to ATHLYNX! You'll receive your VIP access code soon.");
+        setFullName("");
+        setEmail("");
+        setPhone("");
+        setRole("");
+        setSport("");
+      } else {
+        toast.error(data.error || "Something went wrong. Please try again.");
+      }
+      setIsSubmitting(false);
+    },
+    onError: (error) => {
+      toast.error(error.message || "Something went wrong. Please try again.");
+      setIsSubmitting(false);
+    },
+  });
+
+  const validateVip = trpc.vip.validate.useMutation({
+    onSuccess: (data) => {
+      if (data.valid) {
+        toast.success("VIP Code validated! Welcome to ATHLYNX!");
+        setShowVipModal(false);
+        // Redirect to portal or dashboard
+        window.location.href = "/portal";
+      } else {
+        toast.error(data.error || "Invalid VIP code");
+      }
+    },
+    onError: (error) => {
+      toast.error("Invalid VIP code. Please try again.");
+    },
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName) { alert("Please enter your full name"); return; }
-    if (!email) { alert("Please enter your email"); return; }
-    if (!phone) { alert("Please enter your phone number"); return; }
-    if (!role) { alert("Please select your role"); return; }
-    if (!sport) { alert("Please select your sport"); return; }
-    alert("Thank you for signing up! You'll receive your VIP access code soon.");
+    if (!fullName) { toast.error("Please enter your full name"); return; }
+    if (!email) { toast.error("Please enter your email"); return; }
+    if (!phone) { toast.error("Please enter your phone number"); return; }
+    if (!role) { toast.error("Please select your role"); return; }
+    if (!sport) { toast.error("Please select your sport"); return; }
+    
+    setIsSubmitting(true);
+    joinWaitlist.mutate({
+      fullName,
+      email,
+      phone,
+      role: role.toLowerCase() as "athlete" | "parent" | "coach" | "brand",
+      sport,
+    });
+  };
+
+  const handleVipSubmit = () => {
+    if (!vipCode.trim()) {
+      toast.error("Please enter a VIP code");
+      return;
+    }
+    validateVip.mutate({ code: vipCode.trim() });
   };
 
   const roles = ["Athlete", "Parent", "Coach", "Brand"];
@@ -443,9 +501,10 @@ export default function EarlyAccess() {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-4 rounded-lg shadow-lg transition-all text-lg tracking-wider"
+                disabled={isSubmitting || submitted}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-4 rounded-lg shadow-lg transition-all text-lg tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                CLAIM MY VIP SPOT
+                {isSubmitting ? "SUBMITTING..." : submitted ? "✓ SPOT CLAIMED!" : "CLAIM MY VIP SPOT"}
               </button>
               
               <p className="text-center text-slate-500 text-xs">
@@ -661,13 +720,11 @@ export default function EarlyAccess() {
                 Cancel
               </button>
               <button
-                onClick={() => {
-                  alert("VIP Code submitted: " + vipCode);
-                  setShowVipModal(false);
-                }}
-                className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-500"
+                onClick={handleVipSubmit}
+                disabled={validateVip.isPending}
+                className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-500 disabled:opacity-50"
               >
-                Submit
+                {validateVip.isPending ? "Validating..." : "Submit"}
               </button>
             </div>
           </div>
