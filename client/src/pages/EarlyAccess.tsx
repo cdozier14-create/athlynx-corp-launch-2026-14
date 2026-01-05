@@ -290,77 +290,153 @@ export default function EarlyAccess() {
           </div>
         </section>
 
-        {/* 10 POWERFUL APPS Section - Light background */}
-        <section className="py-16 px-4 bg-gradient-to-b from-slate-100 to-white">
+        {/* 10 POWERFUL APPS Section - Cool Gradient Background */}
+        <section className="py-16 px-4 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 relative overflow-hidden">
+          {/* Animated background effects */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500 rounded-full filter blur-[120px] animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full filter blur-[120px] animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-400 rounded-full filter blur-[100px] animate-pulse" style={{animationDelay: '2s'}}></div>
+          </div>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-center text-blue-600 font-medium text-lg mb-10 tracking-wide">
+            <h2 className="text-center text-cyan-400 font-medium text-lg mb-10 tracking-wide relative z-10">
               10 Powerful Apps. One Platform. Unlimited Potential.
             </h2>
             
-            {/* Apps Grid - 5x2 */}
-            <div className="grid grid-cols-5 gap-6 mb-8">
-              {/* Row 1 */}
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/nil-portal-icon-final.jpeg" alt="Portal" className="w-16 h-16 rounded-xl object-cover" />
+            {/* Apps Grid - 5x2 with Pitch Sequence Style */}
+            <div className="grid grid-cols-5 gap-6 mb-8 relative z-10">
+              {/* Row 1 - Portal (Cyan Glow) - YOUR HUB */}
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/portal'}>
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(6,182,212,0.8)] group-hover:bg-gradient-to-br group-hover:from-cyan-900/80 group-hover:to-blue-900/80 border border-slate-700/50 group-hover:border-cyan-400">
+                  {/* LIVE Badge */}
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse z-20">LIVE</div>
+                  {/* Glow layers */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  {/* Sparkle effect */}
+                  <div className="absolute top-1 left-1 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping"></div>
+                  <img src="/nil-portal-icon-final.jpeg" alt="Portal" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
                 </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">Portal</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/messenger-icon-final.jpeg" alt="Messenger" className="w-16 h-16 rounded-xl object-cover" />
-                </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">Messenger</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/diamond-grind-app-icon.png" alt="Diamond Grind" className="w-16 h-16 rounded-xl object-cover" />
-                </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">Diamond Grind</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/warriors-playbook-icon.png" alt="Warriors Playbook" className="w-16 h-16 rounded-xl object-cover" />
-                </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">Warriors Playbook</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/transfer-portal-app-icon.png" alt="Transfer Portal" className="w-16 h-16 rounded-xl object-cover" />
-                </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">Transfer Portal</p>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-cyan-400 transition-colors duration-300">🏠 Portal</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-cyan-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Your Command Center</p>
               </div>
               
-              {/* Row 2 */}
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/nil-portal-app-icon.jpeg" alt="NIL Vault" className="w-16 h-16 rounded-xl object-cover" />
+              {/* Messenger (Purple Glow) - CONNECT */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(168,85,247,0.8)] group-hover:bg-gradient-to-br group-hover:from-purple-900/80 group-hover:to-pink-900/80 border border-slate-700/50 group-hover:border-purple-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse z-20">LIVE</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  <div className="absolute top-1 right-1 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping"></div>
+                  <img src="/messenger-icon-final.jpeg" alt="Messenger" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
                 </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">NIL Vault</p>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-purple-400 transition-colors duration-300">💬 Messenger</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-purple-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Connect & Network</p>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/athlynx-app-icon.png" alt="AI Sales" className="w-16 h-16 rounded-xl object-cover" />
+              
+              {/* Diamond Grind (Blue Glow) - TRAIN */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] group-hover:bg-gradient-to-br group-hover:from-blue-900/80 group-hover:to-indigo-900/80 border border-slate-700/50 group-hover:border-blue-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg z-20">💎 ELITE</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-400 to-indigo-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  <img src="/diamond-grind-app-icon.png" alt="Diamond Grind" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
                 </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">AI Sales</p>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-blue-400 transition-colors duration-300">💪 Diamond Grind</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-blue-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Train Like a Pro</p>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/faith-app-icon.png" alt="Faith" className="w-16 h-16 rounded-xl object-cover" />
+              
+              {/* Warriors Playbook (Green Glow) - STRATEGIZE */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(34,197,94,0.8)] group-hover:bg-gradient-to-br group-hover:from-green-900/80 group-hover:to-emerald-900/80 border border-slate-700/50 group-hover:border-green-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg z-20">⚔️ NEW</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-green-400 to-emerald-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  <img src="/warriors-playbook-icon.png" alt="Warriors Playbook" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
                 </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">Faith</p>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-green-400 transition-colors duration-300">📖 Warriors Playbook</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-green-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Master Strategy</p>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/athlynx-app-icon.png" alt="AI Recruiter" className="w-16 h-16 rounded-xl object-cover" />
+              
+              {/* Transfer Portal (Orange Glow) - OPPORTUNITY */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(249,115,22,0.8)] group-hover:bg-gradient-to-br group-hover:from-orange-900/80 group-hover:to-amber-900/80 border border-slate-700/50 group-hover:border-orange-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-orange-500 to-red-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-bounce z-20">🔥 HOT</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-orange-400 to-amber-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  <img src="/transfer-portal-app-icon.png" alt="Transfer Portal" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
                 </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">AI Recruiter</p>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-orange-400 transition-colors duration-300">🚀 Transfer Portal</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-orange-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Find Your Next Move</p>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-slate-700 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                  <img src="/athlynx-app-icon.png" alt="AI Content" className="w-16 h-16 rounded-xl object-cover" />
+              
+              {/* Row 2 - NIL Vault (Gold Glow) - EARN */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(234,179,8,0.8)] group-hover:bg-gradient-to-br group-hover:from-yellow-900/80 group-hover:to-amber-900/80 border border-slate-700/50 group-hover:border-yellow-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg z-20">💰 $$$</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-500 to-amber-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-yellow-400 to-amber-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  <img src="/nil-portal-app-icon.jpeg" alt="NIL Vault" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
                 </div>
-                <p className="text-slate-600 text-xs mt-3 text-center font-medium">AI Content</p>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-yellow-400 transition-colors duration-300">🏆 NIL Vault</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-yellow-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Secure Your Bag</p>
+              </div>
+              
+              {/* AI Sales (Pink Glow - AI Wizard) */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(236,72,153,0.8)] group-hover:bg-gradient-to-br group-hover:from-pink-900/80 group-hover:to-rose-900/80 border border-slate-700/50 group-hover:border-pink-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse z-20">🧙 AI</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-pink-400 to-rose-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  {/* Magic sparkles */}
+                  <div className="absolute top-0 right-0 w-3 h-3 bg-pink-400 rounded-full animate-ping opacity-75"></div>
+                  <div className="absolute bottom-0 left-0 w-2 h-2 bg-rose-400 rounded-full animate-ping opacity-75" style={{animationDelay: '0.5s'}}></div>
+                  <img src="/athlynx-app-icon.png" alt="AI Sales" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
+                </div>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-pink-400 transition-colors duration-300">🧙 AI Sales Wizard</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-pink-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Close Deals Faster</p>
+              </div>
+              
+              {/* Faith (Violet Glow) - BELIEVE */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(139,92,246,0.8)] group-hover:bg-gradient-to-br group-hover:from-violet-900/80 group-hover:to-purple-900/80 border border-slate-700/50 group-hover:border-violet-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-violet-500 to-purple-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg z-20">✝️ BLESSED</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-violet-500 to-purple-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-violet-400 to-purple-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  <img src="/faith-app-icon.png" alt="Faith" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
+                </div>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-violet-400 transition-colors duration-300">🙏 Faith</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-violet-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Stay Grounded</p>
+              </div>
+              
+              {/* AI Recruiter (Teal Glow - AI Trainer) */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(20,184,166,0.8)] group-hover:bg-gradient-to-br group-hover:from-teal-900/80 group-hover:to-cyan-900/80 border border-slate-700/50 group-hover:border-teal-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse z-20">🤖 AI</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500 to-cyan-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-teal-400 to-cyan-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  {/* Robot sparkles */}
+                  <div className="absolute top-0 right-0 w-3 h-3 bg-teal-400 rounded-full animate-ping opacity-75"></div>
+                  <div className="absolute bottom-0 left-0 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-75" style={{animationDelay: '0.5s'}}></div>
+                  <img src="/athlynx-app-icon.png" alt="AI Recruiter" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
+                </div>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-teal-400 transition-colors duration-300">🤖 AI Recruiter</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-teal-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Get Discovered</p>
+              </div>
+              
+              {/* AI Content (Indigo Glow - AI Wizard) */}
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(99,102,241,0.8)] group-hover:bg-gradient-to-br group-hover:from-indigo-900/80 group-hover:to-blue-900/80 border border-slate-700/50 group-hover:border-indigo-400">
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse z-20">✨ AI</div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-indigo-400 to-blue-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
+                  {/* Magic sparkles */}
+                  <div className="absolute top-0 right-0 w-3 h-3 bg-indigo-400 rounded-full animate-ping opacity-75"></div>
+                  <div className="absolute bottom-0 left-0 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-75" style={{animationDelay: '0.5s'}}></div>
+                  <img src="/athlynx-app-icon.png" alt="AI Content" className="w-16 h-16 rounded-xl object-cover relative z-10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-105" />
+                </div>
+                <p className="text-slate-300 text-xs mt-3 text-center font-bold group-hover:text-indigo-400 transition-colors duration-300">✨ AI Content</p>
+                <p className="text-[10px] text-slate-500 group-hover:text-indigo-300 transition-colors opacity-0 group-hover:opacity-100 -mt-1">Create Viral Content</p>
               </div>
             </div>
           </div>
@@ -669,32 +745,32 @@ export default function EarlyAccess() {
           </div>
           <p className="text-slate-500 text-sm italic mb-8">"Look Ma and Nanny, I Made It"</p>
 
-          {/* Security & Legal Compliance */}
-          <div className="border-t border-slate-300 pt-8">
-            <h4 className="text-cyan-600 font-bold mb-5 flex items-center gap-2 tracking-wider">
+          {/* Security & Legal Compliance - Dark Section */}
+          <div className="bg-slate-900 -mx-8 px-8 py-10 mt-8">
+            <h4 className="text-cyan-400 font-bold mb-6 flex items-center gap-2 tracking-wider">
               ◎ SECURITY & LEGAL COMPLIANCE
             </h4>
-            <div className="grid md:grid-cols-3 gap-8 text-sm text-slate-600 mb-8">
+            <div className="grid md:grid-cols-3 gap-8 text-sm text-slate-300 mb-8">
               <div>
-                <h5 className="font-bold text-slate-800 mb-2">HIPAA Compliant</h5>
+                <h5 className="font-bold text-white mb-2">HIPAA Compliant</h5>
                 <p className="leading-relaxed">All athlete health data, medical records, and personal information are encrypted and stored in compliance with enterprise-grade security standards.</p>
               </div>
               <div>
-                <h5 className="font-bold text-slate-800 mb-2">Data Collection</h5>
+                <h5 className="font-bold text-white mb-2">Data Collection</h5>
                 <p className="leading-relaxed">We aggregate publicly available information from authorized sources. All web scraping complies with robots.txt and applicable laws.</p>
               </div>
               <div>
-                <h5 className="font-bold text-slate-800 mb-2">Precious Cargo Protection</h5>
+                <h5 className="font-bold text-white mb-2">Precious Cargo Protection</h5>
                 <p className="leading-relaxed">Athlete data is our most valuable asset. We employ 256-bit SSL encryption, SOC 2 compliance standards, and regular security audits.</p>
               </div>
             </div>
-            <p className="text-slate-500 text-xs mb-6">
-              By using this platform, you acknowledge our use of AI automation and agree to our data collection practices. Platform updated daily in real-time. For questions, contact <a href="mailto:legal@dozierholdingsgroup.com" className="text-blue-600 hover:underline">legal@dozierholdingsgroup.com</a>
+            <p className="text-slate-400 text-xs mb-6">
+              By using this platform, you acknowledge our use of AI automation and agree to our data collection practices. Platform updated daily in real-time. For questions, contact <a href="mailto:legal@dozierholdingsgroup.com" className="text-cyan-400 hover:underline">legal@dozierholdingsgroup.com</a>
             </p>
           </div>
 
-          {/* Copyright */}
-          <div className="text-center text-slate-500 text-sm pt-6 border-t border-slate-300">
+          {/* Copyright - Dark */}
+          <div className="bg-slate-950 -mx-8 px-8 py-6 text-center text-slate-400 text-sm">
             © 2025-2026 Dozier Holdings Group, LLC. All Rights Reserved.
           </div>
         </div>

@@ -86,3 +86,23 @@
 - [ ] NIL deal management
 - [ ] Recruiter dashboard
 - [ ] Analytics dashboard
+
+## Fixes Requested
+- [x] Make Security & Legal Compliance section dark/black background
+- [x] Add cool gradient backgrounds and wizard/AI hover effects throughout entire site
+  - [x] Apps section with pitch sequence style (LIVE/HOT/NEW/AI badges, unique pitches, glowing effects)
+  - [ ] Heavyweight champion section
+  - [ ] Signup form section
+  - [ ] Footer section
+
+## Payment Integration (Stripe)
+- [ ] Add Stripe integration to project
+- [ ] Create subscription tiers:
+  - [x] 7-Day FREE Trial (no credit card required to sign up)
+  - [ ] Basic: $4.99/month (Portal, Messenger)
+  - [ ] Pro: $9.99/month (+ Diamond Grind, Warriors Playbook)
+  - [ ] Elite: $19.99/month (+ Transfer Portal, NIL Vault)
+  - [ ] Empire: $49.99/month (ALL apps + AI features)
+- [ ] Create pricing page
+- [ ] Implement free trial signup flow
+- [ ] Add upgrade/downgrade functionality
