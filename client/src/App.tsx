@@ -11,6 +11,7 @@ import RobotCompanions from "@/pages/RobotCompanions";
 import Veterans from "@/pages/Veterans";
 import BlueCollar from "@/pages/BlueCollar";
 import CRMDashboard from "@/pages/CRMDashboard";
+import CRMCommandCenter from "@/pages/CRMCommandCenter";
 import ManusPartnership from "@/pages/ManusPartnership";
 import Pricing from "@/pages/Pricing";
 import TransferPortal from "@/pages/TransferPortal";
@@ -52,6 +53,10 @@ function Router() {
       <Route path="/crm" component={CRMDashboard} />
       <Route path="/dashboard" component={CRMDashboard} />
       <Route path="/partner-dashboard" component={CRMDashboard} />
+      <Route path="/command-center" component={CRMCommandCenter} />
+      <Route path="/admin" component={CRMCommandCenter} />
+      <Route path="/founders" component={CRMCommandCenter} />
+      <Route path="/backoffice" component={CRMCommandCenter} />
       <Route path="/manus" component={ManusPartnership} />
       <Route path="/partnership" component={ManusPartnership} />
       <Route path="/ai-partner" component={ManusPartnership} />

@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO partner_access (name, email, partnerRole, accessLevel, accessCode, isActive) VALUES \n('Chad Allen Dozier Sr.', 'cdozier14@athlynx.ai', 'founder', 'admin', 'CHAD-FOUNDER-2026', true),\n('Glenn Tse', 'glenn@athlynx.ai', 'partner', 'full', 'GLENN-PARTNER-2026', true),\n('James Jimmy Boyd', 'jimmy@athlynx.ai', 'partner', 'full', 'JIMMY-PARTNER-2026', true),\n('Andrew Andy Kustes', 'andy@athlynx.ai', 'partner', 'full', 'ANDREW-PARTNER-2026', true),\n('Leronius Lee Marshall', 'lee@athlynx.ai', 'partner', 'full', 'LEE-PARTNER-2026', true),\n('Nicki Simpson Leggett', 'nicki@athlynx.ai', 'advisor', 'view_only', 'MOM-ADVISOR-2026', true),\n('David Roland Ford Sr.', 'david@athlynx.ai', 'advisor', 'view_only', 'DAVID-ADVISOR-2026', true);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3JQAxavJTLtVSbS.e2dc57e3bd27 --database LT9iKec3A4q6ndTCS5486G --execute INSERT INTO partner_access (name, email, partnerRole, accessLevel, accessCode, isActive) VALUES \n('Chad Allen Dozier Sr.', 'cdozier14@athlynx.ai', 'founder', 'admin', 'CHAD-FOUNDER-2026', true),\n('Glenn Tse', 'glenn@athlynx.ai', 'partner', 'full', 'GLENN-PARTNER-2026', true),\n('James Jimmy Boyd', 'jimmy@athlynx.ai', 'partner', 'full', 'JIMMY-PARTNER-2026', true),\n('Andrew Andy Kustes', 'andy@athlynx.ai', 'partner', 'full', 'ANDREW-PARTNER-2026', true),\n('Leronius Lee Marshall', 'lee@athlynx.ai', 'partner', 'full', 'LEE-PARTNER-2026', true),\n('Nicki Simpson Leggett', 'nicki@athlynx.ai', 'advisor', 'view_only', 'MOM-ADVISOR-2026', true),\n('David Roland Ford Sr.', 'david@athlynx.ai', 'advisor', 'view_only', 'DAVID-ADVISOR-2026', true);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 73
+}
