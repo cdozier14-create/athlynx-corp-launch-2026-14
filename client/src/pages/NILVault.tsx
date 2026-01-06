@@ -32,17 +32,31 @@ export default function NILVault() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-emerald-900/20 to-slate-900">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 to-emerald-900 backdrop-blur border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/portal">
-            <div className="flex items-center gap-3 cursor-pointer">
+          <div className="flex items-center gap-4">
+            {/* Queen of the Ball Logo */}
+            <Link href="/">
+              <div className="relative cursor-pointer group">
+                <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 rounded-xl px-3 py-2 shadow-xl hover:shadow-cyan-500/30 transition-all border border-cyan-400/30">
+                  <img 
+                    src="/athlynx-playbook-logo.png" 
+                    alt="ATHLYNX - The Athlete's Playbook" 
+                    className="h-8 md:h-10 rounded-lg shadow-lg group-hover:scale-105 transition-all duration-300"
+                  />
+                </div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full border border-slate-900 animate-pulse"></div>
+              </div>
+            </Link>
+            
+            <div className="flex items-center gap-2">
               <span className="text-2xl">🔐</span>
               <div>
                 <h1 className="text-xl font-bold text-white">NIL Vault</h1>
                 <p className="text-xs text-emerald-400">Deal Management & Contracts</p>
               </div>
             </div>
-          </Link>
+          </div>
           <Link href="/portal">
             <Button variant="outline" size="sm" className="border-slate-600">
               ← Back to Portal

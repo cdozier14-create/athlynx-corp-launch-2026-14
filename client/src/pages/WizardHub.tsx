@@ -156,8 +156,8 @@ export default function WizardHub() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-blue-950">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
-        <div className="container mx-auto px-4 py-4">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 to-purple-900 backdrop-blur-md border-b border-slate-800">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/">
@@ -166,12 +166,27 @@ export default function WizardHub() {
                   Back
                 </Button>
               </Link>
+              
+              {/* Queen of the Ball Logo */}
+              <Link href="/">
+                <div className="relative cursor-pointer group">
+                  <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 rounded-xl px-3 py-2 shadow-xl hover:shadow-cyan-500/30 transition-all border border-cyan-400/30">
+                    <img 
+                      src="/athlynx-playbook-logo.png" 
+                      alt="ATHLYNX - The Athlete's Playbook" 
+                      className="h-8 md:h-10 rounded-lg shadow-lg group-hover:scale-105 transition-all duration-300"
+                    />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full border border-slate-900 animate-pulse"></div>
+                </div>
+              </Link>
+              
               <div>
-                <h1 className="text-2xl font-black text-white flex items-center gap-2">
-                  <Bot className="w-6 h-6 text-cyan-400" />
+                <h1 className="text-xl font-black text-white flex items-center gap-2">
+                  <Bot className="w-5 h-5 text-cyan-400" />
                   AI Wizard Hub
                 </h1>
-                <p className="text-slate-400 text-sm">Your personal team of AI advisors</p>
+                <p className="text-cyan-400 text-xs">THE ATHLETE'S PLAYBOOK</p>
               </div>
             </div>
             <div className="flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-4 py-2 rounded-full border border-purple-500/30">

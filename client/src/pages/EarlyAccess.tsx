@@ -139,17 +139,15 @@ export default function EarlyAccess() {
         {/* Main Header Row */}
         <div className="bg-gradient-to-r from-slate-900 to-blue-900 border-b border-slate-700">
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            {/* ATHLYNX Logo Box - Matching athlynx.manus.space */}
+            {/* ATHLYNX Logo Box - THE ATHLETE'S PLAYBOOK */}
             <Link href="/">
-              <div className="relative cursor-pointer">
-                <div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl px-4 py-2 flex items-center gap-3 shadow-lg hover:shadow-cyan-500/20 transition-all">
-                  <img src="/athlynx-header-logo.png" alt="ATHLYNX" className="w-10 h-10 rounded-lg shadow-md" />
-                  <div>
-                    <h1 className="text-white font-bold text-lg tracking-wide">ATHLYNX</h1>
-                    <p className="text-blue-100 text-[10px] tracking-wider">THE ATHLETE'S PLAYBOOK</p>
-                  </div>
+              <div className="relative cursor-pointer group">
+                <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 rounded-xl px-5 py-3 flex items-center gap-4 shadow-xl hover:shadow-cyan-500/30 transition-all border border-cyan-400/30">
+                  <img src="/athlynx-playbook-logo.png" alt="ATHLYNX - The Athlete's Playbook" className="h-14 md:h-16 rounded-lg shadow-lg" />
                 </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-slate-900"></div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-slate-900 animate-pulse"></div>
+                {/* Shine effect */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700 overflow-hidden"></div>
               </div>
             </Link>
 
@@ -201,22 +199,45 @@ export default function EarlyAccess() {
           </span>
         </div>
 
-        {/* Hero Section with ATHLYNX Box */}
+        {/* Hero Section with ATHLYNX Logo - QUEEN OF THE BALL */}
         <section className="py-12 px-4">
-          <div className="max-w-md mx-auto">
-            {/* ATHLYNX THE ATHLETE'S PLAYBOOK Box */}
-            <div className="bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl p-8 text-center shadow-2xl relative overflow-hidden group hover:scale-105 transition-transform duration-300">
-              {/* Animated sparkles */}
-              <div className="absolute top-2 right-2 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-              <div className="absolute top-4 left-4 w-2 h-2 bg-white rounded-full animate-ping"></div>
-              <div className="absolute bottom-4 right-6 w-2 h-2 bg-white rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
-              <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+          <div className="max-w-lg mx-auto">
+            {/* ATHLYNX THE ATHLETE'S PLAYBOOK - Queen of the Ball */}
+            <div className="relative group cursor-pointer">
+              {/* Outer glow on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-3xl blur-2xl opacity-0 group-hover:opacity-60 transition-all duration-500 scale-110"></div>
               
-              <h2 className="text-slate-900 font-black text-4xl tracking-wide mb-2 drop-shadow-lg">ATHLYNX</h2>
-              <p className="text-blue-900 font-semibold text-sm tracking-wider">THE ATHLETE'S PLAYBOOK</p>
-              
-              {/* Shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+              <div className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500 rounded-3xl p-8 text-center shadow-2xl overflow-hidden border-2 border-cyan-400/30 group-hover:border-cyan-300 group-hover:scale-[1.02] transition-all duration-300">
+                {/* Animated sparkles */}
+                <div className="absolute top-3 right-3 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                <div className="absolute top-6 left-6 w-2 h-2 bg-white rounded-full animate-ping"></div>
+                <div className="absolute bottom-6 right-8 w-2 h-2 bg-white rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute bottom-8 left-10 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+                
+                {/* Crown icon on hover */}
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-3xl opacity-0 group-hover:opacity-100 group-hover:-top-4 transition-all duration-300">👑</div>
+                
+                {/* Logo Image - THE QUEEN */}
+                <div className="flex justify-center mb-4">
+                  <img 
+                    src="/athlynx-playbook-logo.png" 
+                    alt="ATHLYNX - The Athlete's Playbook" 
+                    className="h-20 md:h-24 rounded-xl shadow-2xl group-hover:scale-110 group-hover:shadow-cyan-400/50 transition-all duration-300"
+                  />
+                </div>
+                
+                {/* THE LEGENDARY TRAINER badge */}
+                <div className="inline-block bg-cyan-400 text-slate-900 font-bold text-xs tracking-widest px-4 py-1.5 rounded-full mb-4 shadow-lg">
+                  THE LEGENDARY TRAINER
+                </div>
+                
+                {/* Tagline */}
+                <p className="text-white/90 text-sm mb-1">The mastermind behind the champion.</p>
+                <p className="text-cyan-300 text-sm font-semibold">Building champions, training winners, and creating empires.</p>
+                
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+              </div>
             </div>
           </div>
         </section>
@@ -257,15 +278,32 @@ export default function EarlyAccess() {
           </div>
         </section>
 
-        {/* VIP Code Section */}
+        {/* VIP Code Section - Queen of the Ball */}
         <section className="py-8 px-4">
           <div className="max-w-md mx-auto">
-            <div 
-              onClick={() => setShowVipModal(true)}
-              className="bg-slate-800/80 hover:bg-slate-700/80 rounded-2xl p-8 text-center cursor-pointer transition-all shadow-xl border border-slate-700"
-            >
-              <h2 className="text-white font-bold text-xl mb-2 tracking-wide">HAVE A VIP CODE?</h2>
-              <p className="text-cyan-400 text-sm tracking-wider underline">TAP HERE TO ENTER</p>
+            <div className="relative group">
+              {/* Outer glow on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-all duration-500"></div>
+              
+              <div 
+                onClick={() => setShowVipModal(true)}
+                className="relative bg-gradient-to-b from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 rounded-2xl p-8 text-center cursor-pointer transition-all shadow-xl border border-cyan-500/20 group-hover:border-cyan-400/50 group-hover:scale-[1.02]"
+              >
+                {/* Logo at top */}
+                <div className="flex justify-center mb-4">
+                  <img 
+                    src="/athlynx-playbook-logo.png" 
+                    alt="ATHLYNX" 
+                    className="h-12 rounded-lg shadow-lg group-hover:scale-110 group-hover:shadow-cyan-400/30 transition-all duration-300"
+                  />
+                </div>
+                
+                <h2 className="text-white font-black text-xl mb-2 tracking-wide">HAVE A VIP CODE?</h2>
+                <p className="text-cyan-400 text-sm tracking-wider">TAP HERE TO ENTER</p>
+                
+                {/* Shine effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700 overflow-hidden"></div>
+              </div>
             </div>
           </div>
         </section>
@@ -302,9 +340,9 @@ export default function EarlyAccess() {
                     {/* Logo glow */}
                     <div className="absolute inset-0 bg-cyan-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-all"></div>
                     <img 
-                      src="/athlynx-logo-icon.png" 
-                      alt="ATHLYNX" 
-                      className="relative w-32 h-32 drop-shadow-[0_0_25px_rgba(34,211,238,0.5)] group-hover:drop-shadow-[0_0_35px_rgba(34,211,238,0.8)] transition-all duration-300 group-hover:scale-110" 
+                      src="/athlynx-playbook-logo.png" 
+                      alt="ATHLYNX - The Athlete's Playbook" 
+                      className="relative h-28 md:h-32 drop-shadow-[0_0_25px_rgba(34,211,238,0.5)] group-hover:drop-shadow-[0_0_35px_rgba(34,211,238,0.8)] transition-all duration-300 group-hover:scale-110 rounded-xl" 
                     />
                   </div>
                   
@@ -358,7 +396,7 @@ export default function EarlyAccess() {
               
               <div className="relative text-center">
                 <p className="text-amber-400 text-xs font-bold tracking-widest mb-2">THE LEGENDARY TRAINER</p>
-                <img src="/athlynx-logo-icon.png" alt="ATHLYNX" className="w-20 h-20 mx-auto mb-4 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
+                <img src="/athlynx-playbook-logo.png" alt="ATHLYNX - The Athlete's Playbook" className="h-16 mx-auto mb-4 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)] rounded-lg" />
                 <h3 className="text-white font-black text-2xl mb-1">ATHLYNX</h3>
                 <p className="text-cyan-400 font-semibold text-sm tracking-wider mb-4">THE ATHLETE'S PLAYBOOK</p>
                 
@@ -527,6 +565,145 @@ export default function EarlyAccess() {
             
             <p className="text-slate-500 text-sm">FOUNDING MEMBER SPOTS</p>
             <p className="text-amber-400 font-bold text-2xl">LIMITED TO 10,000</p>
+          </div>
+        </section>
+
+        {/* THE DYNASTY SECTION - Kraft/Belichick/Brady Story */}
+        <section className="py-16 px-4 bg-gradient-to-b from-slate-900 via-blue-950/50 to-slate-900">
+          <div className="max-w-5xl mx-auto">
+            {/* Dynasty Header */}
+            <div className="text-center mb-12">
+              <p className="text-amber-400 text-sm tracking-widest mb-2">🏆 THE PERFECT STORM 🏆</p>
+              <h2 className="text-white font-black text-4xl md:text-5xl mb-4">Building a Dynasty</h2>
+              <p className="text-cyan-400 font-semibold tracking-wider">FROM NOTHING TO EVERYTHING</p>
+            </div>
+
+            {/* Dynasty Story Cards */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {/* The Owner - Kraft = Chad */}
+              <div className="bg-gradient-to-br from-amber-900/30 to-slate-900 rounded-2xl p-6 border border-amber-500/30 hover:border-amber-400 transition-all group">
+                <div className="text-4xl mb-4">👔</div>
+                <h3 className="text-amber-400 font-bold text-xl mb-2">The Visionary Owner</h3>
+                <p className="text-slate-300 text-sm mb-4">Robert Kraft bought a struggling franchise and built an empire. <span className="text-amber-400 font-semibold">Chad A. Dozier</span> is doing the same with ATHLYNX.</p>
+                <p className="text-slate-500 text-xs italic">"I saw what others couldn't see. A platform that serves athletes, not exploits them."</p>
+              </div>
+
+              {/* The System - Belichick = Manus AI */}
+              <div className="bg-gradient-to-br from-blue-900/30 to-slate-900 rounded-2xl p-6 border border-blue-500/30 hover:border-blue-400 transition-all group">
+                <div className="text-4xl mb-4">🧠</div>
+                <h3 className="text-blue-400 font-bold text-xl mb-2">The System</h3>
+                <p className="text-slate-300 text-sm mb-4">Bill Belichick's system made average players elite. <span className="text-blue-400 font-semibold">Manus AI</span> is our system—executing strategy with precision.</p>
+                <p className="text-slate-500 text-xs italic">"Do your job." — Our AI does exactly that, 24/7.</p>
+              </div>
+
+              {/* The GOAT - Brady = ATHLYNX */}
+              <div className="bg-gradient-to-br from-cyan-900/30 to-slate-900 rounded-2xl p-6 border border-cyan-500/30 hover:border-cyan-400 transition-all group">
+                <div className="text-4xl mb-4">🐐</div>
+                <h3 className="text-cyan-400 font-bold text-xl mb-2">The Underdog</h3>
+                <p className="text-slate-300 text-sm mb-4">Tom Brady was pick #199. Irrelevant. Now he's the GOAT. <span className="text-cyan-400 font-semibold">ATHLYNX</span> is our Tom Brady—the underdog becoming legendary.</p>
+                <p className="text-slate-500 text-xs italic">"Everyone counted us out. That was their mistake."</p>
+              </div>
+            </div>
+
+            {/* Mission & Vision */}
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {/* Mission Statement */}
+              <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+                    <span className="text-2xl">🎯</span>
+                  </div>
+                  <h3 className="text-white font-bold text-2xl">Our Mission</h3>
+                </div>
+                <p className="text-slate-300 leading-relaxed">
+                  To democratize athlete success by providing every athlete—from high school to professional—with the same tools, connections, and opportunities that were once reserved for the elite few. We are the great equalizer in sports.
+                </p>
+              </div>
+
+              {/* Vision Statement */}
+              <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                    <span className="text-2xl">🔮</span>
+                  </div>
+                  <h3 className="text-white font-bold text-2xl">Our Vision</h3>
+                </div>
+                <p className="text-slate-300 leading-relaxed">
+                  By 2030, ATHLYNX will be the operating system for every athlete's career—from recruitment to retirement. A world where talent is discovered, developed, and rewarded fairly, powered by AI that works for athletes, not against them.
+                </p>
+              </div>
+            </div>
+
+            {/* Executive Summary */}
+            <div className="bg-gradient-to-r from-blue-900/30 via-slate-900 to-cyan-900/30 rounded-2xl p-8 border border-cyan-500/30 mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center">
+                  <span className="text-2xl">📊</span>
+                </div>
+                <div>
+                  <h3 className="text-white font-bold text-2xl">Executive Summary</h3>
+                  <p className="text-cyan-400 text-sm">The $50B Opportunity</p>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-slate-300 leading-relaxed mb-4">
+                    <span className="text-cyan-400 font-semibold">ATHLYNX</span> is a comprehensive AI-powered platform serving the $50B+ athlete services market. We combine NIL management, transfer portal intelligence, training optimization, and career planning into one unified ecosystem.
+                  </p>
+                  <p className="text-slate-300 leading-relaxed">
+                    Backed by <span className="text-blue-400 font-semibold">Dozier Holdings Group</span>, powered by <span className="text-purple-400 font-semibold">Manus AI</span>, and built on <span className="text-green-400 font-semibold">Nebius AI Cloud</span> infrastructure with NVIDIA H200/H100 GPUs.
+                  </p>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center bg-slate-800/50 rounded-lg px-4 py-2">
+                    <span className="text-slate-400">Target Market</span>
+                    <span className="text-white font-bold">$50B+</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-slate-800/50 rounded-lg px-4 py-2">
+                    <span className="text-slate-400">Athletes Served</span>
+                    <span className="text-white font-bold">8M+ NCAA</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-slate-800/50 rounded-lg px-4 py-2">
+                    <span className="text-slate-400">Launch Date</span>
+                    <span className="text-amber-400 font-bold">Feb 1, 2026</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-slate-800/50 rounded-lg px-4 py-2">
+                    <span className="text-slate-400">Founding Spots</span>
+                    <span className="text-cyan-400 font-bold">10,000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Community Co-Design CTA */}
+            <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-2xl p-8 border border-purple-500/30 text-center">
+              <div className="text-4xl mb-4">🤝</div>
+              <h3 className="text-white font-bold text-2xl mb-2">Help Us Build YOUR Platform</h3>
+              <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
+                This isn't just our platform—it's YOURS. We're building ATHLYNX with the community, for the community. 
+                Your feedback shapes every feature. Your voice matters. Together, we're creating the future of athlete success.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <button 
+                  onClick={() => toast.info('Community voting coming soon!')}
+                  className="bg-purple-500 hover:bg-purple-600 text-white font-bold px-6 py-3 rounded-xl transition-all"
+                >
+                  🗳️ Vote on Features
+                </button>
+                <button 
+                  onClick={() => toast.info('Feedback form coming soon!')}
+                  className="bg-slate-700 hover:bg-slate-600 text-white font-bold px-6 py-3 rounded-xl transition-all border border-slate-600"
+                >
+                  💬 Share Feedback
+                </button>
+                <button 
+                  onClick={() => toast.info('Discord community coming soon!')}
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl transition-all"
+                >
+                  🎮 Join Discord
+                </button>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -762,7 +939,7 @@ export default function EarlyAccess() {
             {/* Company Info */}
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <img src="/athlynx-logo-icon.png" alt="ATHLYNX" className="w-12 h-12" />
+                <img src="/athlynx-playbook-logo.png" alt="ATHLYNX - The Athlete's Playbook" className="h-10 rounded-lg" />
                 <div>
                   <h3 className="text-white font-bold text-xl">ATHLYNX</h3>
                   <p className="text-gray-400 text-sm">THE ATHLETE'S PLAYBOOK</p>
@@ -773,11 +950,16 @@ export default function EarlyAccess() {
               </p>
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-gray-500 text-sm">Parent Company:</span>
-                <span className="text-amber-400 font-semibold">Dozier Holdings Group, LLC</span>
+                <a href="https://dozier-holdingsgroup.com.mx" target="_blank" rel="noopener noreferrer" className="text-amber-400 font-semibold hover:text-amber-300 transition-colors underline decoration-amber-400/30 hover:decoration-amber-300">
+                  Dozier Holdings Group, LLC →
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-gray-500 text-sm">Subsidiary:</span>
                 <span className="text-cyan-400 font-semibold">Athlynx AI Corporation</span>
+              </div>
+              <div className="mt-4 p-3 bg-slate-800/50 rounded-lg border border-slate-700">
+                <p className="text-gray-400 text-xs">🏢 <span className="text-white font-medium">DHG Portfolio:</span> ATHLYNX • DHG Data Centers • Softmor • 9 More Companies</p>
               </div>
             </div>
 
@@ -933,30 +1115,41 @@ export default function EarlyAccess() {
 
       {/* VIP Code Modal */}
       {showVipModal && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-800 rounded-2xl p-8 max-w-md w-full border border-slate-700">
-            <h3 className="text-white font-bold text-xl text-center mb-6">Enter VIP Code</h3>
+        <div className="fixed inset-0 bg-gradient-to-b from-slate-900/95 via-blue-950/95 to-slate-900/95 flex items-center justify-center z-50 p-4">
+          <div className="bg-gradient-to-b from-slate-800 to-slate-900 rounded-3xl p-8 max-w-md w-full border border-cyan-500/30 shadow-2xl shadow-cyan-500/20">
+            {/* Logo at top */}
+            <div className="flex justify-center mb-6">
+              <img src="/athlynx-playbook-logo.png" alt="ATHLYNX" className="h-16 rounded-xl shadow-lg" />
+            </div>
+            
+            <h3 className="text-white font-black text-2xl text-center mb-2">HAVE A VIP CODE?</h3>
+            <p className="text-cyan-400 text-sm text-center mb-6 tracking-wider">TAP HERE TO ENTER</p>
+            
             <input
               type="text"
               placeholder="Enter your VIP code"
               value={vipCode}
               onChange={(e) => setVipCode(e.target.value.toUpperCase())}
-              className="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 text-center text-lg tracking-wider mb-4"
+              className="w-full bg-slate-700/50 border-2 border-cyan-500/30 rounded-xl px-4 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 text-center text-xl tracking-widest mb-6 font-bold"
             />
             <div className="flex gap-3">
               <button
                 onClick={() => setShowVipModal(false)}
-                className="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                className="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-semibold py-4 rounded-xl transition-colors border border-slate-600"
               >
                 Cancel
               </button>
               <button
                 onClick={handleVipSubmit}
-                className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold py-3 rounded-lg transition-all"
+                className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-cyan-500/30"
               >
-                Submit
+                ENTER PORTAL
               </button>
             </div>
+            
+            {/* Tagline */}
+            <p className="text-center text-slate-400 text-xs mt-6">The mastermind behind the champion.</p>
+            <p className="text-center text-cyan-400 text-xs font-semibold">Building champions, training winners, and creating empires.</p>
           </div>
         </div>
       )}

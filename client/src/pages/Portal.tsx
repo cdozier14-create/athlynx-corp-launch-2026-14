@@ -67,26 +67,50 @@ export default function Portal() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-4">
-        <Card className="max-w-md w-full bg-slate-800 border-slate-700">
-          <CardHeader className="text-center">
-            <img src="/athlynx-logo-icon.png" alt="ATHLYNX" className="w-16 h-16 mx-auto mb-4" />
-            <CardTitle className="text-2xl text-white">Welcome to ATHLYNX Portal</CardTitle>
-            <p className="text-slate-400 mt-2">Please log in to access the platform</p>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <a href="/api/auth/login" className="block">
-              <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3">
-                Login with Manus
-              </Button>
-            </a>
-            <Link href="/">
-              <Button variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700">
-                Back to Home
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
+      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 flex items-center justify-center p-4">
+        <div className="relative group max-w-md w-full">
+          {/* Outer glow on hover */}
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-50 transition-all duration-500"></div>
+          
+          <Card className="relative bg-gradient-to-b from-slate-800 to-slate-900 border-2 border-cyan-500/30 group-hover:border-cyan-400/50 rounded-3xl shadow-2xl transition-all duration-300">
+            <CardHeader className="text-center pt-8">
+              {/* Logo - Queen of the Ball */}
+              <div className="flex justify-center mb-4">
+                <img 
+                  src="/athlynx-playbook-logo.png" 
+                  alt="ATHLYNX - The Athlete's Playbook" 
+                  className="h-20 rounded-xl shadow-2xl group-hover:scale-110 group-hover:shadow-cyan-400/50 transition-all duration-300"
+                />
+              </div>
+              
+              {/* THE LEGENDARY TRAINER badge */}
+              <div className="inline-block bg-cyan-400 text-slate-900 font-bold text-xs tracking-widest px-4 py-1.5 rounded-full mb-4 shadow-lg">
+                THE LEGENDARY TRAINER
+              </div>
+              
+              <CardTitle className="text-2xl text-white font-black">Welcome to ATHLYNX Portal</CardTitle>
+              <p className="text-slate-400 mt-2">Please log in to access the platform</p>
+              
+              {/* Tagline */}
+              <p className="text-cyan-400 text-xs mt-3 font-semibold">Building champions, training winners, and creating empires.</p>
+            </CardHeader>
+            <CardContent className="space-y-4 pb-8">
+              <a href="/api/auth/login" className="block">
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all">
+                  Login with Manus
+                </Button>
+              </a>
+              <Link href="/">
+                <Button variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 py-4 rounded-xl">
+                  Back to Home
+                </Button>
+              </Link>
+            </CardContent>
+            
+            {/* Shine effect */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 overflow-hidden pointer-events-none"></div>
+          </Card>
+        </div>
       </div>
     );
   }
@@ -94,15 +118,18 @@ export default function Portal() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 to-blue-900 backdrop-blur border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link href="/">
-            <div className="flex items-center gap-3 cursor-pointer">
-              <img src="/athlynx-logo-icon.png" alt="ATHLYNX" className="w-10 h-10" />
-              <div>
-                <h1 className="text-white font-bold text-xl">ATHLYNX</h1>
-                <p className="text-cyan-400 text-xs">NIL PORTAL</p>
+            <div className="relative cursor-pointer group">
+              <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 rounded-xl px-4 py-2 flex items-center gap-3 shadow-xl hover:shadow-cyan-500/30 transition-all border border-cyan-400/30">
+                <img 
+                  src="/athlynx-playbook-logo.png" 
+                  alt="ATHLYNX - The Athlete's Playbook" 
+                  className="h-10 md:h-12 rounded-lg shadow-lg group-hover:scale-105 transition-all duration-300"
+                />
               </div>
+              <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-400 rounded-full border-2 border-slate-900 animate-pulse"></div>
             </div>
           </Link>
 
