@@ -127,6 +127,18 @@ export const SUBSCRIPTION_TIERS: ProductTier[] = [
 // One-time purchases
 export const ONE_TIME_PRODUCTS = [
   {
+    id: "vip_founding_member",
+    name: "VIP Founding Member",
+    description: "Lifetime founding member status - Be part of history! Limited to first 1,000 members.",
+    price: 49.99,
+  },
+  {
+    id: "founding_supporter",
+    name: "Founding Supporter",
+    description: "Support ATHLYNX launch and get exclusive perks forever",
+    price: 99.99,
+  },
+  {
     id: "profile_boost",
     name: "Profile Boost",
     description: "Get featured in brand searches for 7 days",
