@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function EarlyAccess() {
+  const { user, isAuthenticated, logout, loading: authLoading } = useAuth();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -134,14 +136,45 @@ export default function EarlyAccess() {
             </div>
 
             {/* Founders Button */}
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
-              <span>👥</span> Found...
-            </button>
+            <a href="/pricing" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
+              <span>💎</span> Pro Plans
+            </a>
 
-            {/* Portal Login */}
-            <button className="bg-slate-800 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-colors">
-              <span>◎</span> Portal Login
-            </button>
+            {/* Login/User Section */}
+            {authLoading ? (
+              <div className="bg-slate-800 border-2 border-slate-600 text-slate-400 font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2">
+                <span className="animate-spin">◎</span> Loading...
+              </div>
+            ) : isAuthenticated && user ? (
+              <div className="flex items-center gap-3">
+                <a href="/portal" className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
+                  <span>🚀</span> My Portal
+                </a>
+                <div className="relative group">
+                  <button className="bg-slate-800 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold px-4 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-colors">
+                    <img src={user.avatarUrl || '/athlynx-app-icon.png'} alt="" className="w-6 h-6 rounded-full" />
+                    <span className="max-w-[100px] truncate">{user.name || 'Athlete'}</span>
+                    <span>▼</span>
+                  </button>
+                  <div className="absolute right-0 top-full mt-2 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                    <a href="/portal" className="block px-4 py-3 text-white hover:bg-slate-700 rounded-t-lg text-sm">🏠 Dashboard</a>
+                    <a href="/messenger" className="block px-4 py-3 text-white hover:bg-slate-700 text-sm">💬 Messages</a>
+                    <a href="/ai" className="block px-4 py-3 text-white hover:bg-slate-700 text-sm">🤖 AI Team</a>
+                    <a href="/pricing" className="block px-4 py-3 text-white hover:bg-slate-700 text-sm">💎 Upgrade</a>
+                    <button onClick={logout} className="w-full text-left px-4 py-3 text-red-400 hover:bg-slate-700 rounded-b-lg text-sm">🚪 Sign Out</button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center gap-3">
+                <a href="/api/auth/login" className="bg-slate-800 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-colors">
+                  <span>◎</span> Sign In
+                </a>
+                <a href="/api/auth/login" className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-bold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg animate-pulse">
+                  <span>🚀</span> Sign Up FREE
+                </a>
+              </div>
+            )}
           </div>
         </div>
 

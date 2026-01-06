@@ -237,3 +237,13 @@
 - [x] Compile complete campaign package document
 - [x] Send Manus Quick Start Guide to all partners
 - [x] Send campaign images + posts to all partners via email
+
+
+## Phase XVI - USER LOGIN & REGISTRATION UI (1/5/26)
+- [x] Review existing Manus OAuth authentication system
+- [x] Enhance Portal Login button visibility and functionality
+- [x] Add clear Sign Up / Register call-to-action (Sign Up FREE button)
+- [x] Uses Manus OAuth login flow (no separate modal needed)
+- [x] Add user profile dropdown when logged in
+- [x] Show user avatar and name in header when authenticated
+- [x] Test complete authentication flow (25 tests passing)
