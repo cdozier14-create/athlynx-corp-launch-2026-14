@@ -139,54 +139,43 @@ export default function EarlyAccess() {
         {/* Main Header Row */}
         <div className="bg-gradient-to-r from-slate-900 to-blue-900 border-b border-slate-700">
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            {/* ATHLYNX Logo Box */}
-            <div className="relative">
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl px-4 py-2 flex items-center gap-3 shadow-lg">
-                <img src="/athlynx-logo-icon.png" alt="ATHLYNX" className="w-10 h-10" />
-                <div>
-                  <h1 className="text-white font-bold text-lg tracking-wide">ATHLYNX</h1>
-                  <p className="text-blue-100 text-[10px] tracking-wider">THE ATHLETE'S PLAYBOOK</p>
+            {/* ATHLYNX Logo Box - Matching athlynx.manus.space */}
+            <Link href="/">
+              <div className="relative cursor-pointer">
+                <div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl px-4 py-2 flex items-center gap-3 shadow-lg hover:shadow-cyan-500/20 transition-all">
+                  <img src="/athlynx-x-logo.jpeg" alt="ATHLYNX" className="w-8 h-8 rounded-md" />
+                  <div>
+                    <h1 className="text-white font-bold text-lg tracking-wide">ATHLYNX</h1>
+                    <p className="text-blue-100 text-[10px] tracking-wider">THE ATHLETE'S PLAYBOOK</p>
+                  </div>
                 </div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-slate-900"></div>
               </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-slate-900"></div>
+            </Link>
+
+            {/* Parent Company Text */}
+            <div className="hidden md:flex items-center gap-6">
+              <span className="text-slate-400 text-sm flex items-center gap-2">
+                <span>🏢</span> PARENT COMPANY: <span className="text-white font-medium">Dozier Holdings Group</span>
+              </span>
             </div>
 
-            {/* Navigation Links - Streamlined for Launch */}
+            {/* Navigation Buttons */}
             <div className="hidden md:flex items-center gap-3">
               <Link href="/our-story">
-                <button className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
-                  <span>❤️</span> Our Story
+                <button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
+                  <span>👥</span> Founders
                 </button>
               </Link>
-              <Link href="/transfer-portal">
-                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg animate-pulse">
-                  <span>🏈</span> Transfer Portal
-                </button>
-              </Link>
-              <Link href="/pricing">
-                <button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
-                  <span>💰</span> Pricing
-                </button>
-              </Link>
-              <Link href="/wizards">
-                <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
-                  <span>🧙</span> AI Wizards
-                </button>
-              </Link>
-              <Link href="/manus">
-                <button className="bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
-                  <span>🤖</span> Manus AI
-                </button>
-              </Link>
+              <button 
+                onClick={() => setShowVipModal(true)}
+                className="bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-colors"
+              >
+                <span>◎</span> Portal Login
+              </button>
             </div>
 
-            {/* Portal Login */}
-            <button 
-              onClick={() => setShowVipModal(true)}
-              className="bg-slate-800 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-colors"
-            >
-              <span>◎</span> Portal Login
-            </button>
+
           </div>
         </div>
 
@@ -349,17 +338,38 @@ export default function EarlyAccess() {
         {/* THE LEGENDARY TRAINER Section */}
         <section className="py-8 px-4">
           <div className="max-w-lg mx-auto">
-            <div className="bg-gradient-to-br from-slate-800 to-blue-900 rounded-2xl p-8 border border-cyan-500/30 relative">
-              {/* Corner dots */}
-              <div className="absolute top-3 left-3 w-2 h-2 bg-cyan-400 rounded-full"></div>
-              <div className="absolute top-3 right-3 w-2 h-2 bg-cyan-400 rounded-full"></div>
-              <div className="absolute bottom-3 left-3 w-2 h-2 bg-cyan-400 rounded-full"></div>
-              <div className="absolute bottom-3 right-3 w-2 h-2 bg-cyan-400 rounded-full"></div>
+            <div className="bg-gradient-to-br from-slate-800 to-blue-900 rounded-2xl p-8 border border-cyan-500/30 relative overflow-hidden">
+              {/* Animated glow background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-amber-500/10 animate-pulse"></div>
               
-              <div className="text-center">
-                <img src="/athlynx-logo-icon.png" alt="ATHLYNX" className="w-16 h-16 mx-auto mb-4" />
+              {/* Corner dots */}
+              <div className="absolute top-3 left-3 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+              <div className="absolute top-3 right-3 w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></div>
+              <div className="absolute bottom-3 left-3 w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-200"></div>
+              <div className="absolute bottom-3 right-3 w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-300"></div>
+              
+              <div className="relative text-center">
+                <p className="text-amber-400 text-xs font-bold tracking-widest mb-2">THE LEGENDARY TRAINER</p>
+                <img src="/athlynx-logo-icon.png" alt="ATHLYNX" className="w-20 h-20 mx-auto mb-4 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
                 <h3 className="text-white font-black text-2xl mb-1">ATHLYNX</h3>
                 <p className="text-cyan-400 font-semibold text-sm tracking-wider mb-4">THE ATHLETE'S PLAYBOOK</p>
+                
+                {/* Stats Row - Undefeated / Knockouts / Champion */}
+                <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="bg-slate-900/50 rounded-xl p-3 border border-green-500/30">
+                    <p className="text-green-400 font-black text-2xl">∞</p>
+                    <p className="text-slate-400 text-xs">UNDEFEATED</p>
+                  </div>
+                  <div className="bg-slate-900/50 rounded-xl p-3 border border-red-500/30">
+                    <p className="text-red-400 font-black text-2xl">100%</p>
+                    <p className="text-slate-400 text-xs">KNOCKOUTS</p>
+                  </div>
+                  <div className="bg-slate-900/50 rounded-xl p-3 border border-amber-500/30">
+                    <p className="text-amber-400 font-black text-2xl">🏆</p>
+                    <p className="text-slate-400 text-xs">CHAMPION</p>
+                  </div>
+                </div>
+                
                 <p className="text-slate-300 text-sm mb-4">
                   The mastermind behind the champion.<br/>
                   <span className="text-cyan-400 font-semibold">Building champions</span>, 
@@ -368,16 +378,17 @@ export default function EarlyAccess() {
                 </p>
                 
                 {/* THE EMPIRE Box */}
-                <div className="bg-slate-700/50 rounded-xl p-4 mt-4 border border-slate-600">
-                  <p className="text-cyan-400 font-bold text-sm mb-2">THE EMPIRE</p>
+                <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-4 mt-4 border border-amber-500/30">
+                  <p className="text-amber-400 font-bold text-sm mb-2">THE EMPIRE</p>
                   <div className="flex justify-center gap-3 text-2xl mb-2">
-                    <span>🏆</span>
-                    <span>💰</span>
-                    <span>⏱️</span>
-                    <span>🏢</span>
-                    <span>📈</span>
+                    <span className="hover:scale-125 transition-transform cursor-pointer">🏆</span>
+                    <span className="hover:scale-125 transition-transform cursor-pointer">💰</span>
+                    <span className="hover:scale-125 transition-transform cursor-pointer">⏱️</span>
+                    <span className="hover:scale-125 transition-transform cursor-pointer">🏢</span>
+                    <span className="hover:scale-125 transition-transform cursor-pointer">📈</span>
                   </div>
                   <p className="text-slate-400 text-xs">PASSIVE INCOME EMPIRE</p>
+                  <p className="text-amber-400/70 text-[10px] mt-1">12 Companies • Global Reach • Infinite Potential</p>
                 </div>
               </div>
             </div>
@@ -391,116 +402,86 @@ export default function EarlyAccess() {
               10 Powerful Apps. One Platform. Unlimited Potential.
             </h2>
             
-            {/* Apps Grid - 5x2 */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-8">
+            {/* Apps Grid - 5x2 - Matching athlynx.manus.space */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-8">
               {/* Portal */}
               <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/portal'}>
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-green-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20">LIVE</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-cyan-400 transition-all">
-                    <img src="/nil-portal-icon-final.jpeg" alt="Portal" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-cyan-400 transition-all">
+                  <img src="/icons/portal.jpeg" alt="Portal" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">🏠 Portal</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">Portal</p>
               </div>
               
               {/* Messenger */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-green-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20">LIVE</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-cyan-400 transition-all">
-                    <img src="/messenger-icon-final.jpeg" alt="Messenger" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-cyan-400 transition-all">
+                  <img src="/icons/messenger.jpeg" alt="Messenger" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">💬 Messenger</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">Messenger</p>
               </div>
               
               {/* Diamond Grind */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-purple-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20 flex items-center gap-1">💎 ELITE</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-purple-400 transition-all">
-                    <img src="/diamond-grind-app-icon.png" alt="Diamond Grind" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-purple-400 transition-all">
+                  <img src="/icons/diamond-grind.png" alt="Diamond Grind" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">💪 Diamond Grind</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">Diamond Grind</p>
               </div>
               
               {/* Warriors Playbook */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-blue-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20 flex items-center gap-1">⚔️ NEW</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-blue-400 transition-all">
-                    <img src="/warriors-playbook-icon.png" alt="Warriors Playbook" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-blue-400 transition-all">
+                  <img src="/icons/warriors-playbook.png" alt="Warriors Playbook" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">📖 Warriors Playbook</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">Warriors Playbook</p>
               </div>
               
               {/* Transfer Portal */}
-              <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20 flex items-center gap-1">🔥 HOT</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-orange-400 transition-all">
-                    <img src="/transfer-portal-app-icon.png" alt="Transfer Portal" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/transfer-portal'}>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-green-400 transition-all">
+                  <img src="/icons/transfer-portal.png" alt="Transfer Portal" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">🚀 Transfer Portal</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">Transfer Portal</p>
               </div>
               
               {/* NIL Vault */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-emerald-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20 flex items-center gap-1">💰 $$$</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-emerald-400 transition-all">
-                    <img src="/nil-portal-app-icon.jpeg" alt="NIL Vault" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-emerald-400 transition-all">
+                  <img src="/icons/nil-vault.png" alt="NIL Vault" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">🏆 NIL Vault</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">NIL Vault</p>
               </div>
               
               {/* AI Sales */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-violet-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20 flex items-center gap-1">🧙 AI</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-violet-400 transition-all">
-                    <img src="/athlynx-app-icon.png" alt="AI Sales" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-violet-400 transition-all">
+                  <img src="/icons/ai-sales.png" alt="AI Sales" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">🧙 AI Sales Wizard</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">AI Sales</p>
               </div>
               
               {/* Faith */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-pink-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20 flex items-center gap-1">✝️ BLESSED</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-pink-400 transition-all">
-                    <img src="/faith-app-icon.png" alt="Faith" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-pink-400 transition-all">
+                  <img src="/icons/faith.png" alt="Faith" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">🙏 Faith</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">Faith</p>
               </div>
               
               {/* AI Recruiter */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-rose-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20 flex items-center gap-1">🤖 AI</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-rose-400 transition-all">
-                    <img src="/athlynx-app-icon.png" alt="AI Recruiter" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-rose-400 transition-all">
+                  <img src="/icons/ai-recruiter.png" alt="AI Recruiter" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">🤖 AI Recruiter</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">AI Recruiter</p>
               </div>
               
               {/* AI Content */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2 bg-amber-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full z-20 flex items-center gap-1">✨ AI</div>
-                  <div className="bg-slate-800 rounded-2xl p-3 shadow-lg border border-slate-700 group-hover:border-amber-400 transition-all">
-                    <img src="/athlynx-app-icon.png" alt="AI Content" className="w-14 h-14 rounded-xl object-cover" />
-                  </div>
+                <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-amber-400 transition-all">
+                  <img src="/icons/ai-content.png" alt="AI Content" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
-                <p className="text-slate-300 text-xs mt-2 text-center font-medium">✨ AI Content</p>
+                <p className="text-slate-300 text-sm mt-3 text-center font-medium">AI Content</p>
               </div>
             </div>
           </div>
@@ -718,10 +699,12 @@ export default function EarlyAccess() {
                 <div className="text-center md:text-left">
                   <h4 className="text-white font-bold text-xl mb-1">Chad A. Dozier</h4>
                   <p className="text-cyan-400 font-semibold mb-2">Founder & CEO</p>
+                  <p className="text-amber-400 font-bold text-lg mb-2 italic">"Look Ma and Nanny, I Made It!"</p>
                   <p className="text-gray-400 text-sm max-w-xl">
                     Visionary entrepreneur and athlete advocate dedicated to revolutionizing how athletes manage their careers, 
                     NIL opportunities, and professional development through cutting-edge technology.
                   </p>
+                  <p className="text-gray-500 text-xs mt-2">Dreams Do Come True 2026</p>
                 </div>
               </div>
             </div>
