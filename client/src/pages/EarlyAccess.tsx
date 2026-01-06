@@ -45,9 +45,26 @@ export default function EarlyAccess() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   
+  // CRM tracking mutation
+  const trackSignup = trpc.crm.trackSignup.useMutation();
+
   const joinWaitlist = trpc.waitlist.join.useMutation({
     onSuccess: (data) => {
       if (data.success) {
+        // Also track in CRM for analytics
+        trackSignup.mutate({
+          fullName,
+          email,
+          phone,
+          role: role.toLowerCase(),
+          sport,
+          signupType: "waitlist",
+          referralSource: document.referrer || "direct",
+          utmSource: new URLSearchParams(window.location.search).get("utm_source") || undefined,
+          utmMedium: new URLSearchParams(window.location.search).get("utm_medium") || undefined,
+          utmCampaign: new URLSearchParams(window.location.search).get("utm_campaign") || undefined,
+        });
+        
         setSubmitted(true);
         toast.success("Welcome to ATHLYNX! You'll receive your VIP access code soon.");
         setFullName("");

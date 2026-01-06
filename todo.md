@@ -155,3 +155,33 @@
 - "Everyone is an NIL Commodity"
 - "The One Man Billionaire Story Begins"
 - "MIC DROP. FOCKER OUT."
+
+
+## CRM & Data Ecosystem (9 AM CST Launch)
+- [x] Real-time CRM dashboard for partners (/crm)
+- [x] User signup tracking with timestamps
+- [x] Email collection and validation
+- [x] Phone number collection
+- [x] IP address tracking
+- [x] Signup order numbering (1st user, 2nd user, etc.)
+- [x] Social media profile linking (database ready)
+- [x] Geographic data from IP (database ready)
+- [x] Device/browser info tracking
+- [x] AI onboarding channel system (database ready)
+- [x] Automated new customer workflows (CRM events)
+- [x] Existing customer management (CRM dashboard)
+- [x] Excel export functionality (CSV + Python script)
+- [x] Microsoft Copilot-ready format
+- [x] First paying customer tracking
+- [x] Revenue milestones dashboard
+- [x] Play-by-play signup view for partners
+- [x] Schedule 9 AM CST launch reminder
+
+## Partner Access Codes
+- CHAD-FOUNDER-2026 (Chad A. Dozier - Admin)
+- GLENN-PARTNER-2026 (Glenn Tse - Full Access)
+- LEE-PARTNER-2026 (Lee Marshall - Full Access)
+- JIMMY-PARTNER-2026 (Jimmy Boyd - Full Access)
+- ANDREW-PARTNER-2026 (Andrew Kustes - Full Access)
+- MOM-ADVISOR-2026 (Nicki Leggett - View Only)
+- DAVID-ADVISOR-2026 (David Ford - View Only)

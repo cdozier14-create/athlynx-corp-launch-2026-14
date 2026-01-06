@@ -221,6 +221,108 @@ export const appRouter = router({
         return { success: true };
       }),
   }),
+
+  // ==================== CRM & ANALYTICS (FAILPROOF) ====================
+  crm: router({
+    // Track signup with full analytics
+    trackSignup: publicProcedure
+      .input(z.object({
+        fullName: z.string(),
+        email: z.string().email(),
+        phone: z.string().optional(),
+        role: z.string().optional(),
+        sport: z.string().optional(),
+        referralSource: z.string().optional(),
+        utmSource: z.string().optional(),
+        utmMedium: z.string().optional(),
+        utmCampaign: z.string().optional(),
+        signupType: z.enum(["waitlist", "vip", "direct", "referral"]).optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        // Get IP from request headers
+        const ipAddress = ctx.req.headers["x-forwarded-for"]?.toString().split(",")[0] || 
+                          ctx.req.headers["x-real-ip"]?.toString() || 
+                          ctx.req.socket?.remoteAddress || "unknown";
+        const userAgent = ctx.req.headers["user-agent"] || "";
+        
+        return db.trackSignup({
+          ...input,
+          ipAddress,
+          userAgent,
+        });
+      }),
+    
+    // Get real-time stats for dashboard
+    stats: publicProcedure.query(async () => {
+      return db.getCRMStats();
+    }),
+    
+    // Get signup list with pagination
+    signups: publicProcedure
+      .input(z.object({ 
+        limit: z.number().default(100), 
+        offset: z.number().default(0),
+        accessCode: z.string().optional(),
+      }).optional())
+      .query(async ({ input }) => {
+        // Validate partner access if code provided
+        if (input?.accessCode) {
+          const partner = await db.validatePartnerAccess(input.accessCode);
+          if (!partner) {
+            return { signups: [], total: 0, error: "Invalid access code" };
+          }
+        }
+        return db.getSignupAnalytics(input?.limit || 100, input?.offset || 0);
+      }),
+    
+    // Export to CSV for Excel/Copilot
+    exportCSV: publicProcedure
+      .input(z.object({ accessCode: z.string() }))
+      .query(async ({ input }) => {
+        const partner = await db.validatePartnerAccess(input.accessCode);
+        if (!partner) {
+          return { csv: "", error: "Invalid access code" };
+        }
+        const csv = await db.exportSignupsToCSV();
+        return { csv };
+      }),
+    
+    // Track customer event
+    trackEvent: publicProcedure
+      .input(z.object({
+        userId: z.number().optional(),
+        waitlistId: z.number().optional(),
+        eventType: z.string(),
+        eventName: z.string(),
+        eventData: z.any().optional(),
+        pageUrl: z.string().optional(),
+        referrer: z.string().optional(),
+        sessionId: z.string().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        const ipAddress = ctx.req.headers["x-forwarded-for"]?.toString().split(",")[0] || "unknown";
+        const userAgent = ctx.req.headers["user-agent"] || "";
+        
+        return db.trackCustomerEvent({
+          ...input,
+          ipAddress,
+          userAgent,
+        });
+      }),
+    
+    // Get milestones
+    milestones: publicProcedure.query(async () => {
+      return db.getMilestones();
+    }),
+    
+    // Validate partner access
+    validateAccess: publicProcedure
+      .input(z.object({ accessCode: z.string() }))
+      .query(async ({ input }) => {
+        const partner = await db.validatePartnerAccess(input.accessCode);
+        return { valid: !!partner, partner };
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

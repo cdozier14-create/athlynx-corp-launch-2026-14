@@ -284,3 +284,155 @@ export const recruiterInterests = mysqlTable("recruiter_interests", {
 
 export type RecruiterInterest = typeof recruiterInterests.$inferSelect;
 export type InsertRecruiterInterest = typeof recruiterInterests.$inferInsert;
+
+// ==================== CRM & ANALYTICS ====================
+
+export const signupAnalytics = mysqlTable("signup_analytics", {
+  id: int("id").autoincrement().primaryKey(),
+  signupNumber: int("signupNumber").notNull(), // 1st user, 2nd user, etc.
+  userId: int("userId"),
+  waitlistId: int("waitlistId"),
+  fullName: varchar("fullName", { length: 255 }),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 20 }),
+  ipAddress: varchar("ipAddress", { length: 45 }),
+  userAgent: text("userAgent"),
+  browser: varchar("browser", { length: 64 }),
+  device: varchar("device", { length: 64 }),
+  os: varchar("os", { length: 64 }),
+  country: varchar("country", { length: 64 }),
+  city: varchar("city", { length: 128 }),
+  region: varchar("region", { length: 128 }),
+  timezone: varchar("timezone", { length: 64 }),
+  referralSource: varchar("referralSource", { length: 255 }),
+  utmSource: varchar("utmSource", { length: 128 }),
+  utmMedium: varchar("utmMedium", { length: 128 }),
+  utmCampaign: varchar("utmCampaign", { length: 128 }),
+  role: varchar("role", { length: 64 }),
+  sport: varchar("sport", { length: 64 }),
+  signupType: mysqlEnum("signupType", ["waitlist", "vip", "direct", "referral"]).default("waitlist").notNull(),
+  isConverted: boolean("isConverted").default(false).notNull(),
+  convertedAt: timestamp("convertedAt"),
+  isPaying: boolean("isPaying").default(false).notNull(),
+  firstPaymentAt: timestamp("firstPaymentAt"),
+  lifetimeValue: decimal("lifetimeValue", { precision: 12, scale: 2 }).default("0"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type SignupAnalytic = typeof signupAnalytics.$inferSelect;
+export type InsertSignupAnalytic = typeof signupAnalytics.$inferInsert;
+
+// ==================== SOCIAL MEDIA CONNECTIONS ====================
+
+export const socialConnections = mysqlTable("social_connections", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  platform: mysqlEnum("platform", ["instagram", "twitter", "tiktok", "youtube", "facebook", "linkedin", "snapchat", "threads"]).notNull(),
+  username: varchar("username", { length: 255 }),
+  profileUrl: text("profileUrl"),
+  followersCount: int("followersCount").default(0),
+  followingCount: int("followingCount").default(0),
+  postsCount: int("postsCount").default(0),
+  engagementRate: decimal("engagementRate", { precision: 5, scale: 2 }),
+  isVerified: boolean("isVerified").default(false).notNull(),
+  accessToken: text("accessToken"),
+  refreshToken: text("refreshToken"),
+  tokenExpiresAt: timestamp("tokenExpiresAt"),
+  lastSyncedAt: timestamp("lastSyncedAt"),
+  connectedAt: timestamp("connectedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SocialConnection = typeof socialConnections.$inferSelect;
+export type InsertSocialConnection = typeof socialConnections.$inferInsert;
+
+// ==================== AI ONBOARDING CHANNEL ====================
+
+export const onboardingSteps = mysqlTable("onboarding_steps", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  stepName: varchar("stepName", { length: 64 }).notNull(),
+  stepOrder: int("stepOrder").notNull(),
+  status: mysqlEnum("onboardingStatus", ["pending", "in_progress", "completed", "skipped"]).default("pending").notNull(),
+  completedAt: timestamp("completedAt"),
+  aiAssisted: boolean("aiAssisted").default(false).notNull(),
+  aiResponse: text("aiResponse"),
+  metadata: json("metadata"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type OnboardingStep = typeof onboardingSteps.$inferSelect;
+export type InsertOnboardingStep = typeof onboardingSteps.$inferInsert;
+
+// ==================== CUSTOMER JOURNEY EVENTS ====================
+
+export const customerEvents = mysqlTable("customer_events", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  waitlistId: int("waitlistId"),
+  eventType: varchar("eventType", { length: 64 }).notNull(),
+  eventName: varchar("eventName", { length: 255 }).notNull(),
+  eventData: json("eventData"),
+  ipAddress: varchar("ipAddress", { length: 45 }),
+  userAgent: text("userAgent"),
+  pageUrl: text("pageUrl"),
+  referrer: text("referrer"),
+  sessionId: varchar("sessionId", { length: 64 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type CustomerEvent = typeof customerEvents.$inferSelect;
+export type InsertCustomerEvent = typeof customerEvents.$inferInsert;
+
+// ==================== REVENUE TRACKING ====================
+
+export const revenueEvents = mysqlTable("revenue_events", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  eventType: mysqlEnum("revenueEventType", ["subscription_start", "subscription_renewal", "subscription_cancel", "one_time_purchase", "refund", "upgrade", "downgrade"]).notNull(),
+  amount: decimal("amount", { precision: 12, scale: 2 }).notNull(),
+  currency: varchar("currency", { length: 3 }).default("USD").notNull(),
+  subscriptionTier: varchar("subscriptionTier", { length: 64 }),
+  stripePaymentId: varchar("stripePaymentId", { length: 255 }),
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 255 }),
+  metadata: json("metadata"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type RevenueEvent = typeof revenueEvents.$inferSelect;
+export type InsertRevenueEvent = typeof revenueEvents.$inferInsert;
+
+// ==================== PARTNER ACCESS (CRM Dashboard) ====================
+
+export const partnerAccess = mysqlTable("partner_access", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  role: mysqlEnum("partnerRole", ["founder", "partner", "investor", "advisor"]).default("partner").notNull(),
+  accessLevel: mysqlEnum("accessLevel", ["view_only", "standard", "full", "admin"]).default("view_only").notNull(),
+  accessCode: varchar("accessCode", { length: 64 }).notNull().unique(),
+  isActive: boolean("isActive").default(true).notNull(),
+  lastAccessAt: timestamp("lastAccessAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PartnerAccess = typeof partnerAccess.$inferSelect;
+export type InsertPartnerAccess = typeof partnerAccess.$inferInsert;
+
+// ==================== CRM MILESTONES ====================
+
+export const milestones = mysqlTable("milestones", {
+  id: int("id").autoincrement().primaryKey(),
+  milestoneName: varchar("milestoneName", { length: 255 }).notNull(),
+  milestoneType: mysqlEnum("milestoneType", ["signup", "revenue", "user", "feature", "custom"]).notNull(),
+  targetValue: int("targetValue").notNull(),
+  currentValue: int("currentValue").default(0).notNull(),
+  isAchieved: boolean("isAchieved").default(false).notNull(),
+  achievedAt: timestamp("achievedAt"),
+  celebrationMessage: text("celebrationMessage"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Milestone = typeof milestones.$inferSelect;
+export type InsertMilestone = typeof milestones.$inferInsert;

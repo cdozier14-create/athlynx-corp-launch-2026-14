@@ -10,6 +10,7 @@ import FounderStory from "@/pages/FounderStory";
 import RobotCompanions from "@/pages/RobotCompanions";
 import Veterans from "@/pages/Veterans";
 import BlueCollar from "@/pages/BlueCollar";
+import CRMDashboard from "@/pages/CRMDashboard";
 
 function Router() {
   return (
@@ -25,6 +26,9 @@ function Router() {
       <Route path="/veterans-heroes" component={Veterans} />
       <Route path="/blue-collar" component={BlueCollar} />
       <Route path="/life-playbook" component={BlueCollar} />
+      <Route path="/crm" component={CRMDashboard} />
+      <Route path="/dashboard" component={CRMDashboard} />
+      <Route path="/partner-dashboard" component={CRMDashboard} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
