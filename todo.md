@@ -294,3 +294,8 @@
 - [x] Career Transition Planning - Post-college preparation (/wizard/career)
 - [x] AI Chat Interface Component - Unified wizard chat UI (AIWizardChat.tsx)
 - [x] Wizard Hub Page - Central access to all AI assistants (/wizards)
+
+
+## International Communications
+- [x] Add WhatsApp chat button to website footer (+1 601-498-5282)
+- [x] Add WeChat contact button to website footer (wxid_uv8r2ll71shb12)
