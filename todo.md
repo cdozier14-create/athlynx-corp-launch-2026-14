@@ -302,3 +302,9 @@
 ## International Communications
 - [x] Add WhatsApp chat button to website footer (+1 601-498-5282)
 - [x] Add WeChat contact button to website footer (wxid_uv8r2ll71shb12)
+
+
+## Bug Fixes - January 6, 2026
+- [x] Fix app icons - Portal and Messenger showing same "n" swoosh logo (icons ARE different - Portal has plain n, Messenger has n in speech bubble)
+- [ ] Each of the 10 apps needs a unique icon
+- [x] Connect Transfer Portal to use fallback data with proper TypeScript types

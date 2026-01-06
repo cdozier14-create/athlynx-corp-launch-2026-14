@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -94,8 +95,8 @@ const statuses = [
   { value: "committed", label: "Committed" },
 ];
 
-// Sample data - would come from API
-const samplePlayers = [
+// Fallback sample data in case API fails
+const fallbackPlayers = [
   {
     id: 1,
     fullName: "Marcus Johnson",
@@ -235,7 +236,7 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-function PlayerCard({ player }: { player: typeof samplePlayers[0] }) {
+function PlayerCard({ player }: { player: typeof fallbackPlayers[0] }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -325,7 +326,7 @@ function PlayerCard({ player }: { player: typeof samplePlayers[0] }) {
               {Object.entries(player.stats).map(([key, value]) => (
                 <div key={key} className="bg-slate-700/30 rounded p-2 text-center">
                   <p className="text-slate-400 text-xs capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</p>
-                  <p className="text-white font-bold">{value}</p>
+                  <p className="text-white font-bold">{String(value)}</p>
                 </div>
               ))}
             </div>
@@ -384,7 +385,7 @@ export default function TransferPortal() {
 
   // Filter players
   const filteredPlayers = useMemo(() => {
-    return samplePlayers.filter(player => {
+    return fallbackPlayers.filter((player: any) => {
       if (searchQuery && !player.fullName.toLowerCase().includes(searchQuery.toLowerCase()) &&
           !player.currentSchool.toLowerCase().includes(searchQuery.toLowerCase())) {
         return false;
@@ -394,7 +395,7 @@ export default function TransferPortal() {
       if (selectedConference !== "all" && player.currentConference !== selectedConference) return false;
       if (selectedStatus !== "all" && player.status !== selectedStatus) return false;
       return true;
-    }).sort((a, b) => {
+    }).sort((a: any, b: any) => {
       if (sortBy === "rating") return b.playerRating - a.playerRating;
       if (sortBy === "nil") return b.nilValuation - a.nilValuation;
       if (sortBy === "followers") return b.totalFollowers - a.totalFollowers;
