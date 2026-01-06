@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 
@@ -133,13 +134,35 @@ export default function EarlyAccess() {
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-slate-900"></div>
             </div>
 
-            {/* Founders Button */}
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
-              <span>👥</span> Found...
-            </button>
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center gap-3">
+              <Link href="/our-story">
+                <button className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
+                  <span>❤️</span> Our Story
+                </button>
+              </Link>
+              <Link href="/veterans">
+                <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
+                  <span>🎖️</span> Veterans
+                </button>
+              </Link>
+              <Link href="/blue-collar">
+                <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
+                  <span>🔧</span> Blue Collar
+                </button>
+              </Link>
+              <Link href="/robot-companions">
+                <button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
+                  <span>🤖</span> Robots
+                </button>
+              </Link>
+            </div>
 
             {/* Portal Login */}
-            <button className="bg-slate-800 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-colors">
+            <button 
+              onClick={() => setShowVipModal(true)}
+              className="bg-slate-800 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 transition-colors"
+            >
               <span>◎</span> Portal Login
             </button>
           </div>
