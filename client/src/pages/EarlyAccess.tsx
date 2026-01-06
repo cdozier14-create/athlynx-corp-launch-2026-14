@@ -143,7 +143,7 @@ export default function EarlyAccess() {
             <Link href="/">
               <div className="relative cursor-pointer">
                 <div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl px-4 py-2 flex items-center gap-3 shadow-lg hover:shadow-cyan-500/20 transition-all">
-                  <img src="/athlynx-x-logo.jpeg" alt="ATHLYNX" className="w-8 h-8 rounded-md" />
+                  <img src="/athlynx-header-logo.png" alt="ATHLYNX" className="w-10 h-10 rounded-lg shadow-md" />
                   <div>
                     <h1 className="text-white font-bold text-lg tracking-wide">ATHLYNX</h1>
                     <p className="text-blue-100 text-[10px] tracking-wider">THE ATHLETE'S PLAYBOOK</p>

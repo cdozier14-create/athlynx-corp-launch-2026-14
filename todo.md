@@ -355,3 +355,8 @@
 - [x] Add social sharing for voting (Twitter + WhatsApp)
 - [x] Make both sites visually stunning and irresistible (animated sparkles, shine effects)
 - [x] Add legal disclaimers to protect from liability (NIL + Investment disclaimers)
+
+
+## Bug Fix - Header Logo
+- [x] Fix header logo showing full apps image instead of ATHLYNX logo
+- [x] Create/use proper beautiful standalone logo for header (Generated new X logo!)
