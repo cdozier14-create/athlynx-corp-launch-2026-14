@@ -281,6 +281,9 @@
 - [x] Integrate with existing ATHLYNX platform
 - [x] Dead period / quiet period / contact period indicator
 - [x] Added to main navigation (pulsing button!)
+- [x] Seed 20 sample players (12 football, 8 basketball)
+- [x] Add Transfer Portal API routes (players, stats)
+- [x] Include Mississippi players (Ole Miss, Miss State, Southern Miss)
 
 
 ## AI TUTORING & WIZARD SYSTEM

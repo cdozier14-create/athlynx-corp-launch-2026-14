@@ -8,7 +8,8 @@ import {
   athleteProfiles, InsertAthleteProfile,
   follows, likes, comments,
   conversations, conversationParticipants, messages, InsertMessage,
-  nilDeals, workouts, playbooks, transferEntries, notifications
+  nilDeals, workouts, playbooks, transferEntries, notifications,
+  transferPortalEntries
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -750,4 +751,173 @@ export async function createMilestone(data: InsertMilestone): Promise<boolean> {
     console.error("[CRM] Failed to create milestone:", error);
     return false;
   }
+}
+
+
+// ==================== TRANSFER PORTAL ====================
+
+// Get transfer portal players with filters
+export async function getTransferPortalPlayers(filters: {
+  sport?: string;
+  position?: string;
+  division?: string;
+  conference?: string;
+  status?: string;
+  minRating?: number;
+  maxRating?: number;
+  minNIL?: number;
+  maxNIL?: number;
+  search?: string;
+  limit?: number;
+  offset?: number;
+}) {
+  const db = await getDb();
+  if (!db) return { players: [], total: 0 };
+  
+  try {
+    // Build query with filters
+    let query = db.select().from(transferPortalEntries);
+    
+    // Apply filters using raw SQL for flexibility
+    const conditions: string[] = ["isPublic = 1"];
+    
+    if (filters.sport && filters.sport !== "all") {
+      conditions.push(`sport = '${filters.sport}'`);
+    }
+    if (filters.position && filters.position !== "all") {
+      conditions.push(`position = '${filters.position}'`);
+    }
+    if (filters.division && filters.division !== "all") {
+      conditions.push(`currentDivision = '${filters.division}'`);
+    }
+    if (filters.conference && filters.conference !== "all") {
+      conditions.push(`currentConference = '${filters.conference}'`);
+    }
+    if (filters.status && filters.status !== "all") {
+      conditions.push(`status = '${filters.status}'`);
+    }
+    if (filters.minRating) {
+      conditions.push(`starRating >= ${filters.minRating}`);
+    }
+    if (filters.maxRating) {
+      conditions.push(`starRating <= ${filters.maxRating}`);
+    }
+    if (filters.minNIL) {
+      conditions.push(`nilValuation >= ${filters.minNIL}`);
+    }
+    if (filters.maxNIL) {
+      conditions.push(`nilValuation <= ${filters.maxNIL}`);
+    }
+    if (filters.search) {
+      const searchTerm = filters.search.replace(/'/g, "''");
+      conditions.push(`(fullName LIKE '%${searchTerm}%' OR currentSchool LIKE '%${searchTerm}%')`);
+    }
+    
+    const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
+    const limit = filters.limit || 50;
+    const offset = filters.offset || 0;
+    
+    // Execute query
+    const playersResult = await db.execute(sql.raw(`
+      SELECT * FROM transfer_portal_entries 
+      ${whereClause}
+      ORDER BY starRating DESC, nilValuation DESC
+      LIMIT ${limit} OFFSET ${offset}
+    `));
+    
+    // Get total count
+    const countResult = await db.execute(sql.raw(`
+      SELECT COUNT(*) as total FROM transfer_portal_entries ${whereClause}
+    `));
+    
+    // Handle MySQL2 result format
+    const players = Array.isArray(playersResult) && Array.isArray(playersResult[0]) 
+      ? playersResult[0] 
+      : [];
+    const countRows = Array.isArray(countResult) && Array.isArray(countResult[0]) 
+      ? countResult[0] 
+      : [];
+    
+    return { 
+      players: players as any[], 
+      total: (countRows as any[])[0]?.total || 0 
+    };
+  } catch (error) {
+    console.error("[Transfer Portal] Failed to get players:", error);
+    return { players: [], total: 0 };
+  }
+}
+
+// Get single player by ID
+export async function getTransferPortalPlayer(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  try {
+    const result = await db.select()
+      .from(transferPortalEntries)
+      .where(eq(transferPortalEntries.id, id))
+      .limit(1);
+    
+    return result[0] || null;
+  } catch (error) {
+    console.error("[Transfer Portal] Failed to get player:", error);
+    return null;
+  }
+}
+
+// Get transfer portal stats
+export async function getTransferPortalStats() {
+  const db = await getDb();
+  if (!db) return getDefaultPortalStats();
+  
+  try {
+    const [
+      totalPlayers,
+      footballPlayers,
+      basketballPlayers,
+      fiveStarPlayers,
+      availablePlayers
+    ] = await Promise.all([
+      db.select({ count: sql<number>`count(*)` }).from(transferPortalEntries),
+      db.select({ count: sql<number>`count(*)` }).from(transferPortalEntries)
+        .where(eq(transferPortalEntries.sport, "football")),
+      db.select({ count: sql<number>`count(*)` }).from(transferPortalEntries)
+        .where(eq(transferPortalEntries.sport, "basketball")),
+      db.select({ count: sql<number>`count(*)` }).from(transferPortalEntries)
+        .where(eq(transferPortalEntries.starRating, 5)),
+      db.select({ count: sql<number>`count(*)` }).from(transferPortalEntries)
+        .where(sql`status IN ('available', 'entered')`),
+    ]);
+    
+    // Get total NIL value
+    const nilResult = await db.select({ 
+      sum: sql<number>`COALESCE(SUM(nilValuation), 0)` 
+    }).from(transferPortalEntries);
+    
+    return {
+      totalPlayers: totalPlayers[0]?.count || 0,
+      footballPlayers: footballPlayers[0]?.count || 0,
+      basketballPlayers: basketballPlayers[0]?.count || 0,
+      fiveStarPlayers: fiveStarPlayers[0]?.count || 0,
+      availablePlayers: availablePlayers[0]?.count || 0,
+      totalNILValue: nilResult[0]?.sum || 0,
+      lastUpdated: new Date().toISOString(),
+    };
+  } catch (error) {
+    console.error("[Transfer Portal] Failed to get stats:", error);
+    return getDefaultPortalStats();
+  }
+}
+
+function getDefaultPortalStats() {
+  return {
+    totalPlayers: 0,
+    footballPlayers: 0,
+    basketballPlayers: 0,
+    fiveStarPlayers: 0,
+    availablePlayers: 0,
+    totalNILValue: 0,
+    lastUpdated: new Date().toISOString(),
+  };
 }

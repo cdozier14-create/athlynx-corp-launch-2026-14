@@ -222,6 +222,41 @@ export const appRouter = router({
       }),
   }),
 
+  // ==================== TRANSFER PORTAL ====================
+  transferPortal: router({
+    // Get players with filters
+    players: publicProcedure
+      .input(z.object({
+        sport: z.string().optional(),
+        position: z.string().optional(),
+        division: z.string().optional(),
+        conference: z.string().optional(),
+        status: z.string().optional(),
+        minRating: z.number().optional(),
+        maxRating: z.number().optional(),
+        minNIL: z.number().optional(),
+        maxNIL: z.number().optional(),
+        search: z.string().optional(),
+        limit: z.number().default(50),
+        offset: z.number().default(0),
+      }).optional())
+      .query(async ({ input }) => {
+        return db.getTransferPortalPlayers(input || {});
+      }),
+    
+    // Get single player
+    player: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return db.getTransferPortalPlayer(input.id);
+      }),
+    
+    // Get portal stats
+    stats: publicProcedure.query(async () => {
+      return db.getTransferPortalStats();
+    }),
+  }),
+
   // ==================== CRM & ANALYTICS (FAILPROOF) ====================
   crm: router({
     // Track signup with full analytics
