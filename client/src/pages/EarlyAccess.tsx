@@ -1154,7 +1154,8 @@ export default function EarlyAccess() {
               </div>
               <div className="col-span-2 md:col-span-1">
                 <p className="text-gray-500 text-sm">Address</p>
-                <p className="text-gray-400 text-sm">19039 Cloyanna Lane, Humble, TX 77346</p>
+                <p className="text-gray-400 text-sm">12036 Lake Portal Drive, Houston, TX 77047</p>
+                <p className="text-gray-400 text-sm">831 West 28th Street, Laurel, MS 39440</p>
               </div>
             </div>
           </div>
