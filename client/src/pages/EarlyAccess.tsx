@@ -647,6 +647,9 @@ export default function EarlyAccess() {
         {/* VOTE FOR YOUR FAVORITE - Campaign Section */}
         <section className="py-20 px-4 bg-gradient-to-b from-slate-900 to-purple-950">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center mb-6">
+              <img src="/community-vote-logo.png" alt="Community Vote" className="w-20 h-20 rounded-2xl shadow-lg" />
+            </div>
             <div className="inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full text-white text-sm font-bold mb-6 animate-pulse">
               🗳️ HELP US DECIDE!
             </div>
@@ -700,6 +703,53 @@ export default function EarlyAccess() {
             </div>
             
             <p className="text-slate-500 text-sm mt-6">Voting ends February 1, 2026 • The winning design becomes the official ATHLYNX!</p>
+            
+            {/* Community Feedback Form */}
+            <div className="mt-12 bg-slate-800/80 rounded-2xl p-8 border border-slate-700">
+              <h3 className="text-2xl font-bold text-white mb-2">💬 COMMUNITY FEEDBACK</h3>
+              <p className="text-slate-400 mb-6">Help us build the perfect platform! Tell us what you think.</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div>
+                  <label className="text-cyan-400 font-semibold text-sm mb-2 block">What do you LOVE? 💚</label>
+                  <textarea 
+                    placeholder="Tell us what features or designs you love..."
+                    className="w-full bg-slate-900 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none resize-none h-24"
+                  />
+                </div>
+                <div>
+                  <label className="text-pink-400 font-semibold text-sm mb-2 block">What could be BETTER? 💡</label>
+                  <textarea 
+                    placeholder="Share your suggestions for improvements..."
+                    className="w-full bg-slate-900 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-500 focus:border-pink-400 focus:outline-none resize-none h-24"
+                  />
+                </div>
+              </div>
+              
+              <div className="mt-6">
+                <label className="text-amber-400 font-semibold text-sm mb-2 block">Your Email (optional - for updates)</label>
+                <input 
+                  type="email"
+                  placeholder="your@email.com"
+                  className="w-full md:w-1/2 bg-slate-900 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-500 focus:border-amber-400 focus:outline-none"
+                />
+              </div>
+              
+              <button 
+                onClick={() => toast.success('Thank you for your feedback! 🙏')}
+                className="mt-6 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold rounded-full hover:from-cyan-400 hover:to-purple-400 transition-all shadow-lg hover:shadow-cyan-500/30"
+              >
+                📨 SUBMIT FEEDBACK
+              </button>
+              
+              <p className="text-slate-500 text-xs mt-4">Your feedback helps shape ATHLYNX for athletes everywhere!</p>
+            </div>
+            
+            {/* Discussion Teaser */}
+            <div className="mt-8 p-6 bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-xl border border-amber-500/30">
+              <p className="text-amber-400 font-bold text-lg">🚀 COMING SOON: Community Discussion Forum</p>
+              <p className="text-slate-300 text-sm mt-2">A dedicated space for athletes, coaches, and brands to discuss features, share ideas, and connect!</p>
+            </div>
           </div>
         </section>
       </main>

@@ -756,3 +756,121 @@ export const transferOffers = mysqlTable("transfer_offers", {
 
 export type TransferOffer = typeof transferOffers.$inferSelect;
 export type InsertTransferOffer = typeof transferOffers.$inferInsert;
+
+
+// ==================== COMMUNITY VOTING & FEEDBACK ====================
+
+// Site Votes - Track which site users prefer
+export const siteVotes = mysqlTable("site_votes", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  // Voter info (can be anonymous)
+  email: varchar("email", { length: 320 }),
+  userId: int("userId"),
+  
+  // Vote
+  votedFor: mysqlEnum("votedFor", ["site_a", "site_b"]).notNull(), // site_a = athlynx.manus.space, site_b = athlynx.ai
+  
+  // Context
+  ipAddress: varchar("ipAddress", { length: 45 }),
+  userAgent: text("userAgent"),
+  referralSource: varchar("referralSource", { length: 255 }),
+  
+  // Timestamps
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type SiteVote = typeof siteVotes.$inferSelect;
+export type InsertSiteVote = typeof siteVotes.$inferInsert;
+
+// Community Feedback - What users love/want improved
+export const communityFeedback = mysqlTable("community_feedback", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  // Submitter info
+  email: varchar("email", { length: 320 }),
+  userId: int("userId"),
+  name: varchar("name", { length: 128 }),
+  
+  // Feedback content
+  whatTheyLove: text("whatTheyLove"),
+  whatCouldBeBetter: text("whatCouldBeBetter"),
+  featureRequests: text("featureRequests"),
+  generalComments: text("generalComments"),
+  
+  // Which site they're commenting on
+  siteVersion: mysqlEnum("siteVersion", ["site_a", "site_b", "both", "general"]).default("general"),
+  
+  // Rating (optional)
+  overallRating: int("overallRating"), // 1-5 stars
+  
+  // Categorization
+  feedbackType: mysqlEnum("feedbackType", ["design", "features", "usability", "performance", "content", "other"]).default("other"),
+  priority: mysqlEnum("priority", ["low", "medium", "high", "critical"]).default("medium"),
+  
+  // Status tracking
+  status: mysqlEnum("status", ["new", "reviewed", "in_progress", "implemented", "wont_do"]).default("new"),
+  adminNotes: text("adminNotes"),
+  
+  // Context
+  ipAddress: varchar("ipAddress", { length: 45 }),
+  userAgent: text("userAgent"),
+  pageUrl: varchar("pageUrl", { length: 500 }),
+  
+  // Timestamps
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  reviewedAt: timestamp("reviewedAt"),
+});
+
+export type CommunityFeedback = typeof communityFeedback.$inferSelect;
+export type InsertCommunityFeedback = typeof communityFeedback.$inferInsert;
+
+// Feature Requests - Specific feature voting
+export const featureRequests = mysqlTable("feature_requests", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  // Request details
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  category: varchar("category", { length: 64 }),
+  
+  // Voting
+  upvotes: int("upvotes").default(0).notNull(),
+  downvotes: int("downvotes").default(0).notNull(),
+  
+  // Status
+  status: mysqlEnum("status", ["submitted", "under_review", "planned", "in_progress", "completed", "declined"]).default("submitted"),
+  
+  // Submitter
+  submittedByEmail: varchar("submittedByEmail", { length: 320 }),
+  submittedByUserId: int("submittedByUserId"),
+  
+  // Admin response
+  adminResponse: text("adminResponse"),
+  estimatedRelease: varchar("estimatedRelease", { length: 64 }),
+  
+  // Timestamps
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type FeatureRequest = typeof featureRequests.$inferSelect;
+export type InsertFeatureRequest = typeof featureRequests.$inferInsert;
+
+// Feature Request Votes - Track who voted for what
+export const featureRequestVotes = mysqlTable("feature_request_votes", {
+  id: int("id").autoincrement().primaryKey(),
+  featureRequestId: int("featureRequestId").notNull(),
+  
+  // Voter
+  email: varchar("email", { length: 320 }),
+  userId: int("userId"),
+  
+  // Vote type
+  voteType: mysqlEnum("voteType", ["upvote", "downvote"]).notNull(),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type FeatureRequestVote = typeof featureRequestVotes.$inferSelect;
+export type InsertFeatureRequestVote = typeof featureRequestVotes.$inferInsert;

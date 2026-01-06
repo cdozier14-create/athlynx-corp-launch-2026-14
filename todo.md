@@ -360,3 +360,25 @@
 ## Bug Fix - Header Logo
 - [x] Fix header logo showing full apps image instead of ATHLYNX logo
 - [x] Create/use proper beautiful standalone logo for header (Generated new X logo!)
+
+
+## Community Voting & Feedback System
+- [ ] Create voting section with Site A (athlynx.ai) vs Site B (athlynx.manus.space) buttons
+- [ ] Add direct links to both sites for users to compare
+- [ ] Create community feedback form (likes/dislikes/suggestions)
+- [ ] Add database tables for votes and feedback
+- [ ] Display vote counts/percentages
+- [ ] February 1, 2026 = Decision Day based on community votes!
+
+
+## URGENT: Fix 10 App Icons to Match athlynx.manus.space
+- [ ] Portal icon - "n" in rounded square (UNIQUE)
+- [ ] Messenger icon - "@" symbol in circle (NOT same as Portal!)
+- [ ] Diamond Grind icon - Blue crossed axes/swords
+- [ ] Warriors Playbook icon - Lion shield
+- [ ] Transfer Portal icon - Green circular icon
+- [ ] NIL Vault icon - CD/disc icon
+- [ ] AI Sales icon - Robot figure
+- [ ] Faith icon - "FAITH" text badge
+- [ ] AI Recruiter icon - Robot with tie
+- [ ] AI Content icon - Robot with lightbulb

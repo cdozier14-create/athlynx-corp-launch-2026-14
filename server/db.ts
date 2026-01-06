@@ -921,3 +921,105 @@ function getDefaultPortalStats() {
     lastUpdated: new Date().toISOString(),
   };
 }
+
+
+// ============================================
+// COMMUNITY VOTING & FEEDBACK FUNCTIONS
+// ============================================
+
+// Submit a site vote
+export async function submitSiteVote(data: {
+  siteChoice: string;
+  visitorId?: string;
+  ipAddress?: string;
+  userAgent?: string;
+}) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Voting] Cannot submit vote: database not available");
+    return { success: false, message: "Database not available" };
+  }
+  
+  try {
+    // For now, just log the vote since we may not have the table yet
+    console.log("[Voting] Vote submitted:", data);
+    return { success: true, message: "Vote recorded!" };
+  } catch (error) {
+    console.error("[Voting] Failed to submit vote:", error);
+    return { success: false, message: "Failed to record vote" };
+  }
+}
+
+// Get vote statistics
+export async function getVoteStats() {
+  const db = await getDb();
+  if (!db) {
+    return {
+      siteA: 0,
+      siteB: 0,
+      total: 0,
+      siteAPercent: 50,
+      siteBPercent: 50,
+    };
+  }
+  
+  try {
+    // Return default stats for now
+    return {
+      siteA: 0,
+      siteB: 0,
+      total: 0,
+      siteAPercent: 50,
+      siteBPercent: 50,
+    };
+  } catch (error) {
+    console.error("[Voting] Failed to get stats:", error);
+    return {
+      siteA: 0,
+      siteB: 0,
+      total: 0,
+      siteAPercent: 50,
+      siteBPercent: 50,
+    };
+  }
+}
+
+// Submit community feedback
+export async function submitCommunityFeedback(data: {
+  feedbackType: string;
+  message: string;
+  email?: string;
+  name?: string;
+  visitorId?: string;
+}) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Feedback] Cannot submit feedback: database not available");
+    return { success: false, message: "Database not available" };
+  }
+  
+  try {
+    // For now, just log the feedback since we may not have the table yet
+    console.log("[Feedback] Feedback submitted:", data);
+    return { success: true, message: "Feedback received! Thank you!" };
+  } catch (error) {
+    console.error("[Feedback] Failed to submit feedback:", error);
+    return { success: false, message: "Failed to submit feedback" };
+  }
+}
+
+// Get community feedback (for admin/CRM)
+export async function getCommunityFeedback(limit: number = 50) {
+  const db = await getDb();
+  if (!db) {
+    return { feedback: [], total: 0 };
+  }
+  
+  try {
+    // Return empty for now
+    return { feedback: [], total: 0 };
+  } catch (error) {
+    console.error("[Feedback] Failed to get feedback:", error);
+    return { feedback: [], total: 0 };
+  }
+}

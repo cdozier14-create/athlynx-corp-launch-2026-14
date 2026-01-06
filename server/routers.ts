@@ -358,6 +358,73 @@ export const appRouter = router({
         return { valid: !!partner, partner };
       }),
   }),
+
+  // ==================== COMMUNITY VOTING & FEEDBACK ====================
+  community: router({
+    // Submit a vote for Site A or Site B
+    vote: publicProcedure
+      .input(z.object({
+        votedFor: z.enum(["site_a", "site_b"]),
+        email: z.string().email().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        const ipAddress = ctx.req.headers["x-forwarded-for"]?.toString().split(",")[0] || ctx.req.socket.remoteAddress || "";
+        const userAgent = ctx.req.headers["user-agent"] || "";
+        
+        await db.submitSiteVote({
+          siteChoice: input.votedFor,
+          visitorId: input.email,
+          ipAddress,
+          userAgent,
+        });
+        return { success: true };
+      }),
+    
+    // Get vote counts
+    voteStats: publicProcedure.query(async () => {
+      return db.getVoteStats();
+    }),
+    
+    // Submit community feedback
+    submitFeedback: publicProcedure
+      .input(z.object({
+        email: z.string().email().optional(),
+        name: z.string().optional(),
+        whatTheyLove: z.string().optional(),
+        whatCouldBeBetter: z.string().optional(),
+        siteVersion: z.enum(["site_a", "site_b", "both", "general"]).optional(),
+        overallRating: z.number().min(1).max(5).optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        const ipAddress = ctx.req.headers["x-forwarded-for"]?.toString().split(",")[0] || ctx.req.socket.remoteAddress || "";
+        const userAgent = ctx.req.headers["user-agent"] || "";
+        const pageUrl = ctx.req.headers.referer || "";
+        
+        await db.submitCommunityFeedback({
+          feedbackType: input.siteVersion || 'general',
+          message: `Love: ${input.whatTheyLove || 'N/A'} | Better: ${input.whatCouldBeBetter || 'N/A'} | Rating: ${input.overallRating || 'N/A'}`,
+          email: input.email,
+          name: input.name,
+          visitorId: userAgent,
+        });
+        return { success: true };
+      }),
+    
+    // Get all feedback (for admin/CRM)
+    feedback: publicProcedure
+      .input(z.object({
+        accessCode: z.string(),
+        limit: z.number().default(100),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input }) => {
+        const partner = await db.validatePartnerAccess(input.accessCode);
+        if (!partner) {
+          return { feedback: [], total: 0, error: "Invalid access code" };
+        }
+        return db.getCommunityFeedback(input.limit);
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

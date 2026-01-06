@@ -36,6 +36,13 @@
       "when": 1767686050252,
       "tag": "0004_strange_christian_walker",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1767724473649,
+      "tag": "0005_nifty_sleeper",
+      "breakpoints": true
     }
   ]
 }
