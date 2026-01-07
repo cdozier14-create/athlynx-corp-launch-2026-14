@@ -249,7 +249,7 @@ export default function EarlyAccess() {
               {/* Outer glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-amber-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-all duration-500"></div>
               
-              {/* Video container */}
+              {/* Vision Section - Video */}
               <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 rounded-3xl p-6 border-2 border-cyan-400/30 shadow-2xl">
                 <div className="text-center mb-6">
                   <span className="text-amber-400 text-3xl">🎬</span>
@@ -264,14 +264,14 @@ export default function EarlyAccess() {
                     className="w-full aspect-video bg-black"
                     poster="/athlynx-logo-icon.png"
                   >
-                    <source src="/videos/NIL_Portal_Epic_Launch.mp4" type="video/mp4" />
+                    <source src="/videos/athlynx-vision.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
                 
-                {/* Video caption */}
+                {/* Caption */}
                 <p className="text-slate-400 text-center text-sm mt-4">
-                  <span className="text-cyan-400">★</span> ATHLYNX: The Perfect Storm Launch <span className="text-cyan-400">★</span>
+                  <span className="text-cyan-400">★</span> ATHLYNX: The Perfect Storm <span className="text-cyan-400">★</span>
                 </p>
               </div>
             </div>
