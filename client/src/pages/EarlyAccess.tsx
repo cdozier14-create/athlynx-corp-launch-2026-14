@@ -407,11 +407,11 @@ export default function EarlyAccess() {
                 <div className="flex justify-center mb-6">
                   <div className="relative">
                     <div className="absolute inset-0 bg-cyan-400 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-all"></div>
-                    <div className="relative bg-slate-900 rounded-2xl p-6 shadow-2xl border-2 border-cyan-500/30">
+                    <div className="relative bg-slate-800 rounded-2xl p-10 shadow-2xl border-4 border-cyan-500/50">
                       <img 
                         src="/dhg-crab-shield.jpeg" 
                         alt="DHG Crab Shield - The King" 
-                        className="h-56 md:h-72 drop-shadow-[0_0_40px_rgba(34,211,238,0.7)] group-hover:drop-shadow-[0_0_60px_rgba(34,211,238,1)] transition-all duration-300 group-hover:scale-105" 
+                        className="h-80 md:h-[28rem] drop-shadow-[0_0_60px_rgba(34,211,238,0.8)] group-hover:drop-shadow-[0_0_100px_rgba(34,211,238,1)] transition-all duration-300 group-hover:scale-105" 
                       />
                     </div>
                   </div>

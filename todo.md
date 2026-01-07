@@ -708,3 +708,14 @@
 - [ ] DHG Crab logo most prominent (the belly)
 - [ ] ATHLYNX logo most prominent
 - [ ] Apps as the legs and pinchers of the crab
+
+
+## Community Page - Family Communication Hub (January 7, 2026)
+- [ ] Community page (/community)
+- [ ] User feedback section (likes/dislikes)
+- [ ] Newsletter signup
+- [ ] Podcast section
+- [ ] Mindset & Motivation quotes
+- [ ] Bible verses section
+- [ ] Family company communication
+- [ ] Add to navigation
