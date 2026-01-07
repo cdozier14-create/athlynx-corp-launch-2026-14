@@ -642,3 +642,48 @@
 - [x] Create routes for each school (/school/[slug])
 - [ ] Add school selector/filter to Transfer Portal
 - [ ] Seed initial schools (SEC, Big Ten, Big 12, ACC, etc.)
+
+
+## Logo and Header Fixes (January 7, 2026 - 3:05 PM)
+- [ ] Fix app logos - use unique icons matching athlynx.manus.space
+- [ ] Fix header - ensure Founders and Portal Login buttons visible on mobile
+- [ ] Deploy fixes to Netlify (athlynx.io, athlynx.ai)
+
+
+## Legal & Compliance Hub (January 7, 2026)
+- [x] Legal Hub page (/legal)
+- [x] HIPAA Compliance page (/hipaa)
+- [x] Privacy Policy page (/privacy)
+- [x] Terms of Service page (/terms)
+- [x] Cookie Policy page (/cookies)
+- [x] Data Protection page (/data-protection)
+
+## Corporate Documents
+- [x] Corporate Documents hub (/corporate)
+- [x] Business Formation documents
+- [x] Articles of Incorporation
+- [x] Operating Agreements
+- [x] Bylaws
+- [x] Board Resolutions
+
+## Contracts & Agreements
+- [x] Contracts hub (/contracts)
+- [x] NIL Contract templates
+- [x] Brand Partnership agreements
+- [x] Athlete representation contracts
+- [x] Sponsorship agreements
+- [x] Non-disclosure agreements
+
+## Partners Portal
+- [x] Partners hub (/partners)
+- [x] Partner onboarding
+- [x] Partner dashboard
+- [x] Revenue sharing agreements
+- [x] API access for partners
+
+## Python & Julia SDKs
+- [x] Python scraping scripts for data collection
+- [x] Julia data processing scripts
+- [x] API integration scripts
+- [x] Data export utilities
+

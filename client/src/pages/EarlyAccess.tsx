@@ -158,7 +158,7 @@ export default function EarlyAccess() {
               </span>
             </div>
 
-            {/* Navigation Buttons */}
+            {/* Navigation Buttons - Desktop */}
             <div className="hidden md:flex items-center gap-3">
               <Link href="/our-story">
                 <button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-all shadow-lg">
@@ -168,6 +168,21 @@ export default function EarlyAccess() {
               <button 
                 onClick={() => setShowVipModal(true)}
                 className="bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-colors"
+              >
+                <span>◎</span> Portal Login
+              </button>
+            </div>
+
+            {/* Navigation Buttons - Mobile */}
+            <div className="flex md:hidden items-center gap-2">
+              <Link href="/our-story">
+                <button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold px-3 py-1.5 rounded-lg text-xs flex items-center gap-1 transition-all shadow-lg">
+                  <span>👥</span> Founders
+                </button>
+              </Link>
+              <button 
+                onClick={() => setShowVipModal(true)}
+                className="bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold px-3 py-1.5 rounded-lg text-xs flex items-center gap-1 transition-colors"
               >
                 <span>◎</span> Portal Login
               </button>
@@ -453,7 +468,7 @@ export default function EarlyAccess() {
               {/* Portal */}
               <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/portal'}>
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-cyan-400 transition-all">
-                  <img src="/icons/portal.jpeg" alt="Portal" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/portal.jpeg" alt="Portal" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">Portal</p>
               </div>
@@ -461,7 +476,7 @@ export default function EarlyAccess() {
               {/* Messenger */}
               <div className="flex flex-col items-center group cursor-pointer">
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-cyan-400 transition-all">
-                  <img src="/icons/messenger.jpeg" alt="Messenger" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/messenger.jpeg" alt="Messenger" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">Messenger</p>
               </div>
@@ -469,7 +484,7 @@ export default function EarlyAccess() {
               {/* Diamond Grind */}
               <div className="flex flex-col items-center group cursor-pointer">
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-purple-400 transition-all">
-                  <img src="/icons/diamond-grind.png" alt="Diamond Grind" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/diamondgrind.png" alt="Diamond Grind" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">Diamond Grind</p>
               </div>
@@ -477,7 +492,7 @@ export default function EarlyAccess() {
               {/* Warriors Playbook */}
               <div className="flex flex-col items-center group cursor-pointer">
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-blue-400 transition-all">
-                  <img src="/icons/warriors-playbook.png" alt="Warriors Playbook" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/warriors.png" alt="Warriors Playbook" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">Warriors Playbook</p>
               </div>
@@ -485,7 +500,7 @@ export default function EarlyAccess() {
               {/* Transfer Portal */}
               <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/transfer-portal'}>
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-green-400 transition-all">
-                  <img src="/icons/transfer-portal.png" alt="Transfer Portal" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/transfer.png" alt="Transfer Portal" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">Transfer Portal</p>
               </div>
@@ -493,7 +508,7 @@ export default function EarlyAccess() {
               {/* NIL Vault */}
               <div className="flex flex-col items-center group cursor-pointer">
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-emerald-400 transition-all">
-                  <img src="/icons/nil-vault.png" alt="NIL Vault" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/nilvault.png" alt="NIL Vault" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">NIL Vault</p>
               </div>
@@ -501,7 +516,7 @@ export default function EarlyAccess() {
               {/* AI Sales */}
               <div className="flex flex-col items-center group cursor-pointer">
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-violet-400 transition-all">
-                  <img src="/icons/ai-sales.png" alt="AI Sales" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/aisales.png" alt="AI Sales" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">AI Sales</p>
               </div>
@@ -509,7 +524,7 @@ export default function EarlyAccess() {
               {/* Faith */}
               <div className="flex flex-col items-center group cursor-pointer">
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-pink-400 transition-all">
-                  <img src="/icons/faith.png" alt="Faith" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/faith.png" alt="Faith" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">Faith</p>
               </div>
@@ -517,7 +532,7 @@ export default function EarlyAccess() {
               {/* AI Recruiter */}
               <div className="flex flex-col items-center group cursor-pointer">
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-rose-400 transition-all">
-                  <img src="/icons/ai-recruiter.png" alt="AI Recruiter" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/airecruiter.png" alt="AI Recruiter" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">AI Recruiter</p>
               </div>
@@ -525,7 +540,7 @@ export default function EarlyAccess() {
               {/* AI Content */}
               <div className="flex flex-col items-center group cursor-pointer">
                 <div className="bg-slate-700/80 rounded-2xl p-4 shadow-lg border border-slate-600 group-hover:border-amber-400 transition-all">
-                  <img src="/icons/ai-content.png" alt="AI Content" className="w-16 h-16 rounded-xl object-cover" />
+                  <img src="/app-icons-v3/aicontent.png" alt="AI Content" className="w-16 h-16 rounded-xl object-cover" />
                 </div>
                 <p className="text-slate-300 text-sm mt-3 text-center font-medium">AI Content</p>
               </div>
