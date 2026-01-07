@@ -50,11 +50,15 @@ import Contracts from "@/pages/Contracts";
 import Partners from "@/pages/Partners";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
+import DHGHome from "@/pages/DHGHome";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={EarlyAccess} />
+      <Route path="/dhg" component={DHGHome} />
+      <Route path="/dozier-holdings" component={DHGHome} />
+      <Route path="/empire" component={DHGHome} />
       <Route path="/early-access" component={EarlyAccess} />
       <Route path="/portal" component={Portal} />
       <Route path="/our-story" component={FounderStory} />
