@@ -699,3 +699,12 @@
 - [x] Hero section with impressive stats
 - [x] Founding team section
 - [x] Partners section
+
+
+## Design Update - Darker Theme & Bigger Logos (January 7, 2026)
+- [ ] Make page darker overall
+- [ ] Bigger app logos with dark blue background behind them
+- [ ] Keep sexy white contrast
+- [ ] DHG Crab logo most prominent (the belly)
+- [ ] ATHLYNX logo most prominent
+- [ ] Apps as the legs and pinchers of the crab

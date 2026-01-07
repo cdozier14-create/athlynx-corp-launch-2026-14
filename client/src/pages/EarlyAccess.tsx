@@ -128,7 +128,7 @@ export default function EarlyAccess() {
   const sports = ["Baseball", "Football", "Basketball", "Soccer", "Track & Field", "Volleyball"];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-white text-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
       {/* STICKY HEADER */}
       <header className="sticky top-0 z-50">
         {/* Top Bar */}
@@ -137,7 +137,7 @@ export default function EarlyAccess() {
         </div>
         
         {/* Main Header Row */}
-        <div className="bg-white border-b border-slate-200 shadow-sm">
+        <div className="bg-slate-900 border-b border-slate-700 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             {/* ATHLYNX Logo Box - THE ATHLETE'S PLAYBOOK */}
             <Link href="/">
@@ -237,7 +237,7 @@ export default function EarlyAccess() {
                   <img 
                     src="/athlynx-playbook-logo.png" 
                     alt="ATHLYNX - The Athlete's Playbook" 
-                    className="h-20 md:h-24 rounded-xl shadow-2xl group-hover:scale-110 group-hover:shadow-cyan-400/50 transition-all duration-300"
+                    className="h-28 md:h-36 rounded-xl shadow-2xl group-hover:scale-110 group-hover:shadow-cyan-400/50 transition-all duration-300"
                   />
                 </div>
                 
@@ -349,15 +349,15 @@ export default function EarlyAccess() {
                 <div className="absolute bottom-4 left-4 text-blue-400 text-xl animate-pulse delay-200">◇</div>
                 <div className="absolute bottom-4 right-4 text-blue-400 text-xl animate-pulse delay-300">◇</div>
                 
-                {/* Logo container with glow */}
+                {/* Logo container with glow - THE BELLY OF THE CRAB */}
                 <div className="flex flex-col items-center">
                   <div className="relative mb-6">
                     {/* Logo glow */}
-                    <div className="absolute inset-0 bg-cyan-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-all"></div>
+                    <div className="absolute inset-0 bg-cyan-400 rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-all"></div>
                     <img 
                       src="/athlynx-playbook-logo.png" 
                       alt="ATHLYNX - The Athlete's Playbook" 
-                      className="relative h-28 md:h-32 drop-shadow-[0_0_25px_rgba(34,211,238,0.5)] group-hover:drop-shadow-[0_0_35px_rgba(34,211,238,0.8)] transition-all duration-300 group-hover:scale-110 rounded-xl" 
+                      className="relative h-40 md:h-48 drop-shadow-[0_0_35px_rgba(34,211,238,0.6)] group-hover:drop-shadow-[0_0_50px_rgba(34,211,238,0.9)] transition-all duration-300 group-hover:scale-110 rounded-xl" 
                     />
                   </div>
                   
@@ -386,15 +386,47 @@ export default function EarlyAccess() {
           </div>
         </section>
 
-        {/* Parent Company Badge */}
-        <section className="py-4 px-4">
-          <div className="max-w-sm mx-auto">
-            <a href="https://dozier-holdingsgroup.com.mx" target="_blank" rel="noopener noreferrer" className="block">
-              <div className="bg-gradient-to-r from-slate-800 to-blue-900 rounded-xl py-3 px-6 text-center border-2 border-cyan-400/50 hover:border-cyan-400 transition-all cursor-pointer">
-                <p className="text-slate-400 text-xs font-medium">PARENT COMPANY</p>
-                <p className="text-cyan-400 font-bold text-lg">Dozier Holdings Group</p>
+        {/* DHG CRAB SHIELD - THE KING - THE BELLY OF THE CRAB */}
+        <section className="py-12 px-4">
+          <div className="max-w-md mx-auto">
+            <div className="relative group">
+              {/* Outer glow ring - THE KING */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-all duration-500 animate-pulse"></div>
+              
+              {/* Main card - THE BELLY */}
+              <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 rounded-3xl p-10 border-4 border-cyan-400/60 group-hover:border-cyan-400 transition-all duration-300 shadow-2xl">
+                {/* Crown - THE KING */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-5xl">👑</div>
+                
+                {/* THE KING badge */}
+                <div className="text-center mb-4">
+                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 font-black text-sm tracking-widest px-6 py-2 rounded-full shadow-lg">THE KING</span>
+                </div>
+                
+                {/* DHG Crab Shield Logo - MOST PROMINENT */}
+                <div className="flex justify-center mb-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-cyan-400 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-all"></div>
+                    <div className="relative bg-slate-900 rounded-2xl p-6 shadow-2xl border-2 border-cyan-500/30">
+                      <img 
+                        src="/dhg-crab-shield.jpeg" 
+                        alt="DHG Crab Shield - The King" 
+                        className="h-56 md:h-72 drop-shadow-[0_0_40px_rgba(34,211,238,0.7)] group-hover:drop-shadow-[0_0_60px_rgba(34,211,238,1)] transition-all duration-300 group-hover:scale-105" 
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Parent Company Text */}
+                <a href="https://dozier-holdingsgroup.com.mx" target="_blank" rel="noopener noreferrer" className="block">
+                  <div className="bg-slate-900/50 rounded-xl py-4 px-6 text-center border-2 border-cyan-400/50 hover:border-cyan-400 transition-all cursor-pointer">
+                    <p className="text-slate-400 text-xs font-medium tracking-wider">PARENT COMPANY</p>
+                    <p className="text-cyan-400 font-black text-xl">Dozier Holdings Group</p>
+                    <p className="text-slate-500 text-xs mt-1">THE EMPIRE BUILDER</p>
+                  </div>
+                </a>
               </div>
-            </a>
+            </div>
           </div>
         </section>
 
@@ -458,161 +490,181 @@ export default function EarlyAccess() {
           </div>
         </section>
 
-        {/* 10 Apps Section */}
-        <section className="py-12 px-4 bg-white">
+        {/* 10 Apps Section - THE LEGS AND PINCHERS */}
+        <section className="py-12 px-4 bg-gradient-to-b from-slate-800 to-slate-900">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-center text-blue-600 font-bold text-lg mb-10 tracking-wide">
+            <h2 className="text-center text-cyan-400 font-bold text-xl mb-10 tracking-wide">
               10 Powerful Apps. One Platform. Unlimited Potential.
             </h2>
             
-            {/* Apps Grid - 5x2 - Matching athlynx.manus.space */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-8">
+            {/* Apps Grid - 5x2 - THE LEGS AND PINCHERS OF THE CRAB */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 mb-8">
               {/* Portal */}
               <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/portal'}>
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-blue-500 group-hover:shadow-blue-200 transition-all">
-                  <img src="/app-icons-v3/portal.jpeg" alt="Portal" className="w-20 h-20 rounded-xl object-cover" />
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-blue-500/30 group-hover:border-cyan-400 group-hover:shadow-cyan-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/portal.jpeg" alt="Portal" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">Portal</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">Portal</p>
               </div>
               
               {/* Messenger */}
               <div className="flex flex-col items-center group cursor-pointer">
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-blue-500 group-hover:shadow-blue-200 transition-all">
-                  <img src="/app-icons-v3/messenger.jpeg" alt="Messenger" className="w-20 h-20 rounded-xl object-cover" />
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-blue-500/30 group-hover:border-cyan-400 group-hover:shadow-cyan-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/messenger.jpeg" alt="Messenger" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">Messenger</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">Messenger</p>
               </div>
               
               {/* Diamond Grind */}
-              <div className="flex flex-col items-center group cursor-pointer">
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-purple-500 group-hover:shadow-purple-200 transition-all">
-                  <img src="/app-icons-v3/diamondgrind.png" alt="Diamond Grind" className="w-20 h-20 rounded-xl object-cover" />
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/diamond-grind'}>
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-purple-500/30 group-hover:border-purple-400 group-hover:shadow-purple-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/diamondgrind.png" alt="Diamond Grind" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">Diamond Grind</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">Diamond Grind</p>
               </div>
               
               {/* Warriors Playbook */}
-              <div className="flex flex-col items-center group cursor-pointer">
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-blue-500 group-hover:shadow-blue-200 transition-all">
-                  <img src="/app-icons-v3/warriors.png" alt="Warriors Playbook" className="w-20 h-20 rounded-xl object-cover" />
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/warriors-playbook'}>
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-blue-500/30 group-hover:border-blue-400 group-hover:shadow-blue-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/warriors.png" alt="Warriors Playbook" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">Warriors Playbook</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">Warriors Playbook</p>
               </div>
               
               {/* Transfer Portal */}
               <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/transfer-portal'}>
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-green-500 group-hover:shadow-green-200 transition-all">
-                  <img src="/app-icons-v3/transfer.png" alt="Transfer Portal" className="w-20 h-20 rounded-xl object-cover" />
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-green-500/30 group-hover:border-green-400 group-hover:shadow-green-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/transfer.png" alt="Transfer Portal" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">Transfer Portal</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">Transfer Portal</p>
               </div>
               
               {/* NIL Vault */}
-              <div className="flex flex-col items-center group cursor-pointer">
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-emerald-500 group-hover:shadow-emerald-200 transition-all">
-                  <img src="/app-icons-v3/nilvault.png" alt="NIL Vault" className="w-20 h-20 rounded-xl object-cover" />
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/nil-vault'}>
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-emerald-500/30 group-hover:border-emerald-400 group-hover:shadow-emerald-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/nilvault.png" alt="NIL Vault" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">NIL Vault</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">NIL Vault</p>
               </div>
               
               {/* AI Sales */}
-              <div className="flex flex-col items-center group cursor-pointer">
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-violet-500 group-hover:shadow-violet-200 transition-all">
-                  <img src="/app-icons-v3/aisales.png" alt="AI Sales" className="w-20 h-20 rounded-xl object-cover" />
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/ai-sales'}>
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-violet-500/30 group-hover:border-violet-400 group-hover:shadow-violet-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/aisales.png" alt="AI Sales" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">AI Sales</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">AI Sales</p>
               </div>
               
               {/* Faith */}
-              <div className="flex flex-col items-center group cursor-pointer">
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-pink-500 group-hover:shadow-pink-200 transition-all">
-                  <img src="/app-icons-v3/faith.png" alt="Faith" className="w-20 h-20 rounded-xl object-cover" />
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/faith'}>
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-pink-500/30 group-hover:border-pink-400 group-hover:shadow-pink-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/faith.png" alt="Faith" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">Faith</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">Faith</p>
               </div>
               
               {/* AI Recruiter */}
-              <div className="flex flex-col items-center group cursor-pointer">
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-rose-500 group-hover:shadow-rose-200 transition-all">
-                  <img src="/app-icons-v3/airecruiter.png" alt="AI Recruiter" className="w-20 h-20 rounded-xl object-cover" />
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/ai-recruiter'}>
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-rose-500/30 group-hover:border-rose-400 group-hover:shadow-rose-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/airecruiter.png" alt="AI Recruiter" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">AI Recruiter</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">AI Recruiter</p>
               </div>
               
               {/* AI Content */}
-              <div className="flex flex-col items-center group cursor-pointer">
-                <div className="bg-white rounded-2xl p-4 shadow-xl border-2 border-slate-200 group-hover:border-cyan-500 group-hover:shadow-cyan-200 transition-all">
-                  <img src="/app-icons-v3/aicontent.png" alt="AI Content" className="w-20 h-20 rounded-xl object-cover" />
+              <div className="flex flex-col items-center group cursor-pointer" onClick={() => window.location.href='/ai-content'}>
+                <div className="bg-slate-900 rounded-2xl p-3 shadow-2xl border-2 border-cyan-500/30 group-hover:border-cyan-400 group-hover:shadow-cyan-400/30 transition-all">
+                  <div className="bg-white rounded-xl p-2 shadow-lg">
+                    <img src="/app-icons-v3/aicontent.png" alt="AI Content" className="w-24 h-24 rounded-lg object-cover" />
+                  </div>
                 </div>
-                <p className="text-slate-700 text-sm mt-3 text-center font-semibold">AI Content</p>
+                <p className="text-white text-sm mt-3 text-center font-semibold">AI Content</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Video Gallery Section */}
-        <section className="py-16 px-4 bg-slate-50">
+        <section className="py-16 px-4 bg-gradient-to-b from-slate-900 to-slate-800">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-blue-600 text-sm tracking-widest mb-2">MEDIA GALLERY</p>
-              <h2 className="text-slate-900 font-black text-3xl mb-2">See The Vision</h2>
-              <p className="text-blue-600 text-sm">Watch our journey unfold</p>
+              <p className="text-cyan-400 text-sm tracking-widest mb-2">MEDIA GALLERY</p>
+              <h2 className="text-white font-black text-3xl mb-2">See The Vision</h2>
+              <p className="text-cyan-400 text-sm">Watch our journey unfold</p>
             </div>
             
             {/* Video Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* NIL Portal Launch */}
-              <div className="bg-white rounded-2xl p-4 border-2 border-slate-200 hover:border-blue-400 shadow-lg transition-all">
+              <div className="bg-slate-800 rounded-2xl p-4 border-2 border-slate-700 hover:border-cyan-400 shadow-lg transition-all">
                 <video controls className="w-full aspect-video rounded-xl mb-3 bg-black" poster="/athlynx-logo-icon.png">
                   <source src="/videos/nil-portal-football.mp4" type="video/mp4" />
                 </video>
-                <h4 className="text-slate-900 font-bold">NIL Portal - Football</h4>
-                <p className="text-slate-600 text-sm">The future of athlete recruitment</p>
+                <h4 className="text-white font-bold">NIL Portal - Football</h4>
+                <p className="text-slate-400 text-sm">The future of athlete recruitment</p>
               </div>
               
               {/* Diamond Grind */}
-              <div className="bg-white rounded-2xl p-4 border-2 border-slate-200 hover:border-purple-400 shadow-lg transition-all">
+              <div className="bg-slate-800 rounded-2xl p-4 border-2 border-slate-700 hover:border-purple-400 shadow-lg transition-all">
                 <video controls className="w-full aspect-video rounded-xl mb-3 bg-black" poster="/athlynx-logo-icon.png">
                   <source src="/videos/diamond-grind-baseball.mp4" type="video/mp4" />
                 </video>
-                <h4 className="text-slate-900 font-bold">Diamond Grind - Baseball</h4>
-                <p className="text-slate-600 text-sm">Training excellence for athletes</p>
+                <h4 className="text-white font-bold">Diamond Grind - Baseball</h4>
+                <p className="text-slate-400 text-sm">Training excellence for athletes</p>
               </div>
               
               {/* Softmor AI */}
-              <div className="bg-white rounded-2xl p-4 border-2 border-slate-200 hover:border-blue-400 shadow-lg transition-all">
+              <div className="bg-slate-800 rounded-2xl p-4 border-2 border-slate-700 hover:border-cyan-400 shadow-lg transition-all">
                 <video controls className="w-full aspect-video rounded-xl mb-3 bg-black" poster="/athlynx-logo-icon.png">
                   <source src="/videos/softmor-ai.mp4" type="video/mp4" />
                 </video>
-                <h4 className="text-slate-900 font-bold">Softmor AI</h4>
-                <p className="text-slate-600 text-sm">Powering the future with AI</p>
+                <h4 className="text-white font-bold">Softmor AI</h4>
+                <p className="text-slate-400 text-sm">Powering the future with AI</p>
               </div>
               
               {/* DHG Corporate */}
-              <div className="bg-white rounded-2xl p-4 border-2 border-slate-200 hover:border-cyan-400 shadow-lg transition-all">
+              <div className="bg-slate-800 rounded-2xl p-4 border-2 border-slate-700 hover:border-cyan-400 shadow-lg transition-all">
                 <video controls className="w-full aspect-video rounded-xl mb-3 bg-black" poster="/athlynx-logo-icon.png">
                   <source src="/videos/dhg-corporate.mov" type="video/mp4" />
                 </video>
-                <h4 className="text-slate-900 font-bold">DHG Empire</h4>
-                <p className="text-slate-600 text-sm">The parent company behind it all</p>
+                <h4 className="text-white font-bold">DHG Empire</h4>
+                <p className="text-slate-400 text-sm">The parent company behind it all</p>
               </div>
               
               {/* NIL Youth */}
-              <div className="bg-white rounded-2xl p-4 border-2 border-slate-200 hover:border-green-400 shadow-lg transition-all">
+              <div className="bg-slate-800 rounded-2xl p-4 border-2 border-slate-700 hover:border-green-400 shadow-lg transition-all">
                 <video controls className="w-full aspect-video rounded-xl mb-3 bg-black" poster="/athlynx-logo-icon.png">
                   <source src="/videos/nil-portal-youth.mp4" type="video/mp4" />
                 </video>
-                <h4 className="text-slate-900 font-bold">NIL Portal - Youth</h4>
-                <p className="text-slate-600 text-sm">Building tomorrow's champions</p>
+                <h4 className="text-white font-bold">NIL Portal - Youth</h4>
+                <p className="text-slate-400 text-sm">Building tomorrow's champions</p>
               </div>
               
               {/* ATHLYNX Intro */}
-              <div className="bg-white rounded-2xl p-4 border-2 border-slate-200 hover:border-blue-400 shadow-lg transition-all">
+              <div className="bg-slate-800 rounded-2xl p-4 border-2 border-slate-700 hover:border-cyan-400 shadow-lg transition-all">
                 <video controls className="w-full aspect-video rounded-xl mb-3 bg-black" poster="/athlynx-logo-icon.png">
                   <source src="/videos/athlynx-intro-1.mp4" type="video/mp4" />
                 </video>
-                <h4 className="text-slate-900 font-bold">ATHLYNX Introduction</h4>
-                <p className="text-slate-600 text-sm">The Athlete's Playbook</p>
+                <h4 className="text-white font-bold">ATHLYNX Introduction</h4>
+                <p className="text-slate-400 text-sm">The Athlete's Playbook</p>
               </div>
             </div>
           </div>
@@ -648,7 +700,7 @@ export default function EarlyAccess() {
               </div>
             </div>
             
-            <p className="text-slate-600 text-sm">FOUNDING MEMBER SPOTS</p>
+            <p className="text-slate-400 text-sm">FOUNDING MEMBER SPOTS</p>
             <p className="text-blue-600 font-bold text-2xl">LIMITED TO 10,000</p>
           </div>
         </section>
