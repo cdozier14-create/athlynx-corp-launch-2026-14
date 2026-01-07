@@ -629,3 +629,16 @@
 ### Testing
 - [x] SMS test sent successfully to +1-601-498-5282
 - [ ] Email test (needs domain verification at resend.com/domains)
+
+
+## School Brand Pages for Transfer Portal (January 7, 2026)
+- [x] Create school data model (colors, logo, mascot, conference)
+- [x] Build School Brand Page component with transfer news feed style
+- [x] Add school-specific transfer news sections
+- [ ] Include roster & transfers in/out tracking
+- [ ] Add NIL program details per school
+- [ ] Add coaching staff information
+- [ ] Add facilities & culture section
+- [x] Create routes for each school (/school/[slug])
+- [ ] Add school selector/filter to Transfer Portal
+- [ ] Seed initial schools (SEC, Big Ten, Big 12, ACC, etc.)

@@ -18,6 +18,8 @@ import PaymentSuccess from "@/pages/PaymentSuccess";
 import NILCalculator from "@/pages/NILCalculator";
 import AthleteWebsiteBuilder from "@/pages/AthleteWebsiteBuilder";
 import TransferPortal from "@/pages/TransferPortal";
+import TransferPortalFOS from "@/pages/TransferPortalFOS";
+import SchoolPage from "@/pages/SchoolPage";
 import WizardHub from "@/pages/WizardHub";
 import AgentWizard from "@/pages/wizards/AgentWizard";
 import { 
@@ -66,6 +68,9 @@ function Router() {
       <Route path="/ai-partner" component={ManusPartnership} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/transfer-portal" component={TransferPortal} />
+      <Route path="/portal-news" component={TransferPortalFOS} />
+      <Route path="/transfer-news" component={TransferPortalFOS} />
+      <Route path="/school/:slug" component={SchoolPage} />
       <Route path="/portal-search" component={TransferPortal} />
       <Route path="/find-players" component={TransferPortal} />
       <Route path="/plans" component={Pricing} />
