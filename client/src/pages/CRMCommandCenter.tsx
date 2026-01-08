@@ -447,13 +447,18 @@ function CompaniesModule() {
 // ============================================
 function PartnersModule() {
   const partners: Partner[] = [
+    // FOUNDING TEAM
     { id: 1, name: "Chad Allen Dozier Sr.", role: "Founder/CEO/Chairman", equity: "51%", accessCode: "CHAD-FOUNDER-2026", email: "cdozier14@athlynx.ai", phone: "(601) 498-5282" },
-    { id: 2, name: "Glenn Tse", role: "COO/Secretary", equity: "15%", accessCode: "GLENN-PARTNER-2026", email: "glenn@athlynx.ai", phone: "" },
-    { id: 3, name: "James 'Jimmy' Boyd", role: "VP Operations", equity: "12%", accessCode: "JIMMY-PARTNER-2026", email: "jimmy@athlynx.ai", phone: "" },
-    { id: 4, name: "Andrew 'Andy' Kustes", role: "VP Technology", equity: "8%", accessCode: "ANDREW-PARTNER-2026", email: "andy@athlynx.ai", phone: "" },
-    { id: 5, name: "Leronius 'Lee' Marshall", role: "VP Business Dev", equity: "8%", accessCode: "LEE-PARTNER-2026", email: "lee@athlynx.ai", phone: "" },
+    { id: 2, name: "Glenn Tse", role: "COO/Secretary", equity: "15%", accessCode: "GLENN-PARTNER-2026", email: "gtse@athlynx.ai", phone: "" },
+    { id: 3, name: "James 'Jimmy' Boyd", role: "VP Operations", equity: "12%", accessCode: "JIMMY-PARTNER-2026", email: "jboyd@athlynx.com", phone: "" },
+    { id: 4, name: "Andrew 'Andy' Kustes", role: "VP Technology", equity: "8%", accessCode: "ANDREW-PARTNER-2026", email: "akustes@athlynx.ai", phone: "" },
+    { id: 5, name: "Leronius 'Lee' Marshall", role: "VP Business Dev", equity: "8%", accessCode: "LEE-PARTNER-2026", email: "lmarshall@athlynx.ai", phone: "" },
+    // ADVISORS & TRUSTEES
     { id: 6, name: "Nicki Simpson Leggett", role: "Successor Trustee", equity: "0% (Inherits 51%)", accessCode: "MOM-ADVISOR-2026", email: "", phone: "" },
-    { id: 7, name: "David Roland Ford Sr.", role: "Legal Advisor", equity: "0%", accessCode: "DAVID-ADVISOR-2026", email: "", phone: "" },
+    { id: 7, name: "David Roland Ford Sr.", role: "Legal Advisor", equity: "0%", accessCode: "DAVID-ADVISOR-2026", email: "dford@athlynx.ai", phone: "" },
+    // FUTURE PARTNERS
+    { id: 8, name: "Peyton", role: "Future Partner", equity: "TBD", accessCode: "PEYTON-FUTURE-2026", email: "", phone: "" },
+    { id: 9, name: "Julia", role: "Future Partner", equity: "TBD", accessCode: "JULIA-FUTURE-2026", email: "", phone: "" },
   ];
 
   return (
@@ -519,11 +524,24 @@ function PartnersModule() {
 // ============================================
 function ConnectorsModule() {
   const connectors: Connector[] = [
+    // CORE AI INFRASTRUCTURE - POWERED BY MANUS & NEBIUS
+    { id: "manus", name: "Manus AI", type: "AI Platform (Meta Acquisition)", status: "connected", lastSync: "Live - Early Adopter", icon: "🤖" },
+    { id: "nebius", name: "Nebius AI", type: "AI Infrastructure", status: "connected", lastSync: "Live", icon: "🧠" },
+    // STRATEGIC PARTNERSHIPS
+    { id: "icc-usa", name: "ICC-USA", type: "Hardware Partner", status: "connected", lastSync: "Active Partnership", icon: "🖥️" },
+    { id: "yovole", name: "Yovole Networks", type: "China Partnership", status: "connected", lastSync: "Active Partnership", icon: "🌏" },
+    { id: "softmor", name: "Softmor Inc.", type: "Data Center", status: "connected", lastSync: "Active", icon: "🏢" },
+    // PAYMENTS & COMMUNICATION
     { id: "stripe", name: "Stripe Payments", type: "Payment", status: "connected", lastSync: "Just now", icon: "💳" },
-    { id: "email", name: "Email (SMTP)", type: "Communication", status: "pending", lastSync: "Not configured", icon: "📧" },
-    { id: "sms", name: "SMS/WhatsApp", type: "Communication", status: "disconnected", lastSync: "Not configured", icon: "📱" },
-    { id: "calendar", name: "Google Calendar", type: "Productivity", status: "disconnected", lastSync: "Not configured", icon: "📅" },
-    { id: "docusign", name: "DocuSign", type: "Documents", status: "disconnected", lastSync: "Not configured", icon: "✍️" },
+    { id: "twilio", name: "Twilio SMS/Voice", type: "Communication", status: "connected", lastSync: "Live", icon: "📱" },
+    { id: "resend", name: "Resend Email", type: "Communication", status: "connected", lastSync: "Live", icon: "📧" },
+    // HOSTING & DEPLOYMENT
+    { id: "netlify", name: "Netlify Hosting", type: "Production Hosting", status: "connected", lastSync: "Live", icon: "🚀" },
+    { id: "manus-hosting", name: "Manus Dev Server", type: "Development", status: "connected", lastSync: "Live", icon: "🛠️" },
+    // PRODUCTIVITY
+    { id: "calendar", name: "Google Calendar", type: "Productivity", status: "pending", lastSync: "Not configured", icon: "📅" },
+    { id: "docusign", name: "DocuSign", type: "Documents", status: "pending", lastSync: "Not configured", icon: "✍️" },
+    // GOVERNMENT FILINGS
     { id: "texas-sos", name: "Texas SOS", type: "State Filing", status: "pending", lastSync: "Manual", icon: "🏛️" },
     { id: "delaware-sos", name: "Delaware SOS", type: "State Filing", status: "pending", lastSync: "Manual", icon: "🏛️" },
     { id: "irs", name: "IRS (EIN)", type: "Federal", status: "pending", lastSync: "Manual", icon: "🏛️" },
@@ -584,10 +602,13 @@ function ConnectorsModule() {
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
+            <APIKeyItem name="Manus AI API Key" status="configured" lastUsed="Live" />
+            <APIKeyItem name="Nebius AI API Key" status="configured" lastUsed="Live" />
             <APIKeyItem name="Stripe Secret Key" status="configured" lastUsed="Today" />
             <APIKeyItem name="Stripe Publishable Key" status="configured" lastUsed="Today" />
-            <APIKeyItem name="SendGrid API Key" status="not configured" lastUsed="Never" />
-            <APIKeyItem name="Twilio API Key" status="not configured" lastUsed="Never" />
+            <APIKeyItem name="Twilio API Key" status="configured" lastUsed="Live" />
+            <APIKeyItem name="Resend API Key" status="configured" lastUsed="Live" />
+            <APIKeyItem name="Netlify Deploy Token" status="configured" lastUsed="Live" />
           </div>
         </CardContent>
       </Card>

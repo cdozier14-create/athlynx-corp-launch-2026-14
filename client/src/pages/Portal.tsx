@@ -67,48 +67,45 @@ export default function Portal() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 flex items-center justify-center p-4">
-        <div className="relative group max-w-md w-full">
+      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 flex flex-col items-center justify-start p-4 pt-8">
+        <div className="relative group w-full max-w-sm">
           {/* Outer glow on hover */}
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-50 transition-all duration-500"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-2xl blur-2xl opacity-20 group-hover:opacity-50 transition-all duration-500"></div>
           
-          <Card className="relative bg-gradient-to-b from-slate-800 to-slate-900 border-2 border-cyan-500/30 group-hover:border-cyan-400/50 rounded-3xl shadow-2xl transition-all duration-300">
-            <CardHeader className="text-center pt-8">
-              {/* Logo - Queen of the Ball */}
-              <div className="flex justify-center mb-4">
+          <Card className="relative bg-gradient-to-b from-slate-800 to-slate-900 border-2 border-cyan-500/30 group-hover:border-cyan-400/50 rounded-2xl shadow-2xl transition-all duration-300">
+            <CardHeader className="text-center pt-6 pb-2">
+              {/* Logo - Mobile Optimized */}
+              <div className="flex justify-center mb-3">
                 <img 
                   src="/athlynx-playbook-logo.png" 
                   alt="ATHLYNX - The Athlete's Playbook" 
-                  className="h-20 rounded-xl shadow-2xl group-hover:scale-110 group-hover:shadow-cyan-400/50 transition-all duration-300"
+                  className="h-16 rounded-xl shadow-2xl"
                 />
               </div>
               
               {/* THE LEGENDARY TRAINER badge */}
-              <div className="inline-block bg-cyan-400 text-slate-900 font-bold text-xs tracking-widest px-4 py-1.5 rounded-full mb-4 shadow-lg">
+              <div className="inline-block bg-cyan-400 text-slate-900 font-bold text-xs tracking-widest px-3 py-1 rounded-full mb-3 shadow-lg">
                 THE LEGENDARY TRAINER
               </div>
               
-              <CardTitle className="text-2xl text-white font-black">Welcome to ATHLYNX Portal</CardTitle>
-              <p className="text-slate-400 mt-2">Please log in to access the platform</p>
-              
-              {/* Tagline */}
-              <p className="text-cyan-400 text-xs mt-3 font-semibold">Building champions, training winners, and creating empires.</p>
+              <CardTitle className="text-xl text-white font-black">ATHLYNX Portal</CardTitle>
+              <p className="text-slate-400 mt-1 text-sm">Log in to access the platform</p>
             </CardHeader>
-            <CardContent className="space-y-4 pb-8">
+            <CardContent className="space-y-3 pb-6 px-4">
               <a href="/api/auth/login" className="block">
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all">
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 rounded-xl shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all text-sm">
                   Login with Manus
                 </Button>
               </a>
               <Link href="/">
-                <Button variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 py-4 rounded-xl">
+                <Button variant="outline" className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 py-3 rounded-xl text-sm">
                   Back to Home
                 </Button>
               </Link>
+              
+              {/* Tagline */}
+              <p className="text-cyan-400 text-xs text-center font-semibold pt-2">Building champions, training winners, and creating empires.</p>
             </CardContent>
-            
-            {/* Shine effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 overflow-hidden pointer-events-none"></div>
           </Card>
         </div>
       </div>

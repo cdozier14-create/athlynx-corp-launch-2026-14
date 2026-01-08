@@ -51,6 +51,9 @@ import Partners from "@/pages/Partners";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import DHGHome from "@/pages/DHGHome";
+import SocialHub from "@/pages/SocialHub";
+import CommsHub from "@/pages/CommsHub";
+import AthlynxBrowser from "@/pages/AthlynxBrowser";
 
 function Router() {
   return (
@@ -79,6 +82,19 @@ function Router() {
       <Route path="/manus" component={ManusPartnership} />
       <Route path="/partnership" component={ManusPartnership} />
       <Route path="/ai-partner" component={ManusPartnership} />
+      
+      {/* Social Media Hub - ALL PLATFORMS IN ONE */}
+      <Route path="/social" component={SocialHub} />
+      <Route path="/social-hub" component={SocialHub} />
+      <Route path="/broadcast" component={SocialHub} />
+      <Route path="/comms" component={CommsHub} />
+      <Route path="/communications" component={CommsHub} />
+      <Route path="/team-comms" component={CommsHub} />
+      
+      {/* ATHLYNX Browser - AI-Powered */}
+      <Route path="/browser" component={AthlynxBrowser} />
+      <Route path="/athlynx-browser" component={AthlynxBrowser} />
+      <Route path="/web" component={AthlynxBrowser} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/transfer-portal" component={TransferPortal} />
       <Route path="/portal-news" component={TransferPortalFOS} />

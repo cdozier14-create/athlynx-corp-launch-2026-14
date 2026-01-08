@@ -147,13 +147,80 @@ export async function createVipCode(data: InsertVipCode): Promise<void> {
 
 // ==================== WAITLIST ====================
 
-export async function addToWaitlist(entry: InsertWaitlistEntry): Promise<{ success: boolean; error?: string }> {
+export async function addToWaitlist(entry: InsertWaitlistEntry): Promise<{ success: boolean; error?: string; vipCode?: string }> {
   const db = await getDb();
   if (!db) return { success: false, error: "Database not available" };
   
   try {
+    // Generate unique VIP code
+    const vipCode = `VIP${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+    
+    // Insert into waitlist
     await db.insert(waitlist).values(entry);
-    return { success: true };
+    
+    // Also create a VIP code for this user
+    try {
+      await db.insert(vipCodes).values({
+        code: vipCode,
+        description: `Auto-generated for ${entry.email}`,
+        maxUses: 1,
+        currentUses: 0,
+        isActive: true,
+      });
+    } catch (e) {
+      console.log("VIP code creation failed, continuing...", e);
+    }
+    
+    // Send welcome email with VIP code
+    try {
+      const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_YwrFNHMa_5LWwNJxBbJoX6gEqpLZRMCxU';
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'ATHLYNX <noreply@athlynx.manus.space>',
+          to: entry.email,
+          subject: 'WELCOME TO ATHLYNX - Your VIP Code Inside!',
+          html: `
+            <div style="background-color: #0f172a; padding: 40px 20px; font-family: Arial, sans-serif;">
+              <div style="max-width: 500px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                  <img src="https://athlynx.manus.space/athlynx-playbook-logo.png" alt="ATHLYNX" style="height: 60px;" />
+                </div>
+                <div style="background-color: #1e293b; border-radius: 16px; padding: 30px; border: 1px solid #334155;">
+                  <h1 style="color: #ffffff; text-align: center; margin: 0 0 10px 0; font-size: 24px;">WELCOME TO ATHLYNX!</h1>
+                  <p style="color: #94a3b8; text-align: center; margin: 0 0 30px 0;">The Athlete's Playbook</p>
+                  
+                  <div style="background-color: #0f172a; border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 20px;">
+                    <p style="color: #94a3b8; margin: 0 0 10px 0; font-size: 14px;">YOUR VIP ACCESS CODE</p>
+                    <p style="color: #22d3ee; font-size: 32px; font-weight: bold; margin: 0; letter-spacing: 4px;">${vipCode}</p>
+                  </div>
+                  
+                  <p style="color: #cbd5e1; text-align: center; font-size: 14px; margin: 0 0 20px 0;">
+                    Use this code to access the ATHLYNX Portal and unlock all 6 apps.
+                  </p>
+                  
+                  <a href="https://athlynx.manus.space" style="display: block; background: linear-gradient(to right, #06b6d4, #3b82f6); color: white; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                    ENTER THE PORTAL
+                  </a>
+                </div>
+                <p style="color: #64748b; text-align: center; font-size: 12px; margin-top: 20px;">
+                  © 2026 ATHLYNX • A Dozier Holdings Group Company
+                </p>
+              </div>
+            </div>
+          `,
+        }),
+      });
+      console.log(`[Waitlist] Welcome email sent to ${entry.email} with VIP code ${vipCode}`);
+    } catch (emailError) {
+      console.error("[Waitlist] Failed to send welcome email:", emailError);
+    }
+    
+    return { success: true, vipCode };
   } catch (error: any) {
     if (error.code === 'ER_DUP_ENTRY') {
       return { success: false, error: "Email already registered" };
