@@ -786,3 +786,14 @@
 - [ ] Test complete signup flow with Chad as User #1 (Cdozier14 / Athlynx2026!)
 - [ ] Deploy fixes to Netlify
 - [ ] Monitor DHG Holdings DNS propagation (Andy pointing domain now)
+
+
+## CRITICAL: Deploy to Netlify (NOT Manus) - January 8, 2026
+- [ ] Create netlify.toml configuration
+- [ ] Set up Netlify environment variables (Twilio, Resend, Neon)
+- [ ] Deploy to Netlify CLI
+- [ ] Point athlynx.ai domain to Netlify
+- [ ] Test verification system on live site
+- [ ] Chad signs up as User #1
+
+**BUG DISCOVERED:** Manus Publish button doesn't properly deploy environment variables to production!
