@@ -854,3 +854,12 @@
 - [ ] Verify NEON database connection from Python
 - [ ] Remove all Node.js dependencies
 - [ ] Keep React frontend (already built and working)
+
+## URGENT: REBRAND TO ATHLYNX CORPORATION LAUNCH 2026
+
+- [ ] Remove ALL "Perfect Storm" references
+- [ ] Update package.json name and description
+- [ ] Update page titles
+- [ ] Update meta tags
+- [ ] Push to GitHub
+- [ ] Deploy to athlynx.ai
