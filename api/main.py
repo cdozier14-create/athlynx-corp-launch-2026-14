@@ -34,11 +34,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Database Configuration - NEON PostgreSQL
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://neondb_owner:npg_u3rLRXtnoc0J@ep-silent-bonus-ahftzrvu-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
-)
+# Database Configuration - PlanetScale PostgreSQL
+# Set DATABASE_URL in Netlify environment variables
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
