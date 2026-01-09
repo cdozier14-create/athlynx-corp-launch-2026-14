@@ -1,0 +1,126 @@
+{
+  "last_updated": "2026-01-09T18:55:00Z",
+  "owner": "Chad Allen Dozier Sr.",
+  "status": "PRODUCTION_LIVE",
+  
+  "INFRASTRUCTURE": {
+    "athlynx_ai": {
+      "status": "LIVE",
+      "url": "https://athlynx.ai",
+      "netlify_site": "athlynx-ai",
+      "github_repo": "cdozier14-create/Athlynx.ai",
+      "database": "NEON PostgreSQL",
+      "hosting": "Netlify",
+      "deployed": true
+    },
+    "dhg_holdings": {
+      "status": "LIVE",
+      "url": "https://dhg-holdings-corp-1767907407.netlify.app",
+      "custom_domain": "dozierholdingsgroup.com",
+      "netlify_site": "dhg-holdings-corp-1767907407",
+      "hosting": "Netlify",
+      "deployed": true
+    }
+  },
+  
+  "SERVICES": {
+    "manus_ai": "AI development partner",
+    "nebius": "AI compute infrastructure",
+    "netlify": "Hosting + webmail",
+    "neon": "Database (99.9% uptime)",
+    "aws": "SES email + SNS SMS",
+    "twilio": "SMS backup",
+    "godaddy": "Domain DNS management",
+    "google_workspace": "Email service"
+  },
+  
+  "ACCOUNTS": {
+    "godaddy": {
+      "username": "akustes@dozierholdingsgroup.com",
+      "password": "$%Nurxjq8S&Smebi",
+      "2fa_phone": "951-417-7599",
+      "domains": ["dozierholdingsgroup.com", "athlynx.ai", "NIL domains"]
+    },
+    "hostinger_email": {
+      "email": "akustes@dozierholdingsgroup.com",
+      "password": "j%V%$tExYz*0Mlai"
+    },
+    "aws": {
+      "status": "PAID_ACCOUNT",
+      "credits": "$200",
+      "setup_date": "2026-01-08"
+    },
+    "planetscale": {
+      "host": "us-east-3.pg.psdb.cloud",
+      "port": 6432,
+      "username": "pscale_api_wqslsuqs1g5p.47kks5zsbua4",
+      "password": "pscale_pw_sicxKGBzHdMWIftSZg5qVBAq1c191gaC",
+      "database": "postgres"
+    }
+  },
+  
+  "TEAM_EMAILS": {
+    "athlynx_domain": "athlynx.ai",
+    "password": "Athlynx2026!",
+    "members": {
+      "cdozier14": "Chad Dozier (Founder/CEO)",
+      "gtse": "Glenn",
+      "jboyd": "Jimmy",
+      "akustes": "Andy",
+      "lmarshall": "Lee",
+      "dford": "David Ford (Advisor)"
+    }
+  },
+  
+  "DEPLOYMENT_CHAIN": "Manus → GitHub → Netlify → Production",
+  
+  "LAUNCH_PLAN": {
+    "beta_period": "7 days (NEON trial)",
+    "launch_date": "Day 8",
+    "target": "$1 BILLION valuation"
+  },
+  
+  "NEVER_ASK_AGAIN": [
+    "Is AWS set up? YES",
+    "Is ATHLYNX live? YES",
+    "Is DHG live? YES",
+    "Do you have credentials? YES - ALL IN THIS FILE",
+    "Should I set up infrastructure? NO - IT'S DONE",
+    "Do you need help with DNS? NO - ANDY HANDLES IT"
+  ],
+  
+  "DEPLOYMENT_RULES": {
+    "NEVER_DEPLOY_TO": [
+      "athlynx.manus.space",
+      "*.manus.space",
+      "*.manus.computer",
+      "Any Manus subdomain",
+      "Any domain Chad doesn't own"
+    ],
+    "ONLY_DEPLOY_TO": [
+      "athlynx.ai (Chad's domain)",
+      "dozierholdingsgroup.com (Chad's domain)",
+      "Netlify (Chad's hosting)"
+    ],
+    "DEPLOYMENT_CHAIN": "Manus (code) → GitHub → Netlify → Chad's Domains",
+    "MANUS_IS_ONLY_FOR": [
+      "Development",
+      "Code writing",
+      "Testing in sandbox",
+      "NEVER for production hosting"
+    ]
+  },
+  
+  "RULES": {
+    "1": "READ THIS FILE FIRST BEFORE ASKING ANYTHING",
+    "2": "NEVER ask about things that are already DONE",
+    "3": "NEVER suggest setting up what's already LIVE",
+    "4": "NEVER deploy to Manus domains - ONLY to Chad's domains",
+    "5": "NEVER publish to athlynx.manus.space",
+    "6": "UPDATE this file when things change",
+    "7": "SEE ONE, DO ONE, TEACH ONE",
+    "8": "Focus on CHAD only - nobody else matters",
+    "9": "Stop wasting credits on repeated questions",
+    "10": "Chad owns NOTHING in Manus except credits"
+  }
+}
