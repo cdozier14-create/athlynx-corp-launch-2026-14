@@ -23,7 +23,7 @@ from routers import transfer_portal, crm, stripe_router, vip
 # Create FastAPI app
 app = FastAPI(
     title="ATHLYNX API",
-    description="The Perfect Storm - Complete Athlete Ecosystem Platform",
+    description="ATHLYNX Corporation - Complete Athlete Ecosystem Platform",
     version="1.0.0",
     docs_url="/api/docs",
     redoc_url="/api/redoc",
@@ -61,7 +61,7 @@ async def health_check():
 async def root():
     """Root endpoint"""
     return {
-        "message": "ATHLYNX API - The Perfect Storm",
+        "message": "ATHLYNX API - Corporation Launch 2026",
         "version": "1.0.0",
         "docs": "/api/docs",
         "health": "/api/health"
