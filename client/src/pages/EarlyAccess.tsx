@@ -15,7 +15,7 @@ export default function EarlyAccess() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = "ATHLYNX: The Perfect Storm";
+    document.title = "ATHLYNX.AI - The Athlete's Playbook";
   }, []);
 
   // Send verification code
