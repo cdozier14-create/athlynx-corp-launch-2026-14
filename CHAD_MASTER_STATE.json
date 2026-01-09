@@ -37,13 +37,13 @@
   "ACCOUNTS": {
     "godaddy": {
       "username": "akustes@dozierholdingsgroup.com",
-      "password": "$%Nurxjq8S&Smebi",
+      "password": "[STORED_IN_ENV]",
       "2fa_phone": "951-417-7599",
       "domains": ["dozierholdingsgroup.com", "athlynx.ai", "NIL domains"]
     },
     "hostinger_email": {
       "email": "akustes@dozierholdingsgroup.com",
-      "password": "j%V%$tExYz*0Mlai"
+      "password": "[STORED_IN_ENV]"
     },
     "aws": {
       "status": "PAID_ACCOUNT",
@@ -54,14 +54,14 @@
       "host": "us-east-3.pg.psdb.cloud",
       "port": 6432,
       "username": "pscale_api_wqslsuqs1g5p.47kks5zsbua4",
-      "password": "pscale_pw_sicxKGBzHdMWIftSZg5qVBAq1c191gaC",
+      "password": "[STORED_IN_ENV]",
       "database": "postgres"
     }
   },
   
   "TEAM_EMAILS": {
     "athlynx_domain": "athlynx.ai",
-    "password": "Athlynx2026!",
+    "password": "[STORED_IN_ENV]",
     "members": {
       "cdozier14": "Chad Dozier (Founder/CEO)",
       "gtse": "Glenn",
