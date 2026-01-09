@@ -807,3 +807,24 @@
 - [ ] Test signup form end-to-end at athlynx.ai
 - [ ] Verify AWS SES email sending works
 - [ ] Verify database connection works from Netlify serverless function
+
+
+## URGENT: Mobile Optimization (January 9, 2026)
+- [ ] Fix VIP signup form - make it first thing visible on mobile
+- [ ] Fix Portal login button - make it fit on mobile screen
+- [ ] Reorder page flow: VIP Signup → Code → Login → Portal → Apps
+- [ ] Fix crab logo - optimize for mobile (looks bad currently)
+- [ ] Fix email verification - codes not sending
+- [ ] Optimize entire page layout for iOS and Android
+- [ ] Test on real mobile devices
+- [ ] Make buttons centered and properly sized for mobile
+- [ ] Add AI wizard with hamburger menu (playbook style)
+- [ ] Deploy mobile-optimized version to production
+
+## Remove Twilio and Resend - AWS Only
+- [ ] Remove Twilio service file
+- [ ] Remove Resend service file
+- [ ] Remove Twilio from package.json
+- [ ] Remove Resend from package.json
+- [ ] Update verification service to use AWS only
+- [ ] Remove Twilio/Resend environment variables
