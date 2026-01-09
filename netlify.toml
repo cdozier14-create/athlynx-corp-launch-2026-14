@@ -5,7 +5,6 @@
 [build]
   command = "pnpm install && pnpm build && pip install -r requirements.txt"
   publish = "dist/public"
-  functions = "api"
 
 [build.environment]
   NODE_VERSION = "22.13.0"
@@ -13,7 +12,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/main/:splat"
+  to = "/.netlify/functions/api/:splat"
   status = 200
 
 [[redirects]]
@@ -22,7 +21,4 @@
   status = 200
 
 [functions]
-  directory = "api"
-  
-[functions."main"]
-  runtime = "python3.11"
+  directory = "netlify/functions"
