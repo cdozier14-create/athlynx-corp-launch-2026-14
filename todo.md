@@ -838,3 +838,19 @@
 - [ ] Alert system (SMS/Email for critical failures)
 - [ ] Auto-rollback (reverts to last working version)
 - [ ] Deploy and test self-healing system
+
+
+## URGENT: Full-Stack Python + Julia Conversion - January 9, 2026
+
+- [ ] Convert all Node.js/TypeScript backend to Python
+- [ ] Create Python FastAPI server for all API routes
+- [ ] Convert database queries from Drizzle ORM to SQLAlchemy (Python)
+- [ ] Implement AWS SES/SNS in Python (boto3)
+- [ ] Add Julia modules for analytics and simulations
+- [ ] Configure Netlify for Python serverless functions
+- [ ] Update netlify.toml for Python/Julia runtime
+- [ ] Test signup form with Python backend
+- [ ] Deploy to athlynx.ai via Netlify
+- [ ] Verify NEON database connection from Python
+- [ ] Remove all Node.js dependencies
+- [ ] Keep React frontend (already built and working)

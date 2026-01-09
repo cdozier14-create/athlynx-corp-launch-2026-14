@@ -1,17 +1,28 @@
+# ATHLYNX AI Platform - Netlify Configuration
+# Python + Julia Full-Stack Deployment
+# Chain: Manus → GitHub → Netlify → athlynx.ai → NEON
+
 [build]
-  command = "pnpm build"
+  command = "pnpm install && pnpm build && pip install -r requirements.txt"
   publish = "dist/public"
-  functions = "netlify/functions"
+  functions = "api"
 
 [build.environment]
   NODE_VERSION = "22.13.0"
+  PYTHON_VERSION = "3.11"
 
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/index/:splat"
+  to = "/.netlify/functions/main/:splat"
   status = 200
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[functions]
+  directory = "api"
+  
+[functions."main"]
+  runtime = "python3.11"
