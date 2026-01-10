@@ -1,17 +1,13 @@
-# ATHLYNX AI Platform - Netlify Configuration
-# Full-Stack Deployment: React + Node.js + Database
-# Chain: Manus → GitHub → Netlify → athlynx.ai → Database
-
 [build]
   command = "pnpm install && pnpm build"
-  publish = "dist/public"
+  publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "22.13.0"
+  NODE_VERSION = "22"
 
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/index/:splat"
+  to = "/.netlify/functions/:splat"
   status = 200
 
 [[redirects]]
@@ -20,6 +16,14 @@
   status = 200
 
 [functions]
-  directory = "netlify/functions"
+  directory = "server"
   node_bundler = "esbuild"
-  included_files = ["server/**/*"]
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
