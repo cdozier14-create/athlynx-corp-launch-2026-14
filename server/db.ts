@@ -1,5 +1,5 @@
 import { eq, desc, and, sql } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/mysql2";
+import { drizzle } from "drizzle-orm/neon-http";
 import { 
   InsertUser, users, 
   vipCodes, InsertVipCode, VipCode,
