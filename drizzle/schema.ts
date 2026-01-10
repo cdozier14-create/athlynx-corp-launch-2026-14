@@ -1,24 +1,24 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, json, decimal } from "drizzle-orm/mysql-core";
+import { integer, pgEnum, pgTable, text, timestamp, varchar, boolean, json, decimal, serial } from "drizzle-orm/pg-core";
 
 /**
  * Core user table backing auth flow.
  * Extend this file with additional tables as your product grows.
  * Columns use camelCase to match both database fields and generated types.
  */
-export const users = mysqlTable("users", {
-  id: int("id").autoincrement().primaryKey(),
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
   openId: varchar("openId", { length: 64 }).notNull().unique(),
   name: text("name"),
   email: varchar("email", { length: 320 }),
   phone: varchar("phone", { length: 20 }),
   loginMethod: varchar("loginMethod", { length: 64 }),
-  role: mysqlEnum("role", ["user", "admin", "athlete", "parent", "coach", "brand"]).default("user").notNull(),
+  role: pgEnum("role", ["user", "admin", "athlete", "parent", "coach", "brand"]).default("user").notNull(),
   avatarUrl: text("avatarUrl"),
   bio: text("bio"),
   isVip: boolean("isVip").default(false).notNull(),
   vipCodeUsed: varchar("vipCodeUsed", { length: 32 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
 });
 
@@ -27,8 +27,8 @@ export type InsertUser = typeof users.$inferInsert;
 
 // ==================== VIP CODES ====================
 
-export const vipCodes = mysqlTable("vip_codes", {
-  id: int("id").autoincrement().primaryKey(),
+export const vipCodes = pgTable("vip_codes", {
+  id: serial("id").primaryKey(),
   code: varchar("code", { length: 32 }).notNull().unique(),
   description: text("description"),
   maxUses: int("maxUses").default(1),
@@ -44,8 +44,8 @@ export type InsertVipCode = typeof vipCodes.$inferInsert;
 
 // ==================== ATHLETE PROFILES ====================
 
-export const athleteProfiles = mysqlTable("athlete_profiles", {
-  id: int("id").autoincrement().primaryKey(),
+export const athleteProfiles = pgTable("athlete_profiles", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   sport: varchar("sport", { length: 64 }),
   position: varchar("position", { length: 64 }),
@@ -57,10 +57,10 @@ export const athleteProfiles = mysqlTable("athlete_profiles", {
   stats: json("stats"),
   highlights: json("highlights"),
   socialLinks: json("socialLinks"),
-  transferStatus: mysqlEnum("transferStatus", ["not_in_portal", "exploring", "in_portal", "committed"]).default("not_in_portal"),
-  nilStatus: mysqlEnum("nilStatus", ["not_available", "available", "active_deals"]).default("not_available"),
+  transferStatus: pgEnum("transferStatus", ["not_in_portal", "exploring", "in_portal", "committed"]).default("not_in_portal"),
+  nilStatus: pgEnum("nilStatus", ["not_available", "available", "active_deals"]).default("not_available"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type AthleteProfile = typeof athleteProfiles.$inferSelect;
@@ -68,19 +68,19 @@ export type InsertAthleteProfile = typeof athleteProfiles.$inferInsert;
 
 // ==================== NIL DEALS ====================
 
-export const nilDeals = mysqlTable("nil_deals", {
-  id: int("id").autoincrement().primaryKey(),
+export const nilDeals = pgTable("nil_deals", {
+  id: serial("id").primaryKey(),
   athleteId: int("athleteId").notNull(),
   brandId: int("brandId"),
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
   value: decimal("value", { precision: 12, scale: 2 }),
-  status: mysqlEnum("status", ["pending", "active", "completed", "cancelled"]).default("pending").notNull(),
+  status: pgEnum("status", ["pending", "active", "completed", "cancelled"]).default("pending").notNull(),
   startDate: timestamp("startDate"),
   endDate: timestamp("endDate"),
   terms: text("terms"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type NilDeal = typeof nilDeals.$inferSelect;
@@ -88,18 +88,18 @@ export type InsertNilDeal = typeof nilDeals.$inferInsert;
 
 // ==================== POSTS / SOCIAL FEED ====================
 
-export const posts = mysqlTable("posts", {
-  id: int("id").autoincrement().primaryKey(),
+export const posts = pgTable("posts", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   content: text("content"),
   mediaUrls: json("mediaUrls"),
-  postType: mysqlEnum("postType", ["text", "image", "video", "highlight", "deal", "announcement"]).default("text").notNull(),
-  visibility: mysqlEnum("visibility", ["public", "followers", "private"]).default("public").notNull(),
+  postType: pgEnum("postType", ["text", "image", "video", "highlight", "deal", "announcement"]).default("text").notNull(),
+  visibility: pgEnum("visibility", ["public", "followers", "private"]).default("public").notNull(),
   likesCount: int("likesCount").default(0).notNull(),
   commentsCount: int("commentsCount").default(0).notNull(),
   sharesCount: int("sharesCount").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type Post = typeof posts.$inferSelect;
@@ -107,8 +107,8 @@ export type InsertPost = typeof posts.$inferInsert;
 
 // ==================== COMMENTS ====================
 
-export const comments = mysqlTable("comments", {
-  id: int("id").autoincrement().primaryKey(),
+export const comments = pgTable("comments", {
+  id: serial("id").primaryKey(),
   postId: int("postId").notNull(),
   userId: int("userId").notNull(),
   content: text("content").notNull(),
@@ -122,8 +122,8 @@ export type InsertComment = typeof comments.$inferInsert;
 
 // ==================== LIKES ====================
 
-export const likes = mysqlTable("likes", {
-  id: int("id").autoincrement().primaryKey(),
+export const likes = pgTable("likes", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   postId: int("postId"),
   commentId: int("commentId"),
@@ -135,8 +135,8 @@ export type InsertLike = typeof likes.$inferInsert;
 
 // ==================== FOLLOWS ====================
 
-export const follows = mysqlTable("follows", {
-  id: int("id").autoincrement().primaryKey(),
+export const follows = pgTable("follows", {
+  id: serial("id").primaryKey(),
   followerId: int("followerId").notNull(),
   followingId: int("followingId").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -147,19 +147,19 @@ export type InsertFollow = typeof follows.$inferInsert;
 
 // ==================== MESSAGES ====================
 
-export const conversations = mysqlTable("conversations", {
-  id: int("id").autoincrement().primaryKey(),
-  type: mysqlEnum("type", ["direct", "group"]).default("direct").notNull(),
+export const conversations = pgTable("conversations", {
+  id: serial("id").primaryKey(),
+  type: pgEnum("type", ["direct", "group"]).default("direct").notNull(),
   name: varchar("name", { length: 255 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type Conversation = typeof conversations.$inferSelect;
 export type InsertConversation = typeof conversations.$inferInsert;
 
-export const conversationParticipants = mysqlTable("conversation_participants", {
-  id: int("id").autoincrement().primaryKey(),
+export const conversationParticipants = pgTable("conversation_participants", {
+  id: serial("id").primaryKey(),
   conversationId: int("conversationId").notNull(),
   userId: int("userId").notNull(),
   joinedAt: timestamp("joinedAt").defaultNow().notNull(),
@@ -168,13 +168,13 @@ export const conversationParticipants = mysqlTable("conversation_participants", 
 
 export type ConversationParticipant = typeof conversationParticipants.$inferSelect;
 
-export const messages = mysqlTable("messages", {
-  id: int("id").autoincrement().primaryKey(),
+export const messages = pgTable("messages", {
+  id: serial("id").primaryKey(),
   conversationId: int("conversationId").notNull(),
   senderId: int("senderId").notNull(),
   content: text("content"),
   mediaUrl: text("mediaUrl"),
-  messageType: mysqlEnum("messageType", ["text", "image", "video", "file", "system"]).default("text").notNull(),
+  messageType: pgEnum("messageType", ["text", "image", "video", "file", "system"]).default("text").notNull(),
   isRead: boolean("isRead").default(false).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
@@ -184,12 +184,12 @@ export type InsertMessage = typeof messages.$inferInsert;
 
 // ==================== VERIFICATION CODES ====================
 
-export const verificationCodes = mysqlTable("verification_codes", {
-  id: int("id").autoincrement().primaryKey(),
+export const verificationCodes = pgTable("verification_codes", {
+  id: serial("id").primaryKey(),
   email: varchar("email", { length: 320 }).notNull(),
   phone: varchar("phone", { length: 20 }),
   code: varchar("code", { length: 10 }).notNull(),
-  type: mysqlEnum("type", ["signup", "login", "password_reset"]).default("signup").notNull(),
+  type: pgEnum("type", ["signup", "login", "password_reset"]).default("signup").notNull(),
   verified: boolean("verified").default(false).notNull(),
   expiresAt: timestamp("expiresAt").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -200,15 +200,15 @@ export type InsertVerificationCode = typeof verificationCodes.$inferInsert;
 
 // ==================== WAITLIST / EARLY ACCESS ====================
 
-export const waitlist = mysqlTable("waitlist", {
-  id: int("id").autoincrement().primaryKey(),
+export const waitlist = pgTable("waitlist", {
+  id: serial("id").primaryKey(),
   fullName: varchar("fullName", { length: 255 }).notNull(),
   email: varchar("email", { length: 320 }).notNull().unique(),
   phone: varchar("phone", { length: 20 }),
-  role: mysqlEnum("waitlistRole", ["athlete", "parent", "coach", "brand"]).notNull(),
+  role: pgEnum("waitlistRole", ["athlete", "parent", "coach", "brand"]).notNull(),
   sport: varchar("sport", { length: 64 }),
   referralCode: varchar("referralCode", { length: 32 }),
-  status: mysqlEnum("waitlistStatus", ["pending", "approved", "invited"]).default("pending").notNull(),
+  status: pgEnum("waitlistStatus", ["pending", "approved", "invited"]).default("pending").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
@@ -217,8 +217,8 @@ export type InsertWaitlistEntry = typeof waitlist.$inferInsert;
 
 // ==================== NOTIFICATIONS ====================
 
-export const notifications = mysqlTable("notifications", {
-  id: int("id").autoincrement().primaryKey(),
+export const notifications = pgTable("notifications", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   type: varchar("type", { length: 64 }).notNull(),
   title: varchar("title", { length: 255 }).notNull(),
@@ -233,14 +233,14 @@ export type InsertNotification = typeof notifications.$inferInsert;
 
 // ==================== TRAINING / DIAMOND GRIND ====================
 
-export const workouts = mysqlTable("workouts", {
-  id: int("id").autoincrement().primaryKey(),
+export const workouts = pgTable("workouts", {
+  id: serial("id").primaryKey(),
   athleteId: int("athleteId").notNull(),
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
   sport: varchar("sport", { length: 64 }),
   duration: int("duration"),
-  intensity: mysqlEnum("intensity", ["low", "medium", "high", "extreme"]).default("medium"),
+  intensity: pgEnum("intensity", ["low", "medium", "high", "extreme"]).default("medium"),
   exercises: json("exercises"),
   completedAt: timestamp("completedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -251,8 +251,8 @@ export type InsertWorkout = typeof workouts.$inferInsert;
 
 // ==================== PLAYBOOKS / STRATEGIES ====================
 
-export const playbooks = mysqlTable("playbooks", {
-  id: int("id").autoincrement().primaryKey(),
+export const playbooks = pgTable("playbooks", {
+  id: serial("id").primaryKey(),
   creatorId: int("creatorId").notNull(),
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
@@ -262,7 +262,7 @@ export const playbooks = mysqlTable("playbooks", {
   isPublic: boolean("isPublic").default(false).notNull(),
   viewsCount: int("viewsCount").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type Playbook = typeof playbooks.$inferSelect;
@@ -270,16 +270,16 @@ export type InsertPlaybook = typeof playbooks.$inferInsert;
 
 // ==================== TRANSFER PORTAL ====================
 
-export const transferEntries = mysqlTable("transfer_entries", {
-  id: int("id").autoincrement().primaryKey(),
+export const transferEntries = pgTable("transfer_entries", {
+  id: serial("id").primaryKey(),
   athleteId: int("athleteId").notNull(),
   currentSchool: varchar("currentSchool", { length: 255 }),
   desiredSchools: json("desiredSchools"),
   enteredPortalAt: timestamp("enteredPortalAt"),
-  status: mysqlEnum("transferStatus2", ["exploring", "in_portal", "committed", "withdrawn"]).default("exploring").notNull(),
+  status: pgEnum("transferStatus2", ["exploring", "in_portal", "committed", "withdrawn"]).default("exploring").notNull(),
   notes: text("notes"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type TransferEntry = typeof transferEntries.$inferSelect;
@@ -287,15 +287,15 @@ export type InsertTransferEntry = typeof transferEntries.$inferInsert;
 
 // ==================== RECRUITER INTERESTS ====================
 
-export const recruiterInterests = mysqlTable("recruiter_interests", {
-  id: int("id").autoincrement().primaryKey(),
+export const recruiterInterests = pgTable("recruiter_interests", {
+  id: serial("id").primaryKey(),
   recruiterId: int("recruiterId").notNull(),
   athleteId: int("athleteId").notNull(),
   school: varchar("school", { length: 255 }),
-  interestLevel: mysqlEnum("interestLevel", ["watching", "interested", "offering", "committed"]).default("watching").notNull(),
+  interestLevel: pgEnum("interestLevel", ["watching", "interested", "offering", "committed"]).default("watching").notNull(),
   notes: text("notes"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type RecruiterInterest = typeof recruiterInterests.$inferSelect;
@@ -303,8 +303,8 @@ export type InsertRecruiterInterest = typeof recruiterInterests.$inferInsert;
 
 // ==================== CRM & ANALYTICS ====================
 
-export const signupAnalytics = mysqlTable("signup_analytics", {
-  id: int("id").autoincrement().primaryKey(),
+export const signupAnalytics = pgTable("signup_analytics", {
+  id: serial("id").primaryKey(),
   signupNumber: int("signupNumber").notNull(), // 1st user, 2nd user, etc.
   userId: int("userId"),
   waitlistId: int("waitlistId"),
@@ -326,7 +326,7 @@ export const signupAnalytics = mysqlTable("signup_analytics", {
   utmCampaign: varchar("utmCampaign", { length: 128 }),
   role: varchar("role", { length: 64 }),
   sport: varchar("sport", { length: 64 }),
-  signupType: mysqlEnum("signupType", ["waitlist", "vip", "direct", "referral"]).default("waitlist").notNull(),
+  signupType: pgEnum("signupType", ["waitlist", "vip", "direct", "referral"]).default("waitlist").notNull(),
   isConverted: boolean("isConverted").default(false).notNull(),
   convertedAt: timestamp("convertedAt"),
   isPaying: boolean("isPaying").default(false).notNull(),
@@ -340,10 +340,10 @@ export type InsertSignupAnalytic = typeof signupAnalytics.$inferInsert;
 
 // ==================== SOCIAL MEDIA CONNECTIONS ====================
 
-export const socialConnections = mysqlTable("social_connections", {
-  id: int("id").autoincrement().primaryKey(),
+export const socialConnections = pgTable("social_connections", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
-  platform: mysqlEnum("platform", ["instagram", "twitter", "tiktok", "youtube", "facebook", "linkedin", "snapchat", "threads"]).notNull(),
+  platform: pgEnum("platform", ["instagram", "twitter", "tiktok", "youtube", "facebook", "linkedin", "snapchat", "threads"]).notNull(),
   username: varchar("username", { length: 255 }),
   profileUrl: text("profileUrl"),
   followersCount: int("followersCount").default(0),
@@ -357,7 +357,7 @@ export const socialConnections = mysqlTable("social_connections", {
   lastSyncedAt: timestamp("lastSyncedAt"),
   connectedAt: timestamp("connectedAt").defaultNow().notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type SocialConnection = typeof socialConnections.$inferSelect;
@@ -365,12 +365,12 @@ export type InsertSocialConnection = typeof socialConnections.$inferInsert;
 
 // ==================== AI ONBOARDING CHANNEL ====================
 
-export const onboardingSteps = mysqlTable("onboarding_steps", {
-  id: int("id").autoincrement().primaryKey(),
+export const onboardingSteps = pgTable("onboarding_steps", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   stepName: varchar("stepName", { length: 64 }).notNull(),
   stepOrder: int("stepOrder").notNull(),
-  status: mysqlEnum("onboardingStatus", ["pending", "in_progress", "completed", "skipped"]).default("pending").notNull(),
+  status: pgEnum("onboardingStatus", ["pending", "in_progress", "completed", "skipped"]).default("pending").notNull(),
   completedAt: timestamp("completedAt"),
   aiAssisted: boolean("aiAssisted").default(false).notNull(),
   aiResponse: text("aiResponse"),
@@ -383,8 +383,8 @@ export type InsertOnboardingStep = typeof onboardingSteps.$inferInsert;
 
 // ==================== CUSTOMER JOURNEY EVENTS ====================
 
-export const customerEvents = mysqlTable("customer_events", {
-  id: int("id").autoincrement().primaryKey(),
+export const customerEvents = pgTable("customer_events", {
+  id: serial("id").primaryKey(),
   userId: int("userId"),
   waitlistId: int("waitlistId"),
   eventType: varchar("eventType", { length: 64 }).notNull(),
@@ -403,10 +403,10 @@ export type InsertCustomerEvent = typeof customerEvents.$inferInsert;
 
 // ==================== REVENUE TRACKING ====================
 
-export const revenueEvents = mysqlTable("revenue_events", {
-  id: int("id").autoincrement().primaryKey(),
+export const revenueEvents = pgTable("revenue_events", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
-  eventType: mysqlEnum("revenueEventType", ["subscription_start", "subscription_renewal", "subscription_cancel", "one_time_purchase", "refund", "upgrade", "downgrade"]).notNull(),
+  eventType: pgEnum("revenueEventType", ["subscription_start", "subscription_renewal", "subscription_cancel", "one_time_purchase", "refund", "upgrade", "downgrade"]).notNull(),
   amount: decimal("amount", { precision: 12, scale: 2 }).notNull(),
   currency: varchar("currency", { length: 3 }).default("USD").notNull(),
   subscriptionTier: varchar("subscriptionTier", { length: 64 }),
@@ -421,12 +421,12 @@ export type InsertRevenueEvent = typeof revenueEvents.$inferInsert;
 
 // ==================== PARTNER ACCESS (CRM Dashboard) ====================
 
-export const partnerAccess = mysqlTable("partner_access", {
-  id: int("id").autoincrement().primaryKey(),
+export const partnerAccess = pgTable("partner_access", {
+  id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
   email: varchar("email", { length: 320 }).notNull().unique(),
-  role: mysqlEnum("partnerRole", ["founder", "partner", "investor", "advisor"]).default("partner").notNull(),
-  accessLevel: mysqlEnum("accessLevel", ["view_only", "standard", "full", "admin"]).default("view_only").notNull(),
+  role: pgEnum("partnerRole", ["founder", "partner", "investor", "advisor"]).default("partner").notNull(),
+  accessLevel: pgEnum("accessLevel", ["view_only", "standard", "full", "admin"]).default("view_only").notNull(),
   accessCode: varchar("accessCode", { length: 64 }).notNull().unique(),
   isActive: boolean("isActive").default(true).notNull(),
   lastAccessAt: timestamp("lastAccessAt"),
@@ -438,10 +438,10 @@ export type InsertPartnerAccess = typeof partnerAccess.$inferInsert;
 
 // ==================== CRM MILESTONES ====================
 
-export const milestones = mysqlTable("milestones", {
-  id: int("id").autoincrement().primaryKey(),
+export const milestones = pgTable("milestones", {
+  id: serial("id").primaryKey(),
   milestoneName: varchar("milestoneName", { length: 255 }).notNull(),
-  milestoneType: mysqlEnum("milestoneType", ["signup", "revenue", "user", "feature", "custom"]).notNull(),
+  milestoneType: pgEnum("milestoneType", ["signup", "revenue", "user", "feature", "custom"]).notNull(),
   targetValue: int("targetValue").notNull(),
   currentValue: int("currentValue").default(0).notNull(),
   isAchieved: boolean("isAchieved").default(false).notNull(),
@@ -456,8 +456,8 @@ export type InsertMilestone = typeof milestones.$inferInsert;
 
 // ==================== AI CREDIT SYSTEM (Powered by Manus) ====================
 
-export const userCredits = mysqlTable("user_credits", {
-  id: int("id").autoincrement().primaryKey(),
+export const userCredits = pgTable("user_credits", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull().unique(),
   balance: int("balance").default(0).notNull(),
   lifetimeEarned: int("lifetimeEarned").default(0).notNull(),
@@ -466,18 +466,18 @@ export const userCredits = mysqlTable("user_credits", {
   lastMonthlyReset: timestamp("lastMonthlyReset"),
   subscriptionTier: varchar("subscriptionTier", { length: 32 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type UserCredits = typeof userCredits.$inferSelect;
 export type InsertUserCredits = typeof userCredits.$inferInsert;
 
-export const creditTransactions = mysqlTable("credit_transactions", {
-  id: int("id").autoincrement().primaryKey(),
+export const creditTransactions = pgTable("credit_transactions", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   amount: int("amount").notNull(), // Positive = earned, Negative = spent
   balanceAfter: int("balanceAfter").notNull(),
-  transactionType: mysqlEnum("transactionType", [
+  transactionType: pgEnum("transactionType", [
     "purchase",      // Bought credits
     "subscription",  // Monthly allocation from subscription
     "bonus",         // Bonus credits (signup, referral, etc.)
@@ -496,15 +496,15 @@ export const creditTransactions = mysqlTable("credit_transactions", {
 export type CreditTransaction = typeof creditTransactions.$inferSelect;
 export type InsertCreditTransaction = typeof creditTransactions.$inferInsert;
 
-export const creditPackagePurchases = mysqlTable("credit_package_purchases", {
-  id: int("id").autoincrement().primaryKey(),
+export const creditPackagePurchases = pgTable("credit_package_purchases", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   packageId: varchar("packageId", { length: 32 }).notNull(),
   credits: int("credits").notNull(),
   amountPaid: decimal("amountPaid", { precision: 10, scale: 2 }).notNull(),
   currency: varchar("currency", { length: 3 }).default("USD").notNull(),
   stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 64 }),
-  status: mysqlEnum("status", ["pending", "completed", "failed", "refunded"]).default("pending").notNull(),
+  status: pgEnum("status", ["pending", "completed", "failed", "refunded"]).default("pending").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
@@ -513,8 +513,8 @@ export type InsertCreditPackagePurchase = typeof creditPackagePurchases.$inferIn
 
 // ==================== STRIPE INTEGRATION ====================
 
-export const stripeCustomers = mysqlTable("stripe_customers", {
-  id: int("id").autoincrement().primaryKey(),
+export const stripeCustomers = pgTable("stripe_customers", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull().unique(),
   stripeCustomerId: varchar("stripeCustomerId", { length: 64 }).notNull().unique(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -523,32 +523,32 @@ export const stripeCustomers = mysqlTable("stripe_customers", {
 export type StripeCustomer = typeof stripeCustomers.$inferSelect;
 export type InsertStripeCustomer = typeof stripeCustomers.$inferInsert;
 
-export const subscriptions = mysqlTable("subscriptions", {
-  id: int("id").autoincrement().primaryKey(),
+export const subscriptions = pgTable("subscriptions", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 64 }).notNull().unique(),
   tierId: varchar("tierId", { length: 32 }).notNull(),
   tierName: varchar("tierName", { length: 64 }),
-  status: mysqlEnum("status", ["active", "canceled", "past_due", "unpaid", "trialing"]).default("active").notNull(),
-  billingCycle: mysqlEnum("billingCycle", ["monthly", "yearly"]).default("monthly").notNull(),
+  status: pgEnum("status", ["active", "canceled", "past_due", "unpaid", "trialing"]).default("active").notNull(),
+  billingCycle: pgEnum("billingCycle", ["monthly", "yearly"]).default("monthly").notNull(),
   currentPeriodStart: timestamp("currentPeriodStart"),
   currentPeriodEnd: timestamp("currentPeriodEnd"),
   cancelAtPeriodEnd: boolean("cancelAtPeriodEnd").default(false).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type Subscription = typeof subscriptions.$inferSelect;
 export type InsertSubscription = typeof subscriptions.$inferInsert;
 
-export const payments = mysqlTable("payments", {
-  id: int("id").autoincrement().primaryKey(),
+export const payments = pgTable("payments", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 64 }).notNull().unique(),
   amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
   currency: varchar("currency", { length: 3 }).default("USD").notNull(),
-  status: mysqlEnum("status", ["pending", "succeeded", "failed", "refunded"]).default("pending").notNull(),
-  paymentType: mysqlEnum("paymentType", ["subscription", "one_time", "credits"]).notNull(),
+  status: pgEnum("status", ["pending", "succeeded", "failed", "refunded"]).default("pending").notNull(),
+  paymentType: pgEnum("paymentType", ["subscription", "one_time", "credits"]).notNull(),
   description: varchar("description", { length: 255 }),
   metadata: json("metadata"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -590,8 +590,8 @@ export const divisions = [
 ] as const;
 
 // Transfer Portal Entries
-export const transferPortalEntries = mysqlTable("transfer_portal_entries", {
-  id: int("id").autoincrement().primaryKey(),
+export const transferPortalEntries = pgTable("transfer_portal_entries", {
+  id: serial("id").primaryKey(),
   
   // Player info
   athleteProfileId: int("athleteProfileId"),
@@ -619,7 +619,7 @@ export const transferPortalEntries = mysqlTable("transfer_portal_entries", {
   currentDivision: varchar("currentDivision", { length: 16 }),
   
   // Transfer Status
-  status: mysqlEnum("status", ["available", "entered", "committed", "withdrawn", "signed"]).default("entered").notNull(),
+  status: pgEnum("status", ["available", "entered", "committed", "withdrawn", "signed"]).default("entered").notNull(),
   newSchool: varchar("newSchool", { length: 128 }),
   newConference: varchar("newConference", { length: 64 }),
   
@@ -658,7 +658,7 @@ export const transferPortalEntries = mysqlTable("transfer_portal_entries", {
   enteredPortalAt: timestamp("enteredPortalAt").defaultNow(),
   committedAt: timestamp("committedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
   
   // Visibility
   isPublic: boolean("isPublic").default(true).notNull(),
@@ -669,8 +669,8 @@ export type TransferPortalEntry = typeof transferPortalEntries.$inferSelect;
 export type InsertTransferPortalEntry = typeof transferPortalEntries.$inferInsert;
 
 // Coach Profiles (for schools searching)
-export const coachProfiles = mysqlTable("coach_profiles", {
-  id: int("id").autoincrement().primaryKey(),
+export const coachProfiles = pgTable("coach_profiles", {
+  id: serial("id").primaryKey(),
   userId: int("userId").notNull(),
   
   // School info
@@ -692,33 +692,33 @@ export const coachProfiles = mysqlTable("coach_profiles", {
   verifiedAt: timestamp("verifiedAt"),
   
   // Subscription
-  subscriptionTier: mysqlEnum("subscriptionTier", ["free", "basic", "pro", "enterprise"]).default("free"),
+  subscriptionTier: pgEnum("subscriptionTier", ["free", "basic", "pro", "enterprise"]).default("free"),
   
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type CoachProfile = typeof coachProfiles.$inferSelect;
 export type InsertCoachProfile = typeof coachProfiles.$inferInsert;
 
 // Coach Watchlists
-export const coachWatchlists = mysqlTable("coach_watchlists", {
-  id: int("id").autoincrement().primaryKey(),
+export const coachWatchlists = pgTable("coach_watchlists", {
+  id: serial("id").primaryKey(),
   coachProfileId: int("coachProfileId").notNull(),
   transferPortalEntryId: int("transferPortalEntryId").notNull(),
   notes: text("notes"),
-  priority: mysqlEnum("priority", ["low", "medium", "high", "top"]).default("medium"),
-  status: mysqlEnum("status", ["watching", "contacted", "visited", "offered", "committed", "passed"]).default("watching"),
+  priority: pgEnum("priority", ["low", "medium", "high", "top"]).default("medium"),
+  status: pgEnum("status", ["watching", "contacted", "visited", "offered", "committed", "passed"]).default("watching"),
   addedAt: timestamp("addedAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type CoachWatchlist = typeof coachWatchlists.$inferSelect;
 export type InsertCoachWatchlist = typeof coachWatchlists.$inferInsert;
 
 // Saved Searches for Coaches
-export const savedSearches = mysqlTable("saved_searches", {
-  id: int("id").autoincrement().primaryKey(),
+export const savedSearches = pgTable("saved_searches", {
+  id: serial("id").primaryKey(),
   coachProfileId: int("coachProfileId").notNull(),
   name: varchar("name", { length: 128 }).notNull(),
   filtersJson: text("filtersJson").notNull(), // JSON of search filters
@@ -731,8 +731,8 @@ export type SavedSearch = typeof savedSearches.$inferSelect;
 export type InsertSavedSearch = typeof savedSearches.$inferInsert;
 
 // Transfer Portal Messages
-export const portalMessages = mysqlTable("portal_messages", {
-  id: int("id").autoincrement().primaryKey(),
+export const portalMessages = pgTable("portal_messages", {
+  id: serial("id").primaryKey(),
   fromUserId: int("fromUserId").notNull(),
   toUserId: int("toUserId").notNull(),
   transferPortalEntryId: int("transferPortalEntryId"),
@@ -747,18 +747,18 @@ export type PortalMessage = typeof portalMessages.$inferSelect;
 export type InsertPortalMessage = typeof portalMessages.$inferInsert;
 
 // Transfer Offers
-export const transferOffers = mysqlTable("transfer_offers", {
-  id: int("id").autoincrement().primaryKey(),
+export const transferOffers = pgTable("transfer_offers", {
+  id: serial("id").primaryKey(),
   transferPortalEntryId: int("transferPortalEntryId").notNull(),
   coachProfileId: int("coachProfileId").notNull(),
   
   // Offer details
   schoolName: varchar("schoolName", { length: 128 }).notNull(),
-  scholarshipType: mysqlEnum("scholarshipType", ["full", "partial", "walk-on", "preferred-walk-on"]),
+  scholarshipType: pgEnum("scholarshipType", ["full", "partial", "walk-on", "preferred-walk-on"]),
   nilOffered: int("nilOffered"), // Annual NIL amount
   
   // Status
-  status: mysqlEnum("status", ["pending", "accepted", "declined", "expired", "withdrawn"]).default("pending"),
+  status: pgEnum("status", ["pending", "accepted", "declined", "expired", "withdrawn"]).default("pending"),
   
   // Notes
   offerDetails: text("offerDetails"),
@@ -777,15 +777,15 @@ export type InsertTransferOffer = typeof transferOffers.$inferInsert;
 // ==================== COMMUNITY VOTING & FEEDBACK ====================
 
 // Site Votes - Track which site users prefer
-export const siteVotes = mysqlTable("site_votes", {
-  id: int("id").autoincrement().primaryKey(),
+export const siteVotes = pgTable("site_votes", {
+  id: serial("id").primaryKey(),
   
   // Voter info (can be anonymous)
   email: varchar("email", { length: 320 }),
   userId: int("userId"),
   
   // Vote
-  votedFor: mysqlEnum("votedFor", ["site_a", "site_b"]).notNull(), // site_a = athlynx.manus.space, site_b = athlynx.ai
+  votedFor: pgEnum("votedFor", ["site_a", "site_b"]).notNull(), // site_a = athlynx.manus.space, site_b = athlynx.ai
   
   // Context
   ipAddress: varchar("ipAddress", { length: 45 }),
@@ -800,8 +800,8 @@ export type SiteVote = typeof siteVotes.$inferSelect;
 export type InsertSiteVote = typeof siteVotes.$inferInsert;
 
 // Community Feedback - What users love/want improved
-export const communityFeedback = mysqlTable("community_feedback", {
-  id: int("id").autoincrement().primaryKey(),
+export const communityFeedback = pgTable("community_feedback", {
+  id: serial("id").primaryKey(),
   
   // Submitter info
   email: varchar("email", { length: 320 }),
@@ -815,17 +815,17 @@ export const communityFeedback = mysqlTable("community_feedback", {
   generalComments: text("generalComments"),
   
   // Which site they're commenting on
-  siteVersion: mysqlEnum("siteVersion", ["site_a", "site_b", "both", "general"]).default("general"),
+  siteVersion: pgEnum("siteVersion", ["site_a", "site_b", "both", "general"]).default("general"),
   
   // Rating (optional)
   overallRating: int("overallRating"), // 1-5 stars
   
   // Categorization
-  feedbackType: mysqlEnum("feedbackType", ["design", "features", "usability", "performance", "content", "other"]).default("other"),
-  priority: mysqlEnum("priority", ["low", "medium", "high", "critical"]).default("medium"),
+  feedbackType: pgEnum("feedbackType", ["design", "features", "usability", "performance", "content", "other"]).default("other"),
+  priority: pgEnum("priority", ["low", "medium", "high", "critical"]).default("medium"),
   
   // Status tracking
-  status: mysqlEnum("status", ["new", "reviewed", "in_progress", "implemented", "wont_do"]).default("new"),
+  status: pgEnum("status", ["new", "reviewed", "in_progress", "implemented", "wont_do"]).default("new"),
   adminNotes: text("adminNotes"),
   
   // Context
@@ -842,8 +842,8 @@ export type CommunityFeedback = typeof communityFeedback.$inferSelect;
 export type InsertCommunityFeedback = typeof communityFeedback.$inferInsert;
 
 // Feature Requests - Specific feature voting
-export const featureRequests = mysqlTable("feature_requests", {
-  id: int("id").autoincrement().primaryKey(),
+export const featureRequests = pgTable("feature_requests", {
+  id: serial("id").primaryKey(),
   
   // Request details
   title: varchar("title", { length: 255 }).notNull(),
@@ -855,7 +855,7 @@ export const featureRequests = mysqlTable("feature_requests", {
   downvotes: int("downvotes").default(0).notNull(),
   
   // Status
-  status: mysqlEnum("status", ["submitted", "under_review", "planned", "in_progress", "completed", "declined"]).default("submitted"),
+  status: pgEnum("status", ["submitted", "under_review", "planned", "in_progress", "completed", "declined"]).default("submitted"),
   
   // Submitter
   submittedByEmail: varchar("submittedByEmail", { length: 320 }),
@@ -867,15 +867,15 @@ export const featureRequests = mysqlTable("feature_requests", {
   
   // Timestamps
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
 export type FeatureRequest = typeof featureRequests.$inferSelect;
 export type InsertFeatureRequest = typeof featureRequests.$inferInsert;
 
 // Feature Request Votes - Track who voted for what
-export const featureRequestVotes = mysqlTable("feature_request_votes", {
-  id: int("id").autoincrement().primaryKey(),
+export const featureRequestVotes = pgTable("feature_request_votes", {
+  id: serial("id").primaryKey(),
   featureRequestId: int("featureRequestId").notNull(),
   
   // Voter
@@ -883,7 +883,7 @@ export const featureRequestVotes = mysqlTable("feature_request_votes", {
   userId: int("userId"),
   
   // Vote type
-  voteType: mysqlEnum("voteType", ["upvote", "downvote"]).notNull(),
+  voteType: pgEnum("voteType", ["upvote", "downvote"]).notNull(),
   
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
