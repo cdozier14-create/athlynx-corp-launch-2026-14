@@ -1,11 +1,17 @@
 [build]
   command = "pnpm install && pnpm run build"
-  publish = "dist"
+  publish = "dist/public"
   functions = "netlify/functions"
 
 [build.environment]
   NODE_ENV = "production"
   NODE_VERSION = "20"
+
+# API routes for backend - MUST come before SPA catch-all
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/main/:splat"
+  status = 200
 
 # Static asset serving
 [[redirects]]
@@ -13,7 +19,7 @@
   to = "/assets/:splat"
   status = 200
 
-# SPA routing - serve index.html for client-side routing
+# SPA routing - serve index.html for client-side routing (MUST be last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -26,9 +32,3 @@
     Cache-Control = "public, max-age=3600"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
-
-# API routes for Python backend
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/main/:splat"
-  status = 200
