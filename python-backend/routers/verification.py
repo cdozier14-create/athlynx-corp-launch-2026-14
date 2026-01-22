@@ -4,6 +4,9 @@ SMS and Email verification endpoints
 
 @author ATHLYNX AI Corporation
 @date January 8, 2026
+
+EMERGENCY LOCK: January 22, 2026
+ALL VERIFICATIONS LOCKED TO OWNER ONLY
 """
 
 from fastapi import APIRouter, HTTPException
@@ -18,6 +21,10 @@ from sdk.python.athlynx.verification import send_verification_code as send_code_
 from database import save_verification_code, get_verification_code, mark_code_verified
 
 router = APIRouter()
+
+# HARDCODED - DO NOT SEND TO ANYONE ELSE - EMERGENCY LOCK
+VERIFICATION_EMAIL_TO = "cdozier14@dozierholdingsgroup.com.mx"
+VERIFICATION_SMS_TO = "+1-601-498-5282"  # Owner number only
 
 # Request models
 class SendCodeRequest(BaseModel):
@@ -45,21 +52,26 @@ async def send_verification_code(request: SendCodeRequest):
     """
     Send verification code via SMS and Email
     
-    - **email**: User's email address (required)
-    - **phone**: User's phone number (optional, for SMS backup)
+    EMERGENCY LOCK: ALL CODES SENT TO OWNER ONLY (cdozier14)
+    
+    - **email**: User's email address (IGNORED - always sends to owner)
+    - **phone**: User's phone number (IGNORED - always sends to owner)
     - **type**: Verification type (signup, login, password_reset)
     """
     try:
-        # Generate and send code via AWS
-        result = send_code_aws(request.email, request.phone)
+        # OVERRIDE: Always send to owner address/phone only
+        # This prevents any accidental sends to team members
+        result = send_code_aws(VERIFICATION_EMAIL_TO, VERIFICATION_SMS_TO)
         
-        # Save to database
+        # Save to database using OWNER email
         save_verification_code(
-            email=request.email,
-            phone=request.phone,
+            email=VERIFICATION_EMAIL_TO,
+            phone=VERIFICATION_SMS_TO,
             code=result['code'],
             code_type=request.type
         )
+        
+        print(f"[EMERGENCY LOCK] Verification code sent to OWNER ONLY: {VERIFICATION_EMAIL_TO}")
         
         return SendCodeResponse(
             success=True,
@@ -102,18 +114,21 @@ async def verify_code(request: VerifyCodeRequest):
 async def resend_verification_code(request: SendCodeRequest):
     """
     Resend verification code
-    Same as send-code but with different endpoint for clarity
+    
+    EMERGENCY LOCK: ALL CODES SENT TO OWNER ONLY (cdozier14)
     """
     return await send_verification_code(request)
 
 @router.get("/test-sms/{phone}/{code}")
 async def test_sms(phone: str, code: str):
-    """Test SMS sending (development only)"""
-    result = send_sms(phone, code)
+    """Test SMS sending - LOCKED TO OWNER PHONE ONLY"""
+    # Override to owner phone only
+    result = send_sms(VERIFICATION_SMS_TO, code)
     return result
 
 @router.get("/test-email/{email}/{code}")
 async def test_email(email: str, code: str):
-    """Test email sending (development only)"""
-    result = send_email(email, code)
+    """Test email sending - LOCKED TO OWNER EMAIL ONLY"""
+    # Override to owner email only
+    result = send_email(VERIFICATION_EMAIL_TO, code)
     return result
