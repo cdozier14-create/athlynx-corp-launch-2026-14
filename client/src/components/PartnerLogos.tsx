@@ -10,12 +10,6 @@ interface Partner {
 
 const partners: Partner[] = [
   {
-    name: "Manus AI",
-    logo: "🤖",
-    description: "Powering our AI infrastructure",
-    badge: "TECHNOLOGY PARTNER",
-  },
-  {
     name: "Dozier Holdings Group",
     logo: "🦀",
     description: "Parent company & strategic vision",
@@ -32,6 +26,12 @@ const partners: Partner[] = [
     logo: "🤖",
     description: "Robot companion technology",
     badge: "ROBOTICS",
+  },
+  {
+    name: "AWS",
+    logo: "☁️",
+    description: "Cloud infrastructure & services",
+    badge: "CLOUD PARTNER",
   },
 ];
 
