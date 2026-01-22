@@ -181,14 +181,14 @@ export async function addToWaitlist(entry: InsertWaitlistEntry): Promise<{ succe
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'ATHLYNX <noreply@athlynx.manus.space>',
+          from: 'ATHLYNX <noreply@athlynx.ai>',
           to: entry.email,
           subject: 'WELCOME TO ATHLYNX - Your VIP Code Inside!',
           html: `
             <div style="background-color: #0f172a; padding: 40px 20px; font-family: Arial, sans-serif;">
               <div style="max-width: 500px; margin: 0 auto;">
                 <div style="text-align: center; margin-bottom: 30px;">
-                  <img src="https://athlynx.manus.space/athlynx-playbook-logo.png" alt="ATHLYNX" style="height: 60px;" />
+                  <img src="https://athlynx.ai/athlynx-playbook-logo.png" alt="ATHLYNX" style="height: 60px;" />
                 </div>
                 <div style="background-color: #1e293b; border-radius: 16px; padding: 30px; border: 1px solid #334155;">
                   <h1 style="color: #ffffff; text-align: center; margin: 0 0 10px 0; font-size: 24px;">WELCOME TO ATHLYNX!</h1>
@@ -203,7 +203,7 @@ export async function addToWaitlist(entry: InsertWaitlistEntry): Promise<{ succe
                     Use this code to access the ATHLYNX Portal and unlock all 6 apps.
                   </p>
                   
-                  <a href="https://athlynx.manus.space" style="display: block; background: linear-gradient(to right, #06b6d4, #3b82f6); color: white; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                  <a href="https://athlynx.ai" style="display: block; background: linear-gradient(to right, #06b6d4, #3b82f6); color: white; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px;">
                     ENTER THE PORTAL
                   </a>
                 </div>

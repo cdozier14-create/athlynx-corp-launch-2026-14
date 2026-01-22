@@ -1,7 +1,7 @@
 /**
  * ATHLYNX MONEYBALL ALGORITHMS
  * A DOZIER HOLDINGS GROUP COMPANY
- * Powered by Manus AI
+ * Pure Python & Julia Technology
  * 
  * "DATA IS THE NEW OIL" - The fuel that runs everything
  * 
@@ -542,7 +542,7 @@ export const VIRAL_KEYWORDS = {
     "#NILPortal",
     "#ATHLYNX",
     "#DreamsComeTrue",
-    "#ManusAI",
+    "#ATHLYNX",
     "#DHG",
   ],
   longTail: [
@@ -558,7 +558,7 @@ export const VIRAL_KEYWORDS = {
 
 export const SOCIAL_MEDIA_TEMPLATES = {
   twitter: [
-    "🚀 Your NIL journey starts here. Join @ATHLYNX and discover your true value. Powered by @Manus_AI #NIL #ATHLYNX",
+    "🚀 Your NIL journey starts here. Join @ATHLYNX and discover your true value. Powered by @ATHLYNX_AI #NIL #ATHLYNX",
     "💰 Stop leaving money on the table. Get your FREE NIL valuation today. #NILDeals #CollegeAthletes",
     "🦁 The lion protects his pride. @ATHLYNX protects your future. #DreamsComeTrue #NIL",
   ],

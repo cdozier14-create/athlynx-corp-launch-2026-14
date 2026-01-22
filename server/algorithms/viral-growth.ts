@@ -1,7 +1,7 @@
 /**
  * ATHLYNX VIRAL GROWTH ALGORITHM
  * A DOZIER HOLDINGS GROUP COMPANY
- * Powered by Manus AI
+ * Pure Python & Julia Technology
  * 
  * THE FACEBOOK/META PLAYBOOK:
  * 1. Make it FREE to join

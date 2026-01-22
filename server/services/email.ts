@@ -95,7 +95,7 @@ export const EMAIL_TEMPLATES = {
         <hr style="border: none; border-top: 1px solid #334155; margin: 20px 0;">
         
         <p style="color: #64748b; font-size: 12px; text-align: center;">
-          A Dozier Holdings Group Company • Powered by Manus AI<br>
+          A Dozier Holdings Group Company • Pure Python & Julia Technology<br>
           © 2026 ATHLYNX AI Corporation. All rights reserved.
         </p>
       </div>
@@ -143,7 +143,7 @@ export const EMAIL_TEMPLATES = {
         <hr style="border: none; border-top: 1px solid #334155; margin: 20px 0;">
         
         <p style="color: #64748b; font-size: 12px; text-align: center;">
-          A Dozier Holdings Group Company • Powered by Manus AI
+          A Dozier Holdings Group Company • Pure Python & Julia Technology
         </p>
       </div>
     `,
@@ -214,7 +214,7 @@ export const EMAIL_TEMPLATES = {
         <hr style="border: none; border-top: 1px solid #334155; margin: 20px 0;">
         
         <p style="color: #64748b; font-size: 12px; text-align: center;">
-          A Dozier Holdings Group Company • Powered by Manus AI
+          A Dozier Holdings Group Company • Pure Python & Julia Technology
         </p>
       </div>
     `,
@@ -250,7 +250,7 @@ export const EMAIL_TEMPLATES = {
         <hr style="border: none; border-top: 1px solid #334155; margin: 20px 0;">
         
         <p style="color: #64748b; font-size: 12px; text-align: center;">
-          A Dozier Holdings Group Company • Powered by Manus AI
+          A Dozier Holdings Group Company • Pure Python & Julia Technology
         </p>
       </div>
     `,
