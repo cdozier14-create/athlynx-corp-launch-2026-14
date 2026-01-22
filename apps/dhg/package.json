@@ -1,0 +1,35 @@
+{
+  "name": "dhg-master-site",
+  "version": "1.0.0",
+  "description": "Dozier Holdings Group - Master Corporate Site",
+  "type": "module",
+  "license": "PROPRIETARY",
+  "author": "Chad Dozier <cdozier14-create>",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "wouter": "^3.3.5",
+    "framer-motion": "^12.23.22",
+    "lucide-react": "^0.453.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.1",
+    "@types/react-dom": "^19.2.1",
+    "@vitejs/plugin-react": "^5.0.4",
+    "typescript": "5.9.3",
+    "vite": "^7.1.7",
+    "prettier": "^3.6.2",
+    "@tailwindcss/vite": "^4.1.3",
+    "tailwindcss": "^4.1.14"
+  }
+}
