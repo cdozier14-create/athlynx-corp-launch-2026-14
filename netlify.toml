@@ -1,11 +1,17 @@
 [build]
   command = "pnpm install && pnpm run build"
-  publish = "dist"
+  publish = "dist/public"
   functions = "netlify/functions"
 
 [build.environment]
   NODE_ENV = "production"
   NODE_VERSION = "20"
+
+# Python backend API routes
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
 
 # Static asset serving
 [[redirects]]
@@ -19,16 +25,21 @@
   to = "/index.html"
   status = 200
 
-# Headers for caching
+# Headers for security and caching
 [[headers]]
   for = "/*"
   [headers.values]
     Cache-Control = "public, max-age=3600"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
 
-# API routes for Python backend
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/main/:splat"
-  status = 200
+# API headers
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"

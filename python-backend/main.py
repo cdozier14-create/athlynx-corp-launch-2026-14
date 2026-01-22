@@ -79,7 +79,7 @@ app.include_router(messages.router, prefix="/api/messages", tags=["Messages"])
 app.include_router(notifications.router, prefix="/api/notifications", tags=["Notifications"])
 app.include_router(transfer_portal.router, prefix="/api/transfer-portal", tags=["Transfer Portal"])
 app.include_router(crm.router, prefix="/api/crm", tags=["CRM & Analytics"])
-app.include_router(stripe_router.router, prefix="/api/stripe", tags=["Payments"])
+app.include_router(stripe_router.router, prefix="/api/patents", tags=["Patents & Payments"])
 
 # Error handlers
 @app.exception_handler(HTTPException)
