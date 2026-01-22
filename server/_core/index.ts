@@ -2,6 +2,7 @@ import "dotenv/config";
 import express, { Express } from "express";
 import { createServer } from "http";
 import net from "net";
+import { pathToFileURL } from "url";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
@@ -76,6 +77,7 @@ async function startServer() {
 }
 
 // Only start server if run directly (not imported as a module)
-if (import.meta.url === `file://${process.argv[1]}`) {
+const isMainModule = import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isMainModule) {
   startServer().catch(console.error);
 }
