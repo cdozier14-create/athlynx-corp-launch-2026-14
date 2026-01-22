@@ -46,8 +46,6 @@ app.add_middleware(
         "https://www.athlynxapp.vip",
         "https://transferportal.ai",
         "https://www.transferportal.ai",
-        # Netlify preview/deploy URLs
-        "https://*.netlify.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
