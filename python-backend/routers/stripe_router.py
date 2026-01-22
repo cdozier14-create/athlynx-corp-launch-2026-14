@@ -7,7 +7,7 @@ from typing import Optional
 import os
 import stripe
 from database import get_db_connection
-from auth import verify_jwt_token
+from .auth import verify_jwt_token
 
 router = APIRouter(prefix="/stripe", tags=["Payments"])
 

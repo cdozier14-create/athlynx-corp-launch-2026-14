@@ -1,34 +1,32 @@
+# ATHLYNX Corporation - Python + Julia Backend Deployment
+# Multi-Domain Configuration: dozierholdingsgroup.com, athlynx.ai, athlynxapp.vip, transferportal.ai
+# Date: January 22, 2026
+
 [build]
-  command = "pnpm install && pnpm run build"
-  publish = "dist"
-  functions = "netlify/functions"
+  command = "pip install -r python-backend/requirements.txt"
+  functions = "python-backend"
+  publish = "python-backend"
 
 [build.environment]
-  NODE_ENV = "production"
-  NODE_VERSION = "20"
+  PYTHON_VERSION = "3.11"
 
-# Static asset serving
+# API routes - All requests to Mangum handler
 [[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
+  from = "/api/*"
+  to = "/.netlify/functions/netlify_function"
   status = 200
 
-# SPA routing - serve index.html for client-side routing
+# Root and all other routes to Python backend
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/.netlify/functions/netlify_function"
   status = 200
 
-# Headers for caching
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
-
-# API routes for Python backend
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/main/:splat"
-  status = 200
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"

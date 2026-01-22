@@ -4,7 +4,7 @@ ATHLYNX AI Platform - Notifications Router
 from fastapi import APIRouter, HTTPException, Cookie
 from typing import Optional
 from database import get_db_connection
-from auth import verify_jwt_token
+from .auth import verify_jwt_token
 
 router = APIRouter(prefix="/notifications", tags=["Notifications"])
 

@@ -29,16 +29,23 @@ app = FastAPI(
     redoc_url="/api/redoc",
 )
 
-# CORS Configuration
+# CORS Configuration - All Production Domains
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        # Local development
         "http://localhost:3000",
         "http://localhost:5173",
+        "http://localhost:8000",
+        # Production domains
+        "https://dozierholdingsgroup.com",
+        "https://www.dozierholdingsgroup.com",
         "https://athlynx.ai",
         "https://www.athlynx.ai",
-        "https://athlynx.netlify.app",
-        "https://*.netlify.app",
+        "https://athlynxapp.vip",
+        "https://www.athlynxapp.vip",
+        "https://transferportal.ai",
+        "https://www.transferportal.ai",
     ],
     allow_credentials=True,
     allow_methods=["*"],

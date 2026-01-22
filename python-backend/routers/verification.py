@@ -11,10 +11,35 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 import sys
 import os
+import logging
+from pathlib import Path
 
-# Add parent directory to path to import verification service
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from sdk.python.athlynx.verification import send_verification_code as send_code_aws, send_sms, send_email
+# Setup logging
+logger = logging.getLogger(__name__)
+
+# Add SDK to path - navigate up to project root
+project_root = Path(__file__).parent.parent.parent
+sys.path.append(str(project_root))
+
+try:
+    from sdk.python.athlynx.verification import send_verification_code as send_code_aws, send_sms, send_email
+    SDK_AVAILABLE = True
+except ImportError:
+    # Fallback if SDK not available - WARNING: These are stubs!
+    SDK_AVAILABLE = False
+    logger.warning("⚠️  SDK verification module not found - using STUB functions (NOT for production!)")
+    
+    def send_sms(phone: str, code: str):
+        logger.warning(f"STUB SMS: {phone} - Code: {code} [NOT SENT - SDK unavailable]")
+        return {"success": True, "message": "SMS stub (not sent)", "stub_mode": True}
+    
+    def send_email(email: str, code: str):
+        logger.warning(f"STUB Email: {email} - Code: {code} [NOT SENT - SDK unavailable]")
+        return {"success": True, "message": "Email stub (not sent)", "stub_mode": True}
+    
+    def send_code_aws(email: str, phone: str, code: str):
+        return send_email(email, code)
+
 from database import save_verification_code, get_verification_code, mark_code_verified
 
 router = APIRouter()

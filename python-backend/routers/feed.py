@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException, Cookie
 from pydantic import BaseModel
 from typing import Optional, List
 from database import get_db_connection
-from auth import verify_jwt_token
+from .auth import verify_jwt_token
 
 router = APIRouter(prefix="/feed", tags=["Feed"])
 
