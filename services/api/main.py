@@ -1,9 +1,17 @@
 """
-ATHLYNX AI Platform - Python FastAPI Backend
+DHG Unified Platform - Python FastAPI Backend
 Main Application Entry Point
 
-@author ATHLYNX AI Corporation
-@date January 8, 2026
+Consolidated API for all DHG applications:
+- Dozier Holdings Group (dozierholdingsgroup.com)
+- Athlynx Platform (athlynx.ai)
+- Athlynx VIP (athlynxapp.vip)
+- Transfer Portal (transferportal.ai)
+- Diamond Grind (diamond-grind.ai)
+
+@author Dozier Holdings Group
+@owner cdozier14-create
+@date January 22, 2026
 """
 
 from fastapi import FastAPI, HTTPException, Depends, Request
@@ -22,38 +30,111 @@ from routers import transfer_portal, crm, stripe_router, vip
 
 # Create FastAPI app
 app = FastAPI(
-    title="ATHLYNX API",
-    description="ATHLYNX Corporation - Complete Athlete Ecosystem Platform",
-    version="1.0.0",
+    title="DHG Unified API",
+    description="Dozier Holdings Group - Unified Platform API for All Applications",
+    version="2.0.0",
     docs_url="/api/docs",
     redoc_url="/api/redoc",
+    contact={
+        "name": "Dozier Holdings Group",
+        "url": "https://dozierholdingsgroup.com",
+    },
+    license_info={
+        "name": "Proprietary",
+        "url": "https://dozierholdingsgroup.com/legal",
+    },
 )
 
-# CORS Configuration
+# CORS Configuration - All DHG Domains
+ALLOWED_ORIGINS = [
+    # Development
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://localhost:8000",
+    
+    # Production - DHG Master Site
+    "https://dozierholdingsgroup.com",
+    "https://www.dozierholdingsgroup.com",
+    
+    # Production - Athlynx
+    "https://athlynx.ai",
+    "https://www.athlynx.ai",
+    
+    # Production - Athlynx VIP
+    "https://athlynxapp.vip",
+    "https://www.athlynxapp.vip",
+    
+    # Production - Transfer Portal
+    "https://transferportal.ai",
+    "https://www.transferportal.ai",
+    
+    # Production - Diamond Grind
+    "https://diamond-grind.ai",
+    "https://www.diamond-grind.ai",
+    
+    # Netlify preview URLs
+    "https://athlynx.netlify.app",
+    "https://*.netlify.app",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "https://athlynx.ai",
-        "https://www.athlynx.ai",
-        "https://athlynx.netlify.app",
-        "https://*.netlify.app",
-    ],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["X-App-Name", "X-App-Version"],
 )
+
+# Custom middleware to identify requesting app
+@app.middleware("http")
+async def app_identifier_middleware(request: Request, call_next):
+    """Identify which app is making the request based on origin"""
+    origin = request.headers.get("origin", "")
+    app_name = "unknown"
+    
+    if "dozierholdingsgroup.com" in origin:
+        app_name = "dhg"
+    elif "athlynxapp.vip" in origin:
+        app_name = "athlynxapp-vip"
+    elif "athlynx.ai" in origin:
+        app_name = "athlynx"
+    elif "transferportal.ai" in origin:
+        app_name = "transferportal"
+    elif "diamond-grind.ai" in origin:
+        app_name = "diamond-grind"
+    elif "localhost" in origin:
+        app_name = "development"
+    
+    # Add app identifier to request state
+    request.state.app_name = app_name
+    
+    # Process request
+    response = await call_next(request)
+    
+    # Add app identifier to response headers
+    response.headers["X-App-Name"] = app_name
+    response.headers["X-App-Version"] = "2.0.0"
+    
+    return response
 
 # Health check endpoint
 @app.get("/api/health")
-async def health_check():
+async def health_check(request: Request):
     """Health check endpoint"""
     return {
         "status": "healthy",
-        "service": "ATHLYNX API",
-        "version": "1.0.0",
-        "message": "Dreams Do Come True 2026"
+        "service": "DHG Unified API",
+        "version": "2.0.0",
+        "app": getattr(request.state, "app_name", "unknown"),
+        "message": "Dozier Holdings Group - Dreams Do Come True 2026",
+        "apps": {
+            "dhg": "dozierholdingsgroup.com",
+            "athlynx": "athlynx.ai",
+            "athlynxapp-vip": "athlynxapp.vip",
+            "transferportal": "transferportal.ai",
+            "diamond-grind": "diamond-grind.ai"
+        }
     }
 
 # Root endpoint
@@ -61,8 +142,16 @@ async def health_check():
 async def root():
     """Root endpoint"""
     return {
-        "message": "ATHLYNX API - Corporation Launch 2026",
-        "version": "1.0.0",
+        "message": "DHG Unified Platform API - 2026",
+        "version": "2.0.0",
+        "owner": "cdozier14-create",
+        "apps": [
+            "Dozier Holdings Group",
+            "Athlynx Platform",
+            "Athlynx VIP",
+            "Transfer Portal",
+            "Diamond Grind"
+        ],
         "docs": "/api/docs",
         "health": "/api/health"
     }
@@ -100,15 +189,32 @@ async def general_exception_handler(request: Request, exc: Exception):
 # Startup event
 @app.on_event("startup")
 async def startup_event():
-    print("🚀 ATHLYNX API Starting...")
+    print("=" * 80)
+    print("🚀 DHG UNIFIED PLATFORM API STARTING...")
+    print("=" * 80)
+    print("🏢 Dozier Holdings Group - Master Platform")
+    print("👨‍💼 Owner: cdozier14-create")
     print("🦁 Dreams Do Come True 2026")
+    print("-" * 80)
     print(f"📍 Environment: {os.getenv('ENVIRONMENT', 'development')}")
-    print(f"🗄️  Database: {os.getenv('DATABASE_URL', 'Not configured')[:50]}...")
+    print(f"🗄️  Database: {os.getenv('DATABASE_URL', 'Not configured')[:60]}...")
+    print(f"💳 Stripe: {'Configured' if os.getenv('STRIPE_SECRET_KEY') else 'Not configured'}")
+    print(f"📧 Email (SES): {'Configured' if os.getenv('AWS_ACCESS_KEY_ID') else 'Not configured'}")
+    print("-" * 80)
+    print("🌐 Supported Applications:")
+    print("   - DHG Master Site (dozierholdingsgroup.com)")
+    print("   - Athlynx Platform (athlynx.ai)")
+    print("   - Athlynx VIP (athlynxapp.vip)")
+    print("   - Transfer Portal (transferportal.ai)")
+    print("   - Diamond Grind (diamond-grind.ai)")
+    print("=" * 80)
 
 # Shutdown event
 @app.on_event("shutdown")
 async def shutdown_event():
-    print("👋 ATHLYNX API Shutting down...")
+    print("=" * 80)
+    print("👋 DHG UNIFIED PLATFORM API SHUTTING DOWN...")
+    print("=" * 80)
 
 if __name__ == "__main__":
     import uvicorn
