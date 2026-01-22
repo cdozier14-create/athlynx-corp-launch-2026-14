@@ -95,3 +95,117 @@ async def get_analytics(athlynx_token: Optional[str] = Cookie(None)):
     finally:
         cursor.close()
         conn.close()
+
+@router.get("/signups")
+async def get_signups(athlynx_token: Optional[str] = Cookie(None)):
+    """Get real-time signup feed"""
+    if not athlynx_token:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    payload = verify_jwt_token(athlynx_token)
+    if not payload:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    
+    try:
+        # Get recent signups with detailed info
+        cursor.execute("""
+            SELECT 
+                id as signup_number,
+                created_at as timestamp,
+                first_name,
+                last_name,
+                email,
+                phone,
+                role,
+                sport,
+                device_info,
+                browser_info,
+                os_info,
+                ip_address,
+                geolocation,
+                conversion_status,
+                lifetime_value
+            FROM users
+            ORDER BY created_at DESC
+            LIMIT 100
+        """)
+        signups = cursor.fetchall()
+        
+        return {
+            "success": True,
+            "signups": signups,
+            "total": len(signups)
+        }
+        
+    finally:
+        cursor.close()
+        conn.close()
+
+@router.get("/stats")
+async def get_stats(athlynx_token: Optional[str] = Cookie(None)):
+    """Get live metrics and statistics"""
+    if not athlynx_token:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    payload = verify_jwt_token(athlynx_token)
+    if not payload:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    
+    try:
+        # Total users
+        cursor.execute("SELECT COUNT(*) as total FROM users")
+        total_users = cursor.fetchone()['total']
+        
+        # Premium members
+        cursor.execute("SELECT COUNT(*) as total FROM users WHERE subscription_status = 'active'")
+        premium_members = cursor.fetchone()['total']
+        
+        # Total revenue
+        cursor.execute("SELECT SUM(amount) as total FROM payments WHERE status = 'succeeded'")
+        result = cursor.fetchone()
+        total_revenue = result['total'] if result and result['total'] else 0
+        
+        # Signups today
+        cursor.execute("""
+            SELECT COUNT(*) as total FROM users 
+            WHERE DATE(created_at) = CURDATE()
+        """)
+        signups_today = cursor.fetchone()['total']
+        
+        # By role
+        cursor.execute("""
+            SELECT role, COUNT(*) as count
+            FROM users
+            GROUP BY role
+        """)
+        users_by_role = cursor.fetchall()
+        
+        # By sport
+        cursor.execute("""
+            SELECT sport, COUNT(*) as count
+            FROM users
+            WHERE sport IS NOT NULL
+            GROUP BY sport
+        """)
+        users_by_sport = cursor.fetchall()
+        
+        return {
+            "success": True,
+            "total_users": total_users,
+            "premium_members": premium_members,
+            "total_revenue": total_revenue,
+            "signups_today": signups_today,
+            "users_by_role": users_by_role,
+            "users_by_sport": users_by_sport
+        }
+        
+    finally:
+        cursor.close()
+        conn.close()
+
