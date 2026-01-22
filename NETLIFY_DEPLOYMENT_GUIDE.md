@@ -90,7 +90,7 @@ SUPPORT_EMAIL=support@athlynx.ai
 
 # App Configuration
 ENVIRONMENT=production
-FRONTEND_URL=https://athlynx.ai
+FRONTEND_URL=https://athlynxapp.vip
 ```
 
 ---

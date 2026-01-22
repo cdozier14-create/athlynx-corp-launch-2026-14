@@ -43,7 +43,7 @@ export default function TermsOfService() {
               Agreement to Terms
             </h2>
             <p className="text-slate-300 leading-relaxed">
-              By accessing or using ATHLYNX services (including athlynx.ai, athlynx.io, athlynx.net, 
+              By accessing or using ATHLYNX services (including athlynxapp.vip, athlynx.io, athlynx.net, 
               and transferportal.ai), you agree to be bound by these Terms of Service. If you do not 
               agree to these terms, do not use our services. These terms constitute a legally binding 
               agreement between you and Dozier Holdings Group, LLC.

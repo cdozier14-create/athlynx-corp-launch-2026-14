@@ -1,1 +1,6 @@
+# Domain redirect: athlynx.ai → athlynxapp.vip (301 SEO-friendly permanent redirect)
+https://athlynx.ai/* https://athlynxapp.vip/:splat 301!
+http://athlynx.ai/* https://athlynxapp.vip/:splat 301!
+
+# SPA fallback
 /* /index.html 200

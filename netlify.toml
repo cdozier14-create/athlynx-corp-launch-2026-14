@@ -5,10 +5,24 @@
 [dev]
   command = "npm start"
 
+# Domain redirect: athlynx.ai → athlynxapp.vip
+[[redirects]]
+  from = "https://athlynx.ai/*"
+  to = "https://athlynxapp.vip/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://athlynx.ai/*"
+  to = "https://athlynxapp.vip/:splat"
+  status = 301
+  force = true
+
+# SPA fallback for main domain
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
 [domain]
-  primary = "athlynx.ai"
+  primary = "athlynxapp.vip"

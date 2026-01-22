@@ -226,7 +226,7 @@ export default function Partners() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-8">Partner Across All Platforms</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            {["athlynx.ai", "athlynx.io", "athlynx.net", "transferportal.ai"].map((domain) => (
+            {["athlynxapp.vip", "athlynx.io", "athlynx.net", "transferportal.ai"].map((domain) => (
               <span key={domain} className="bg-gradient-to-r from-teal-600 to-cyan-500 text-white px-4 py-2 rounded-lg font-medium">
                 {domain}
               </span>
