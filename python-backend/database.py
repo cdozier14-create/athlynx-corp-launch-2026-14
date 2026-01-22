@@ -23,12 +23,19 @@ def init_db_pool():
     """Initialize database connection pool"""
     global pool
     if pool is None:
-        pool = SimpleConnectionPool(
-            minconn=1,
-            maxconn=20,
-            dsn=DATABASE_URL
-        )
-        print("✅ Database connection pool initialized")
+        if not DATABASE_URL:
+            print("⚠️  DATABASE_URL not configured - database operations will fail")
+            return
+        try:
+            pool = SimpleConnectionPool(
+                minconn=1,
+                maxconn=20,
+                dsn=DATABASE_URL
+            )
+            print("✅ Database connection pool initialized")
+        except Exception as e:
+            print(f"⚠️  Database connection failed: {e}")
+            print("⚠️  Database operations will not be available")
 
 @contextmanager
 def get_db_connection():
@@ -216,5 +223,8 @@ def track_signup(data: Dict) -> int:
     )
     return result['id'] if result else None
 
-# Initialize database pool on module import
-init_db_pool()
+# Initialize database pool on module import (only if DATABASE_URL is set)
+if DATABASE_URL:
+    init_db_pool()
+else:
+    print("⚠️  Skipping database initialization - DATABASE_URL not set")
