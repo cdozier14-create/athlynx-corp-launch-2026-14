@@ -7,7 +7,7 @@ import { trpc } from "@/lib/trpc";
 /**
  * ATHLYNX PRICING PAGE
  * A DOZIER HOLDINGS GROUP COMPANY
- * ATHLYNX AI Technology AI
+ * ATHLYNX AI Technology
  * 
  * THE MONEY-MAKING MACHINE - IPO BOUND! 🚀
  */
@@ -443,7 +443,7 @@ export default function Pricing() {
             Get Started Now
           </Button>
         </Link>
-        <p className="text-slate-500 text-sm mt-4">A Dozier Holdings Group Company • ATHLYNX AI Technology AI</p>
+        <p className="text-slate-500 text-sm mt-4">A Dozier Holdings Group Company • ATHLYNX AI Technology</p>
       </section>
     </div>
   );

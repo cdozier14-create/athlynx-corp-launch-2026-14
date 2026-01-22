@@ -11,7 +11,7 @@
 # API routes for Python backend
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/netlify_function:handler"
+  to = "/.netlify/functions/athlynx_api:handler"
   status = 200
 
 # Static asset serving
