@@ -48,9 +48,26 @@ route("/dashboard") do
 end
 
 # API proxy routes to Python backend
+# Allowlist of permitted API endpoints for security
+const ALLOWED_API_PATHS = [
+    "auth", "verification", "waitlist", "feed", "athlete", "social",
+    "messages", "notifications", "transfer-portal", "crm", "stripe", "vip"
+]
+
+function validate_api_path(path_str::String)
+    # Extract first segment of path
+    first_segment = split(path_str, '/')[1]
+    return first_segment in ALLOWED_API_PATHS
+end
+
 route("/api/:path...", method = POST) do
     path = params(:path)
     body = rawpayload()
+    
+    # Validate API path against allowlist
+    if !validate_api_path(path)
+        return json(Dict("error" => "Invalid API endpoint", "success" => false), status = 403)
+    end
     
     try
         response = HTTP.post(
@@ -62,19 +79,24 @@ route("/api/:path...", method = POST) do
         json(String(response.body))
     catch e
         @error "API proxy error: $e"
-        json(Dict("error" => "API request failed", "success" => false))
+        json(Dict("error" => "API request failed", "success" => false), status = 500)
     end
 end
 
 route("/api/:path...", method = GET) do
     path = params(:path)
     
+    # Validate API path against allowlist
+    if !validate_api_path(path)
+        return json(Dict("error" => "Invalid API endpoint", "success" => false), status = 403)
+    end
+    
     try
         response = HTTP.get("$PYTHON_API/api/$path")
         json(String(response.body))
     catch e
         @error "API proxy error: $e"
-        json(Dict("error" => "API request failed", "success" => false))
+        json(Dict("error" => "API request failed", "success" => false), status = 500)
     end
 end
 

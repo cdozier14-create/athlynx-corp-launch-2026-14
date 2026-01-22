@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm install && pnpm run build && pip install -r python-backend/requirements.txt"
+  command = "set -e && pnpm install && pnpm run build && pip install -r python-backend/requirements.txt"
   publish = "dist"
   functions = "netlify/functions"
 

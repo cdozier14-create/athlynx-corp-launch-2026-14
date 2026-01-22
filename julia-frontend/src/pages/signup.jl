@@ -167,12 +167,24 @@ function render_signup()
                             window.location.href = '/dashboard';
                         }, 3000);
                     } else {
+                        // Handle different error types
+                        let errorText = result.error || 'Unknown error occurred';
+                        
+                        if (response.status === 400) {
+                            errorText = result.error || 'Invalid form data. Please check your inputs.';
+                        } else if (response.status === 409) {
+                            errorText = 'Email already registered. Please login instead.';
+                        } else if (response.status === 500) {
+                            errorText = 'Server error. Please try again in a moment.';
+                        }
+                        
                         document.getElementById('errorMessage').classList.remove('hidden');
-                        document.getElementById('errorText').textContent = result.error || 'Unknown error occurred';
+                        document.getElementById('errorText').textContent = errorText;
                     }
                 } catch (error) {
                     document.getElementById('errorMessage').classList.remove('hidden');
-                    document.getElementById('errorText').textContent = 'Network error. Please try again.';
+                    document.getElementById('errorText').textContent = 'Network error. Please check your connection and try again.';
+                    console.error('Signup error:', error);
                 }
             });
         </script>
