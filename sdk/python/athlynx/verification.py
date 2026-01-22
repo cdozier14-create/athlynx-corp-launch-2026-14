@@ -1,9 +1,9 @@
 """
-ATHLYNX Verification Service - AWS SNS + SES
+ATHLYNX Verification Service - Twilio SMS + AWS SES
 Python Implementation for SMS and Email Verification
 
 @author ATHLYNX AI Corporation
-@date January 8, 2026
+@date January 22, 2026
 """
 
 import boto3
@@ -12,26 +12,32 @@ import random
 from typing import Dict, Optional
 from datetime import datetime, timedelta
 
-# AWS Configuration
+# AWS SES Configuration
 AWS_REGION = os.getenv('AWS_REGION', 'us-east-1')
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', 'AKIAWLLNO5ITXIAJKYVP')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', '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')
-AWS_SES_FROM_EMAIL = os.getenv('AWS_SES_FROM_EMAIL', 'noreply@athlynx.ai')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_SES_FROM_EMAIL = os.getenv('AWS_SES_FROM_EMAIL', 'noreply@dozierholdingsgroup.com')
 
-# Initialize AWS clients
-sns_client = boto3.client(
-    'sns',
-    region_name=AWS_REGION,
-    aws_access_key_id=AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=AWS_SECRET_ACCESS_KEY
-)
+# Twilio Configuration
+TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID', 'AC42c81cc5bed40c06bba310faa55c9ea4')
+TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
+TWILIO_FROM_NUMBER = os.getenv('TWILIO_FROM_NUMBER', '+18774618601')
 
+# Initialize AWS SES client
 ses_client = boto3.client(
     'ses',
     region_name=AWS_REGION,
     aws_access_key_id=AWS_ACCESS_KEY_ID,
     aws_secret_access_key=AWS_SECRET_ACCESS_KEY
 )
+
+# Initialize Twilio client
+try:
+    from twilio.rest import Client as TwilioClient
+    twilio_client = TwilioClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN) if TWILIO_AUTH_TOKEN else None
+except ImportError:
+    print("[Warning] Twilio not installed. SMS functionality disabled.")
+    twilio_client = None
 
 
 def generate_code() -> str:
@@ -41,7 +47,7 @@ def generate_code() -> str:
 
 def send_sms(phone: str, code: str) -> Dict[str, any]:
     """
-    Send SMS verification code via AWS SNS
+    Send SMS verification code via Twilio
     
     Args:
         phone: Phone number (with or without +1)
@@ -50,28 +56,27 @@ def send_sms(phone: str, code: str) -> Dict[str, any]:
     Returns:
         Dict with success status and optional error message
     """
+    if not twilio_client:
+        print("[Twilio Error] Twilio client not initialized")
+        return {'success': False, 'error': 'SMS service not configured'}
+    
     try:
         # Format phone number
         formatted_phone = phone if phone.startswith('+') else f"+1{phone.replace('-', '').replace(' ', '').replace('(', '').replace(')', '')}"
         
         message = f"Your ATHLYNX verification code is: {code}\n\nThis code expires in 10 minutes.\n\nIf you didn't request this, please ignore this message."
         
-        response = sns_client.publish(
-            PhoneNumber=formatted_phone,
-            Message=message,
-            MessageAttributes={
-                'AWS.SNS.SMS.SMSType': {
-                    'DataType': 'String',
-                    'StringValue': 'Transactional'
-                }
-            }
+        result = twilio_client.messages.create(
+            from_=TWILIO_FROM_NUMBER,
+            to=formatted_phone,
+            body=message
         )
         
-        print(f"[AWS SNS] SMS sent to {formatted_phone} - MessageId: {response['MessageId']}")
-        return {'success': True, 'message_id': response['MessageId']}
+        print(f"[Twilio] SMS sent to {formatted_phone} - SID: {result.sid}")
+        return {'success': True, 'message_id': result.sid}
         
     except Exception as e:
-        print(f"[AWS SNS Error] {str(e)}")
+        print(f"[Twilio Error] {str(e)}")
         return {'success': False, 'error': str(e)}
 
 
