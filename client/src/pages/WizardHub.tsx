@@ -191,7 +191,7 @@ export default function WizardHub() {
             </div>
             <div className="flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-4 py-2 rounded-full border border-purple-500/30">
               <Sparkles className="w-4 h-4 text-purple-400" />
-              <span className="text-purple-300 text-sm font-medium">Powered by Manus AI</span>
+              <span className="text-purple-300 text-sm font-medium">Pure Python & Julia Technology</span>
             </div>
           </div>
         </div>
@@ -322,7 +322,7 @@ export default function WizardHub() {
       <footer className="py-8 px-4 border-t border-slate-800">
         <div className="container mx-auto text-center">
           <p className="text-slate-500 text-sm">
-            © 2026 ATHLYNX • A Dozier Holdings Group Company • Powered by Manus AI
+            © 2026 ATHLYNX • A Dozier Holdings Group Company • Pure Python & Julia Technology
           </p>
         </div>
       </footer>

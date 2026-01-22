@@ -94,7 +94,7 @@ export default function Portal() {
             <CardContent className="space-y-3 pb-6 px-4">
               <a href="/api/auth/login" className="block">
                 <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 rounded-xl shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all text-sm">
-                  Login with Manus
+                  Login with Email
                 </Button>
               </a>
               <Link href="/">

@@ -12,7 +12,6 @@ import Veterans from "@/pages/Veterans";
 import BlueCollar from "@/pages/BlueCollar";
 import CRMDashboard from "@/pages/CRMDashboard";
 import CRMCommandCenter from "@/pages/CRMCommandCenter";
-import ManusPartnership from "@/pages/ManusPartnership";
 import Pricing from "@/pages/Pricing";
 import PaymentSuccess from "@/pages/PaymentSuccess";
 import NILCalculator from "@/pages/NILCalculator";
@@ -79,9 +78,6 @@ function Router() {
       <Route path="/admin" component={CRMCommandCenter} />
       <Route path="/founders" component={CRMCommandCenter} />
       <Route path="/backoffice" component={CRMCommandCenter} />
-      <Route path="/manus" component={ManusPartnership} />
-      <Route path="/partnership" component={ManusPartnership} />
-      <Route path="/ai-partner" component={ManusPartnership} />
       
       {/* Social Media Hub - ALL PLATFORMS IN ONE */}
       <Route path="/social" component={SocialHub} />

@@ -1,9 +1,0 @@
-{
-  "query": "INSERT INTO vip_codes (code, description, maxUses, currentUses, isActive, createdAt) VALUES \n('FOUNDER2026', 'Founder VIP Code', 1000, 0, true, NOW()),\n('ATHLYNXVIP', 'General VIP Code', 500, 0, true, NOW()),\n('PERFECTSTORM', 'Perfect Storm Launch Code', 100, 0, true, NOW()),\n('DHGEMPIRE', 'DHG Empire Code', 50, 0, true, NOW()),\n('CHAD2026', 'Chad Personal Code', 10, 0, true, NOW())\nON DUPLICATE KEY UPDATE description = VALUES(description);",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3JQAxavJTLtVSbS.e2dc57e3bd27 --database LT9iKec3A4q6ndTCS5486G --execute INSERT INTO vip_codes (code, description, maxUses, currentUses, isActive, createdAt) VALUES \n('FOUNDER2026', 'Founder VIP Code', 1000, 0, true, NOW()),\n('ATHLYNXVIP', 'General VIP Code', 500, 0, true, NOW()),\n('PERFECTSTORM', 'Perfect Storm Launch Code', 100, 0, true, NOW()),\n('DHGEMPIRE', 'DHG Empire Code', 50, 0, true, NOW()),\n('CHAD2026', 'Chad Personal Code', 10, 0, true, NOW())\nON DUPLICATE KEY UPDATE description = VALUES(description);",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 474
-}

@@ -131,7 +131,7 @@ export default function PaymentSuccess() {
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-slate-700">
           <p className="text-slate-500 text-sm">
-            A Dozier Holdings Group Company • Powered by Manus AI
+            A Dozier Holdings Group Company • Pure Python & Julia Technology
           </p>
         </div>
       </div>

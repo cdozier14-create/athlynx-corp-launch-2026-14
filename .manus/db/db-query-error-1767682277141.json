@@ -1,8 +1,0 @@
-{
-  "query": "SHOW TABLES LIKE '%signup%' OR SHOW TABLES LIKE '%social%' OR SHOW TABLES LIKE '%onboarding%' OR SHOW TABLES LIKE '%customer%' OR SHOW TABLES LIKE '%revenue%' OR SHOW TABLES LIKE '%partner%' OR SHOW TABLES LIKE '%milestone%';",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3JQAxavJTLtVSbS.e2dc57e3bd27 --database LT9iKec3A4q6ndTCS5486G --execute SHOW TABLES LIKE '%signup%' OR SHOW TABLES LIKE '%social%' OR SHOW TABLES LIKE '%onboarding%' OR SHOW TABLES LIKE '%customer%' OR SHOW TABLES LIKE '%revenue%' OR SHOW TABLES LIKE '%partner%' OR SHOW TABLES LIKE '%milestone%';",
-  "returncode": 1,
-  "logs": [
-    "ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your TiDB version for the right syntax to use line 1 column 30 near \"OR SHOW TABLES LIKE '%social%' OR SHOW TABLES LIKE '%onboarding%' OR SHOW TABLES LIKE '%customer%' OR SHOW TABLES LIKE '%revenue%' OR SHOW TABLES LIKE '%partner%' OR SHOW TABLES LIKE '%milestone%'\""
-  ]
-}

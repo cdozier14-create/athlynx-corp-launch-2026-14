@@ -454,7 +454,7 @@ export type Milestone = typeof milestones.$inferSelect;
 export type InsertMilestone = typeof milestones.$inferInsert;
 
 
-// ==================== AI CREDIT SYSTEM (Powered by Manus) ====================
+// ==================== AI CREDIT SYSTEM (ATHLYNX AI) ====================
 
 export const userCredits = pgTable("user_credits", {
   id: serial("id").primaryKey(),
@@ -785,7 +785,7 @@ export const siteVotes = pgTable("site_votes", {
   userId: int("userId"),
   
   // Vote
-  votedFor: pgEnum("votedFor", ["site_a", "site_b"]).notNull(), // site_a = athlynx.manus.space, site_b = athlynx.ai
+  votedFor: pgEnum("votedFor", ["site_a", "site_b"]).notNull(), // site_a = athlynx.ai, site_b = athlynx.ai
   
   // Context
   ipAddress: varchar("ipAddress", { length: 45 }),

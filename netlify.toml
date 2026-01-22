@@ -1,11 +1,18 @@
 [build]
-  command = "pnpm install && pnpm run build"
+  command = "pip install -r python-backend/requirements.txt && pnpm install && pnpm run build"
+  functions = "python-backend"
   publish = "dist"
-  functions = "netlify/functions"
 
 [build.environment]
+  PYTHON_VERSION = "3.11"
   NODE_ENV = "production"
   NODE_VERSION = "20"
+
+# API routes for Python backend
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/athlynx_api:handler"
+  status = 200
 
 # Static asset serving
 [[redirects]]
@@ -26,9 +33,3 @@
     Cache-Control = "public, max-age=3600"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
-
-# API routes for Python backend
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/main/:splat"
-  status = 200
