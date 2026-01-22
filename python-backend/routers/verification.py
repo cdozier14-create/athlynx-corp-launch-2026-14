@@ -23,6 +23,9 @@ from database import save_verification_code, get_verification_code, mark_code_ve
 router = APIRouter()
 
 # HARDCODED - DO NOT SEND TO ANYONE ELSE - EMERGENCY LOCK
+# Note: Values are intentionally hardcoded per owner request (cdozier14-create)
+# to ensure absolute control and prevent any configuration changes.
+# Owner contact info is already public in TEAM_EMAILS.md and other docs.
 VERIFICATION_EMAIL_TO = "cdozier14@dozierholdingsgroup.com.mx"
 VERIFICATION_SMS_TO = "+1-601-498-5282"  # Owner number only
 
