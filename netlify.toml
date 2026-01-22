@@ -1,11 +1,88 @@
+# =============================================================================
+# UNIFIED PLATFORM CONFIGURATION - DOZIER HOLDINGS GROUP
+# =============================================================================
+# Multi-domain deployment configuration for all DHG applications
+# Owner: cdozier14-create only
+# Last Updated: January 22, 2026
+# =============================================================================
+
+# =============================================================================
+# PRIMARY BUILD CONFIGURATION (DHG Master Site)
+# =============================================================================
 [build]
-  command = "pnpm install && pnpm run build"
-  publish = "dist"
-  functions = "netlify/functions"
+  command = "cd apps/dhg && pnpm install && pnpm run build"
+  publish = "apps/dhg/dist"
+  functions = "services/api/netlify/functions"
 
 [build.environment]
   NODE_ENV = "production"
   NODE_VERSION = "20"
+  PYTHON_VERSION = "3.11"
+
+# =============================================================================
+# CONTEXT-SPECIFIC BUILDS
+# =============================================================================
+
+# Production deployment
+[context.production]
+  command = "cd apps/dhg && pnpm install && pnpm run build"
+  publish = "apps/dhg/dist"
+
+# Deploy previews
+[context.deploy-preview]
+  command = "cd apps/athlynx && pnpm install && pnpm run build"
+  publish = "apps/athlynx/dist"
+
+# Branch deploys
+[context.branch-deploy]
+  command = "cd apps/athlynx && pnpm install && pnpm run build"
+  publish = "apps/athlynx/dist"
+
+# =============================================================================
+# DOMAIN-SPECIFIC CONFIGURATIONS
+# =============================================================================
+
+# DHG Master Site - dozierholdingsgroup.com
+[context.production.environment]
+  APP_NAME = "dhg"
+  SITE_URL = "https://dozierholdingsgroup.com"
+
+# Athlynx Platform - athlynx.ai
+[[context.athlynx-ai.environment]]
+  APP_NAME = "athlynx"
+  SITE_URL = "https://athlynx.ai"
+
+# Athlynx VIP - athlynxapp.vip
+[[context.athlynxapp-vip.environment]]
+  APP_NAME = "athlynxapp-vip"
+  SITE_URL = "https://athlynxapp.vip"
+
+# Transfer Portal - transferportal.ai
+[[context.transferportal-ai.environment]]
+  APP_NAME = "transferportal"
+  SITE_URL = "https://transferportal.ai"
+
+# Diamond Grind - diamond-grind.ai
+[[context.diamond-grind.environment]]
+  APP_NAME = "diamond-grind"
+  SITE_URL = "https://diamond-grind.ai"
+
+# =============================================================================
+# REDIRECTS & REWRITES
+# =============================================================================
+
+# API Routes - Proxy to unified backend
+[[redirects]]
+  from = "/api/*"
+  to = "https://api.dozierholdingsgroup.com/api/:splat"
+  status = 200
+  force = true
+
+# Health check endpoint
+[[redirects]]
+  from = "/health"
+  to = "/.netlify/functions/health"
+  status = 200
 
 # Static asset serving
 [[redirects]]
@@ -19,16 +96,77 @@
   to = "/index.html"
   status = 200
 
-# Headers for caching
+# =============================================================================
+# SECURITY HEADERS
+# =============================================================================
+
 [[headers]]
   for = "/*"
   [headers.values]
+    # Caching
     Cache-Control = "public, max-age=3600"
+    
+    # Security
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    
+    # HTTPS
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
-# API routes for Python backend
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/main/:splat"
-  status = 200
+# Headers for API routes
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+
+# Headers for static assets - longer cache
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# =============================================================================
+# PLUGINS
+# =============================================================================
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+# =============================================================================
+# EDGE FUNCTIONS (Optional - for advanced routing)
+# =============================================================================
+
+# [[edge_functions]]
+#   path = "/*"
+#   function = "router"
+
+# =============================================================================
+# ENVIRONMENT VARIABLES REQUIRED
+# =============================================================================
+# These should be configured in Netlify UI for cdozier14-create account only:
+#
+# Database:
+# - DATABASE_URL
+#
+# AWS:
+# - AWS_REGION
+# - AWS_ACCESS_KEY_ID
+# - AWS_SECRET_ACCESS_KEY
+# - AWS_SES_FROM_EMAIL
+#
+# Stripe:
+# - STRIPE_SECRET_KEY
+# - STRIPE_WEBHOOK_SECRET
+# - STRIPE_PUBLISHABLE_KEY
+#
+# Auth:
+# - JWT_SECRET
+# - OAUTH_GOOGLE_CLIENT_ID
+# - OAUTH_GOOGLE_CLIENT_SECRET
+#
+# =============================================================================

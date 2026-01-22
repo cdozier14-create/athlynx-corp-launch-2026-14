@@ -109,3 +109,8 @@ temp/
 # Local Netlify folder
 .netlify
 CHAD_MASTER_STATE.json
+
+# Manus-related files (unauthorized access)
+.manus/
+*manus*
+MANUS_*
