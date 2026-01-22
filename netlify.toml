@@ -1,16 +1,26 @@
 [build]
-  command = "pnpm install && pnpm run build"
+  command = "pnpm install && pnpm run build && pip install -r python-backend/requirements.txt"
   publish = "dist"
   functions = "netlify/functions"
 
 [build.environment]
   NODE_ENV = "production"
   NODE_VERSION = "20"
+  PYTHON_VERSION = "3.11"
+  
+# Julia is handled separately via Julia runtime if needed
+# For now, Julia frontend will be deployed as a separate service or container
 
 # Static asset serving
 [[redirects]]
   from = "/assets/*"
   to = "/assets/:splat"
+  status = 200
+
+# API routes for Python backend
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/main/:splat"
   status = 200
 
 # SPA routing - serve index.html for client-side routing
@@ -19,16 +29,30 @@
   to = "/index.html"
   status = 200
 
-# Headers for caching
+# Headers for security and caching
 [[headers]]
   for = "/*"
   [headers.values]
     Cache-Control = "public, max-age=3600"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
-# API routes for Python backend
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/main/:splat"
-  status = 200
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    
+# Environment variables (set in Netlify UI)
+# DATABASE_URL - Neon PostgreSQL connection string
+# STRIPE_SECRET_KEY - Stripe live secret key
+# STRIPE_PUBLISHABLE_KEY - Stripe live publishable key
+# AWS_SES_FROM_EMAIL - noreply@dozierholdingsgroup.com
+# AWS_ACCESS_KEY_ID - AWS access key
+# AWS_SECRET_ACCESS_KEY - AWS secret key
+# TWILIO_ACCOUNT_SID - AC42c81cc5bed40c06bba310faa55c9ea4
+# TWILIO_AUTH_TOKEN - Twilio auth token
+# TWILIO_FROM_NUMBER - +18774618601
+# JWT_SECRET - athlynx-secret-key-2026
