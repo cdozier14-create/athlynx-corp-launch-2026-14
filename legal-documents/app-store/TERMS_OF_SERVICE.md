@@ -308,13 +308,13 @@ You agree to indemnify and hold ATHLYNX harmless from:
 ## 13. DISPUTE RESOLUTION
 
 ### 13.1 Governing Law
-These Terms are governed by the laws of [State], without regard to conflict of laws principles.
+These Terms are governed by the laws of the State of Delaware, United States, without regard to conflict of laws principles.
 
 ### 13.2 Arbitration
 Disputes will be resolved through binding arbitration:
 - American Arbitration Association (AAA) rules
 - One arbitrator
-- Location: [City, State]
+- Location: Wilmington, Delaware
 - Costs split equally (unless otherwise awarded)
 
 ### 13.3 Exceptions
@@ -395,8 +395,9 @@ Website: https://athlynx.ai/support
 **Mailing Address:**
 ATHLYNX Corporation  
 Legal Department  
-[Address]  
-[City, State, ZIP]
+c/o Dozier Holdings Group  
+Wilmington, DE 19801  
+United States
 
 ---
 

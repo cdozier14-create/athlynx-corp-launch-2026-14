@@ -302,7 +302,8 @@ We may update this Privacy Policy:
 **Privacy Questions:**
 Email: privacy@athlynx.ai  
 Mail: ATHLYNX Corporation, Privacy Team  
-[Address]
+c/o Dozier Holdings Group  
+Wilmington, DE 19801, United States
 
 **Data Protection Officer:**
 Email: dpo@athlynx.ai
@@ -324,7 +325,7 @@ Website: https://athlynx.ai/support
 **Right to Opt-Out:** We don't sell data, but you can limit sharing  
 **Right to Non-Discrimination:** Equal service regardless of privacy choices
 
-**To Exercise Rights:** Email privacy@athlynx.ai or call [phone number]
+**To Exercise Rights:** Email privacy@athlynx.ai or call 1-800-ATHLYNX (1-800-284-5969)
 
 ### Virginia, Colorado, Connecticut Residents
 Similar rights to California residents. Contact privacy@athlynx.ai.
