@@ -9,7 +9,7 @@
 2. Click **"Add new site"** → **"Import an existing project"**
 3. Click **"Deploy with GitHub"**
 4. Authorize Netlify to access your GitHub account
-5. Select repository: **cdozier14-create/Athlynx.ai**
+5. Select repository: **cdozier14-create/athlynx-corp-launch-2026-14**
 6. Branch: **main**
 
 ---

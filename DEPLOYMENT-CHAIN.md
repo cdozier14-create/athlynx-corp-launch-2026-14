@@ -11,7 +11,7 @@
 
 ### Code Repository
 - ✅ **GitHub** → Version control & CI/CD trigger
-  - Repository: cdozier14-create/Athlynx.ai
+  - Repository: cdozier14-create/athlynx-corp-launch-2026-14
   - Branch: main
   - Auto-deploys to Netlify on push
 
