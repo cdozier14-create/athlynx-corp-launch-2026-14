@@ -571,6 +571,6 @@ export const SOCIAL_MEDIA_TEMPLATES = {
     "The secret platform college athletes are using to get brand deals 👀 #NILDeals #StudentAthlete",
   ],
   linkedin: [
-    "Excited to announce our partnership with Manus AI to revolutionize the NIL marketplace. Athletes deserve data-driven insights to maximize their potential. #NIL #SportsBusiness #Innovation",
+    "Excited to announce our advanced AI technology to revolutionize the NIL marketplace. Athletes deserve data-driven insights to maximize their potential. #NIL #SportsBusiness #Innovation",
   ],
 };

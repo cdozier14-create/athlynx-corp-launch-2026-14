@@ -44,7 +44,7 @@ export default function HomeScreen({ navigation }: any) {
 
       <View style={styles.footer}>
         <Text style={styles.footerText}>A Dozier Holdings Group Company</Text>
-        <Text style={styles.footerText}>Powered by Manus AI</Text>
+        <Text style={styles.footerText}>Pure Python & Julia Technology</Text>
       </View>
     </ScrollView>
   );

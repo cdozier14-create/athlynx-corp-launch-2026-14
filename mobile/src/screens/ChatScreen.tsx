@@ -39,7 +39,7 @@ export default function ChatScreen({ route }: any) {
       <View style={styles.header}>
         <Text style={styles.headerIcon}>{wizard.icon}</Text>
         <Text style={styles.headerTitle}>{wizard.title}</Text>
-        <Text style={styles.poweredBy}>Powered by Manus AI</Text>
+        <Text style={styles.poweredBy}>Pure Python & Julia Technology</Text>
       </View>
 
       <FlatList

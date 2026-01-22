@@ -9,7 +9,7 @@ import { toast } from "sonner";
 /**
  * ATHLYNX NIL VALUATION CALCULATOR
  * A DOZIER HOLDINGS GROUP COMPANY
- * Powered by Manus AI
+ * Pure Python & Julia Technology
  * 
  * "Everyone is an NIL Commodity" - Chad Allen Dozier Sr.
  */
@@ -485,7 +485,7 @@ export default function NILCalculator() {
       {/* Footer */}
       <footer className="border-t border-slate-700 py-8 text-center">
         <p className="text-slate-500 text-sm">
-          A Dozier Holdings Group Company • Powered by Manus AI
+          A Dozier Holdings Group Company • Pure Python & Julia Technology
         </p>
         <p className="text-slate-600 text-xs mt-2">
           "Everyone is an NIL Commodity" - Chad Allen Dozier Sr.

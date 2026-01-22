@@ -650,7 +650,7 @@ export default function AthleteWebsiteBuilder() {
       {/* Footer */}
       <footer className="border-t border-slate-700 py-8 text-center">
         <p className="text-slate-500 text-sm">
-          A Dozier Holdings Group Company • Powered by Manus AI
+          A Dozier Holdings Group Company • Pure Python & Julia Technology
         </p>
         <p className="text-slate-600 text-xs mt-2">
           "Build Your Brand, Own Your Future"

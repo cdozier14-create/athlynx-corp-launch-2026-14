@@ -19,7 +19,7 @@ export default function WizardsScreen({ navigation }: any) {
         <Text style={styles.title}>AI Wizards</Text>
         <Text style={styles.subtitle}>8 AI advisors ready to help you succeed</Text>
         <View style={styles.poweredBy}>
-          <Text style={styles.poweredText}>Powered by Manus AI</Text>
+          <Text style={styles.poweredText}>Pure Python & Julia Technology</Text>
         </View>
       </View>
 
