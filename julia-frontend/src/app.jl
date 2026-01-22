@@ -202,8 +202,11 @@ function router(req::HTTP.Request)::HTTP.Response
     elseif path == "/dashboard"
         return HTTP.Response(200, ["Content-Type" => "text/html"], render_dashboard())
     elseif startswith(path, "/api/")
-        # Proxy to Python backend API
-        return HTTP.Response(307, ["Location" => "$API_URL$(path[5:end])"])
+        # Note: For production, use React frontend for API calls directly
+        # This SSR frontend is primarily for SEO and initial page loads
+        # JavaScript in the client will handle API calls directly
+        return HTTP.Response(200, ["Content-Type" => "application/json"], 
+            JSON3.write(Dict("message" => "API calls should be made directly to $API_URL")))
     else
         return HTTP.Response(404, ["Content-Type" => "text/html"], 
             render_html("404 Not Found", "<h1>Page Not Found</h1>"))

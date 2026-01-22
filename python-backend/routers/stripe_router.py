@@ -91,6 +91,11 @@ async def create_checkout(data: CreateCheckoutSession, athlynx_token: Optional[s
     if not payload:
         raise HTTPException(status_code=401, detail="Invalid token")
     
+    # Validate price_id
+    valid_price_ids = [p['price_id'] for p in PATENTS] + [BUNDLE['price_id']]
+    if data.price_id not in valid_price_ids:
+        raise HTTPException(status_code=400, detail="Invalid price ID")
+    
     try:
         # Get or create Stripe customer
         conn = get_db_connection()
