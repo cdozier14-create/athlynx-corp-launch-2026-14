@@ -1,9 +1,0 @@
-{
-  "query": "INSERT INTO vip_codes (code, description, maxUses, currentUses, isActive) VALUES ('HANBERY2026', 'VIP Code for David and Kendal Hanbery - Deep South Spirit', 2, 0, true), ('DEEPSOUTH', 'VIP Code for Deep South Spirit Cheer Team', 10, 0, true);",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3JQAxavJTLtVSbS.e2dc57e3bd27 --database LT9iKec3A4q6ndTCS5486G --execute INSERT INTO vip_codes (code, description, maxUses, currentUses, isActive) VALUES ('HANBERY2026', 'VIP Code for David and Kendal Hanbery - Deep South Spirit', 2, 0, true), ('DEEPSOUTH', 'VIP Code for Deep South Spirit Cheer Team', 10, 0, true);",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 61
-}

@@ -1,8 +1,0 @@
-{
-  "query": "INSERT INTO vip_codes (code, max_uses, current_uses, is_active) VALUES ('HANBERY2026', 2, 0, true), ('DEEPSOUTH', 5, 0, true);",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3JQAxavJTLtVSbS.e2dc57e3bd27 --database LT9iKec3A4q6ndTCS5486G --execute INSERT INTO vip_codes (code, max_uses, current_uses, is_active) VALUES ('HANBERY2026', 2, 0, true), ('DEEPSOUTH', 5, 0, true);",
-  "returncode": 1,
-  "logs": [
-    "ERROR 1054 (42S22) at line 1: Unknown column 'max_uses' in 'field list'"
-  ]
-}
