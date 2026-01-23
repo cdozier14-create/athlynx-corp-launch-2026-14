@@ -32,7 +32,7 @@ AWS_REGION=us-east-1
 # Application
 NODE_ENV=production
 VITE_APP_TITLE=ATHLYNX
-FRONTEND_URL=https://athlynx.ai
+FRONTEND_URL=https://athlynxapp.vip
 ```
 
 ## DEPLOYMENT STEPS

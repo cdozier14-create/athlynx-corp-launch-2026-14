@@ -65,7 +65,7 @@ STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
 NODE_ENV=production
 VITE_APP_TITLE=ATHLYNX
 VITE_APP_LOGO=/logo.png
-FRONTEND_URL=https://athlynx.ai
+FRONTEND_URL=https://athlynxapp.vip
 ```
 
 ---
@@ -82,11 +82,13 @@ FRONTEND_URL=https://athlynx.ai
 
 1. In Netlify dashboard, go to **"Domain settings"**
 2. Click **"Add custom domain"**
-3. Enter: **athlynx.ai**
-4. Netlify will show you DNS records to add
+3. Enter: **athlynxapp.vip** (primary domain)
+4. Add additional domain: **athlynx.ai** (will redirect to athlynxapp.vip)
+5. Netlify will show you DNS records to add
 
 ### DNS Records (add these at your domain registrar):
 
+#### For athlynxapp.vip (Primary Domain):
 ```
 Type: A
 Name: @
@@ -97,6 +99,9 @@ Name: www
 Value: [your-site-name].netlify.app
 ```
 
+#### For athlynx.ai (Redirect Domain):
+Configure this domain in Netlify to redirect to athlynxapp.vip using 301 redirect (configured in netlify.toml)
+
 5. Wait 10-60 minutes for DNS propagation
 6. Netlify will automatically provision SSL certificate (Let's Encrypt)
 
@@ -106,20 +111,25 @@ Value: [your-site-name].netlify.app
 
 ### Test the site:
 ```bash
-# Homepage
-curl https://athlynx.ai
+# Homepage (primary domain)
+curl https://athlynxapp.vip
+
+# Test redirect from old domain
+curl -I https://athlynx.ai
+# Should return 301 redirect to https://athlynxapp.vip
 
 # API health check
-curl https://athlynx.ai/api/health
+curl https://athlynxapp.vip/api/health
 
 # Waitlist endpoint
-curl -X POST https://athlynx.ai/api/waitlist/join \
+curl -X POST https://athlynxapp.vip/api/waitlist/join \
   -H "Content-Type: application/json" \
   -d '{"fullName":"Test User","email":"test@example.com","role":"athlete"}'
 ```
 
 ### Check in browser:
-- Visit https://athlynx.ai
+- Visit https://athlynxapp.vip
+- Visit https://athlynx.ai (should redirect to https://athlynxapp.vip with 301)
 - VIP signup form should load
 - All 10 apps should be visible
 - No console errors
@@ -281,7 +291,8 @@ cdozier14@athlynx.ai
 - [ ] GitHub repo connected to Netlify
 - [ ] All environment variables added
 - [ ] Site deployed successfully
-- [ ] Custom domain added (athlynx.ai)
+- [ ] Custom domain added (athlynxapp.vip as primary)
+- [ ] Secondary domain added (athlynx.ai with 301 redirect)
 - [ ] DNS records configured
 - [ ] SSL certificate active
 - [ ] NEON database connected

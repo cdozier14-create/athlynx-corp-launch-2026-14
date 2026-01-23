@@ -478,7 +478,7 @@ export const appRouter = router({
         billingCycle: z.enum(["monthly", "yearly"]).default("monthly"),
       }))
       .mutation(async ({ input, ctx }) => {
-        const origin = ctx.req.headers.origin || ctx.req.headers.host || "https://athlynx.ai";
+        const origin = ctx.req.headers.origin || ctx.req.headers.host || "https://athlynxapp.vip";
         
         const result = await createCheckoutSession({
           userId: ctx.user.id,
@@ -496,7 +496,7 @@ export const appRouter = router({
     // Create customer portal session for subscription management
     createPortal: protectedProcedure
       .mutation(async ({ ctx }) => {
-        const origin = ctx.req.headers.origin || ctx.req.headers.host || "https://athlynx.ai";
+        const origin = ctx.req.headers.origin || ctx.req.headers.host || "https://athlynxapp.vip";
         const returnUrl = origin.startsWith("http") ? `${origin}/portal` : `https://${origin}/portal`;
         
         // Get or create Stripe customer

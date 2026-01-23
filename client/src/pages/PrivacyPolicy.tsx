@@ -46,7 +46,7 @@ export default function PrivacyPolicy() {
               Dozier Holdings Group, LLC and its subsidiaries ("DHG," "ATHLYNX," "we," "us," or "our") 
               respect your privacy and are committed to protecting your personal data. This privacy policy 
               explains how we collect, use, disclose, and safeguard your information when you visit our 
-              websites (athlynx.ai, athlynx.io, athlynx.net, transferportal.ai) and use our services.
+              websites (athlynxapp.vip, athlynx.io, athlynx.net, transferportal.ai) and use our services.
             </p>
           </div>
 
