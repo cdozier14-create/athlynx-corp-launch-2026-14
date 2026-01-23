@@ -5,11 +5,11 @@
 ### Step 1: Create Render Account
 1. Go to https://render.com
 2. Sign up with GitHub account
-3. Connect your GitHub repository: `cdozier14-create/Athlynx.ai`
+3. Connect your GitHub repository: `cdozier14-create/athlynx-corp-launch-2026-14`
 
 ### Step 2: Create New Web Service
 1. Click "New +" → "Web Service"
-2. Connect repository: `cdozier14-create/Athlynx.ai`
+2. Connect repository: `cdozier14-create/athlynx-corp-launch-2026-14`
 3. Configure service:
    - **Name:** `athlynx-api`
    - **Region:** Oregon (US West)
@@ -61,7 +61,7 @@ Update React frontend to use new API URL:
 
 ### Step 2: Deploy from GitHub
 1. Click "New Project" → "Deploy from GitHub repo"
-2. Select `cdozier14-create/Athlynx.ai`
+2. Select `cdozier14-create/athlynx-corp-launch-2026-14`
 3. Railway auto-detects Python and deploys
 
 ### Step 3: Configure

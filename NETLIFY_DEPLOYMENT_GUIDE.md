@@ -16,7 +16,7 @@ git commit -m "Complete Python FastAPI backend with 12 routers - ready for produ
 git push origin main
 ```
 
-**Repository:** cdozier14-create/Athlynx.ai
+**Repository:** cdozier14-create/athlynx-corp-launch-2026-14
 
 ---
 
@@ -173,7 +173,7 @@ CNAME www     athlynx.netlify.app
 
 ### A. Connect GitHub to Netlify
 1. Netlify Dashboard → New Site from Git
-2. Choose GitHub → cdozier14-create/Athlynx.ai
+2. Choose GitHub → cdozier14-create/athlynx-corp-launch-2026-14
 3. Branch: main
 4. Build command: (from netlify.toml)
 5. Publish directory: client/dist

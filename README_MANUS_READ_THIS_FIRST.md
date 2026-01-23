@@ -24,7 +24,7 @@
 - ✅ **DHG Holdings** - LIVE on Netlify
 - ✅ **NEON Database** - Connected and running
 - ✅ **AWS Paid Account** - Active with $200 credits
-- ✅ **GitHub Repo** - cdozier14-create/Athlynx.ai
+- ✅ **GitHub Repo** - cdozier14-create/athlynx-corp-launch-2026-14
 - ✅ **All Emails** - Working on athlynx.ai domain
 - ✅ **DNS** - Andy handles all DNS updates
 
