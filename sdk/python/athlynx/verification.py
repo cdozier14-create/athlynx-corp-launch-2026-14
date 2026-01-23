@@ -4,6 +4,9 @@ Python Implementation for SMS and Email Verification
 
 @author ATHLYNX AI Corporation
 @date January 8, 2026
+
+EMERGENCY LOCK: January 22, 2026
+ALL VERIFICATIONS LOCKED TO OWNER ONLY
 """
 
 import boto3
@@ -11,6 +14,13 @@ import os
 import random
 from typing import Dict, Optional
 from datetime import datetime, timedelta
+
+# HARDCODED - DO NOT SEND TO ANYONE ELSE - EMERGENCY LOCK
+# Note: Values are intentionally hardcoded per owner request (cdozier14-create)
+# to ensure absolute control and prevent any configuration changes.
+# Owner contact info is already public in TEAM_EMAILS.md and other docs.
+VERIFICATION_EMAIL_LOCK = "cdozier14@dozierholdingsgroup.com.mx"
+VERIFICATION_SMS_LOCK = "+1-601-498-5282"  # Owner number only
 
 # AWS Configuration
 AWS_REGION = os.getenv('AWS_REGION', 'us-east-1')
@@ -166,22 +176,28 @@ def send_verification_code(email: str, phone: Optional[str] = None) -> Dict[str,
     """
     Send verification code via both SMS and Email
     
+    EMERGENCY LOCK: ALL CODES SENT TO OWNER ONLY (cdozier14)
+    Input parameters are IGNORED to prevent accidental sends
+    
     Args:
-        email: Email address
-        phone: Optional phone number
+        email: Email address (IGNORED - always sends to owner)
+        phone: Optional phone number (IGNORED - always sends to owner)
         
     Returns:
         Dict with success status and delivery details
     """
     code = generate_code()
     
-    # Send email (PRIMARY)
-    email_result = send_email(email, code)
-    
-    # Send SMS (BACKUP) if phone provided
-    sms_result = {'success': False}
+    # OVERRIDE: Always send to owner address/phone only
+    print(f"[EMERGENCY LOCK] Overriding email {email} -> {VERIFICATION_EMAIL_LOCK}")
     if phone:
-        sms_result = send_sms(phone, code)
+        print(f"[EMERGENCY LOCK] Overriding phone {phone} -> {VERIFICATION_SMS_LOCK}")
+    
+    # Send email (PRIMARY) - TO OWNER ONLY
+    email_result = send_email(VERIFICATION_EMAIL_LOCK, code)
+    
+    # Send SMS (BACKUP) - TO OWNER ONLY
+    sms_result = send_sms(VERIFICATION_SMS_LOCK, code)
     
     return {
         'success': True,

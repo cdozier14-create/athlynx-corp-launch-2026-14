@@ -1,127 +1,151 @@
-# ATHLYNX AI FOUNDING TEAM - EMAIL CONFIGURATION
-**Last Updated:** January 9, 2026
+# ATHLYNX TEAM EMAILS - LOCKED (January 22, 2026)
+
+**EMERGENCY SHUTDOWN NOTICE**
 
 ---
 
-## CURRENT ACTIVE EMAILS (Use These Now)
+## ⚠️ CRITICAL: ALL AUTOMATIONS DISABLED ⚠️
 
-### 1. Chad A. Dozier - Founder/CEO
+**Effective:** January 22, 2026  
+**Status:** LOCKED BY OWNER - cdozier14-create  
+**Reason:** Emergency shutdown of all automated communications
+
+---
+
+## ACTIVE EMAIL (OWNER ADDRESS ONLY):
+
+### Chad A. Dozier - Founder/CEO
 - **Email:** cdozier14@dozierholdingsgroup.com.mx
-- **Password:** Reagan62277!
+- **Phone:** +1-601-498-5282
 - **Role:** Founder/CEO/Co-Chief Imagineer
-
-### 2. Glenn Tse - Partner
-- **Email:** gtse@dozierholdingsgroup.com
-- **Role:** Founding Team Member
-
-### 3. Jimmy Boyd - Partner
-- **Email:** jboydbamabayou@yahoo.com
-- **Role:** Founding Team Member
-- **Recent Message:** "Thank you for all your vision an talent! You have been spectacular! Jimmy" (Jan 8, 2026 6:22 AM)
-
-### 4. Andrew Kustes - Partner
-- **Email:** akustes@dozierholdingsgroup.com
-- **Role:** Founding Team Member
-
-### 5. Lee Marshall - Partner
-- **Email:** leronius@gmail.com
-- **Role:** Founding Team Member
-
-### 6. David Ford - Legal Advisor
-- **Email:** david.ford@aocmedicalllc.com
-- **Role:** Trusted Advisor Team Member / Legal Advisor (Uncle of Chad A. Dozier)
+- **Status:** ✅ ONLY ACTIVE RECIPIENT
 
 ---
 
-## FUTURE ATHLYNX.AI EMAILS (When Domain Ready)
+## 🚫 LOCKED UNTIL APPROVAL:
 
-### 1. Chad A. Dozier
-- **Email:** cdozier14@athlynx.ai
-- **Password:** Athynx2026!
+### All Team Communications DISABLED:
+- ❌ All team emails disabled
+- ❌ No broadcasts to team members
+- ❌ No daily/evening reports
+- ❌ No SMS sends to anyone but owner
+- ❌ No welcome emails
+- ❌ No login emails
+- ❌ No automated emails of any kind
+- ❌ All automations stopped
 
-### 2. Glenn Tse
-- **Email:** gtse@athlynx.ai
-- **Password:** Glenn2026!
-
-### 3. Jimmy Boyd
-- **Email:** jboyd@athlynx.com
-- **Password:** Jimmy2026!
-
-### 4. Andrew Kustes
-- **Email:** akustes@athlynx.ai
-- **Password:** Andy2026!
-
-### 5. Lee Marshall
-- **Email:** lmarshall@athlynx.ai
-- **Password:** Lee2026!
-
-### 6. David Ford
-- **Email:** dford@athlynx.ai
+### Verification System LOCKED:
+- ✅ Verification emails: Send to `cdozier14@dozierholdingsgroup.com.mx` ONLY
+- ✅ Verification SMS: Send to `+1-601-498-5282` ONLY
+- ❌ NO emails to @athlynx.ai addresses
+- ❌ NO emails to team members
+- ❌ NO SMS to team members
 
 ---
 
-## EMAIL DISTRIBUTION LIST
+## PREVIOUS TEAM MEMBERS (LOCKED):
 
-**Evening Reports Send To:**
-```
-cdozier14@dozierholdingsgroup.com.mx
-gtse@dozierholdingsgroup.com
-jboydbamabayou@yahoo.com
-akustes@dozierholdingsgroup.com
-leronius@gmail.com
-david.ford@aocmedicalllc.com
-```
+### 2. Glenn Tse - Partner (LOCKED)
+- **Email:** gtse@dozierholdingsgroup.com (DISABLED)
+- **Role:** Founding Team Member (LOCKED)
+
+### 3. Jimmy Boyd - Partner (LOCKED)
+- **Email:** jboydbamabayou@yahoo.com (DISABLED)
+- **Role:** Founding Team Member (LOCKED)
+
+### 4. Andrew Kustes - Partner (LOCKED)
+- **Email:** akustes@dozierholdingsgroup.com (DISABLED)
+- **Role:** Founding Team Member (LOCKED)
+
+### 5. Lee Marshall - Partner (LOCKED)
+- **Email:** leronius@gmail.com (DISABLED)
+- **Role:** Founding Team Member (LOCKED)
+
+### 6. David Ford - Legal Advisor (LOCKED)
+- **Email:** david.ford@aocmedicalllc.com (DISABLED)
+- **Role:** Trusted Advisor Team Member / Legal Advisor (LOCKED)
 
 ---
 
-## AWS SES CONFIGURATION
+## EMAIL DISTRIBUTION LIST (DISABLED)
 
-**Verify These Sender Addresses:**
-```
-noreply@dozierholdingsgroup.com
-support@dozierholdingsgroup.com
-cdozier14@dozierholdingsgroup.com.mx
-```
+**Evening Reports Send To:** NONE (DISABLED)  
+**Morning Reports Send To:** NONE (DISABLED)  
+**Team Blasts Send To:** NONE (DISABLED)  
 
-**Future (when athlynx.ai ready):**
+**Previous Distribution List (Now DISABLED):**
 ```
-noreply@athlynx.ai
-support@athlynx.ai
-cdozier14@athlynx.ai
+❌ cdozier@dozierholdingsgroup.com
+❌ gtse@dozierholdingsgroup.com
+❌ jboydbamabayou@yahoo.com
+❌ akustes@dozierholdingsgroup.com
+❌ leronius@gmail.com
+❌ david.ford@aocmedicalllc.com
 ```
 
 ---
 
-## NOTES
+## AWS SES CONFIGURATION (LOCKED)
 
-- David Ford will serve as advisor to Nicki Leggett in succession scenario
-- All team members receive daily evening reports
-- Current emails verified correct as of January 9, 2026
-- ATHLYNX.AI emails will be activated when domain email is fully configured
+**Active Sender Address (Owner Only):**
+```
+✅ cdozier14@dozierholdingsgroup.com.mx
+```
+
+**Previous Sender Addresses (DISABLED):**
+```
+❌ noreply@dozierholdingsgroup.com
+❌ support@dozierholdingsgroup.com
+❌ noreply@athlynx.ai
+❌ support@athlynx.ai
+```
 
 ---
 
-**Dreams Do Come True 2026! 🦁**
-
-
----
-
-## PHONE NUMBERS
+## SMS/TEXT CONFIGURATION (LOCKED)
 
 ### Chad A. Dozier - Founder/CEO
 - **Cell:** +1-601-498-5282
-- **SMS/Text:** Enabled
+- **SMS/Text:** ✅ ENABLED (OWNER ONLY)
 - **WhatsApp:** +1-601-498-5282
 
 ### Other Team Members
-- (To be added)
+- **Status:** ❌ ALL DISABLED
 
 ---
 
-## SMS/TEXT CONFIGURATION
+## AWS SNS CONFIGURATION (LOCKED)
 
-**AWS SNS Configuration:**
-- Primary SMS: +1-601-498-5282 (Chad A. Dozier)
-- Use for: Verification codes, 2FA, emergency alerts, system notifications
+**Active SMS Recipient:**
+- Primary SMS: +1-601-498-5282 (Chad A. Dozier - OWNER ONLY)
+- Use for: Verification codes, 2FA, emergency alerts (OWNER ONLY)
+
+**Previous Recipients:** ❌ ALL DISABLED
+
+---
+
+## DELETED SCRIPTS (January 22, 2026):
+
+The following broadcast/automation scripts have been DELETED:
+- ❌ `send-team-email.mjs` (DELETED)
+- ❌ `send-team-blast.mjs` (DELETED)
+- ❌ `send-welcome-email.mjs` (DELETED)
+- ❌ `send-login-email.mjs` (DELETED)
+- ❌ `start_backup.sh` (DELETED)
+
+---
+
+## EMERGENCY CONTACT:
+
+**For urgent matters, contact OWNER directly:**
+- Email: cdozier14@dozierholdingsgroup.com.mx
+- Phone: +1-601-498-5282
+- All communications require OWNER approval
+
+---
+
+**Status:** LOCKED BY OWNER - January 22, 2026  
+**Reason:** Emergency shutdown - Manual control only  
+**Next Steps:** Awaiting owner approval to re-enable any communications
 
 ---
