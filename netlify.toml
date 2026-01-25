@@ -1,0 +1,44 @@
+[build]
+  command = "pnpm run build"
+  functions = "netlify/functions"
+  publish = "dist/public"
+
+[build.environment]
+  NODE_VERSION = "22.13.0"
+  PYTHON_VERSION = "3.11"
+  NODE_ENV = "production"
+
+# API routes handled by serverless function
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/main:splat"
+  status = 200
+
+# tRPC routes handled by serverless function
+[[redirects]]
+  from = "/api/trpc/*"
+  to = "/.netlify/functions/main/api/trpc/:splat"
+  status = 200
+
+# SPA routing - redirect all non-file requests to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache control headers - no cache for HTML
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Cache static assets for 1 year
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Environment variables are set in Netlify UI
+# DATABASE_URL (Neon PostgreSQL)
+# NODE_ENV = production
+# All other secrets managed in Netlify environment

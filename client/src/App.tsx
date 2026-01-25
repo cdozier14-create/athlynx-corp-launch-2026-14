@@ -4,7 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import EarlyAccess from "@/pages/EarlyAccess";
+import LandingPage from "@/pages/LandingPage";
 import Portal from "@/pages/Portal";
 import FounderStory from "@/pages/FounderStory";
 import RobotCompanions from "@/pages/RobotCompanions";
@@ -58,7 +58,7 @@ import AthlynxBrowser from "@/pages/AthlynxBrowser";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={EarlyAccess} />
+      <Route path="/" component={LandingPage} />
       <Route path="/dhg" component={DHGHome} />
       <Route path="/dozier-holdings" component={DHGHome} />
       <Route path="/empire" component={DHGHome} />
