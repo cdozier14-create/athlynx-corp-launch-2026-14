@@ -135,16 +135,16 @@ export default function LandingPage() {
   };
 
   const apps = [
-    { name: "Portal", icon: "🌐" },
-    { name: "Messenger", icon: "💬" },
-    { name: "Diamond Grind", icon: "💎" },
-    { name: "Warriors Playbook", icon: "📋" },
-    { name: "Transfer Portal", icon: "🔄" },
-    { name: "NIL Vault", icon: "💰" },
-    { name: "AI Sales", icon: "🤖" },
-    { name: "Faith", icon: "✨" },
-    { name: "AI Recruiter", icon: "👥" },
-    { name: "AI Content", icon: "🎬" },
+    { name: "Portal", image: "/apps/portal.png", badge: "LIVE" },
+    { name: "Messenger", image: "/apps/messenger.png", badge: "LIVE" },
+    { name: "Diamond Grind", image: "/apps/diamond-grind.png", badge: "NEW" },
+    { name: "Warriors Playbook", image: "/apps/warriors-playbook.png", badge: "HOT" },
+    { name: "Transfer Portal", image: "/apps/transfer-portal.png", badge: "ELITE" },
+    { name: "NIL Vault", image: "/apps/nil-vault.png", badge: "$$$" },
+    { name: "AI Sales", image: "/apps/ai-sales.png", badge: "AI" },
+    { name: "Faith", image: "/apps/faith.png", badge: "BLESSED" },
+    { name: "AI Recruiter", image: "/apps/ai-recruiter.png", badge: "AI" },
+    { name: "AI Content", image: "/apps/ai-content.png", badge: "AI" },
   ];
 
   return (
@@ -248,8 +248,9 @@ export default function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {apps.map((app, idx) => (
               <div key={idx} className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 rounded-xl p-6 text-center hover:border-cyan-400/60 transition-all">
-                <p className="text-3xl mb-2">{app.icon}</p>
-                <p className="font-bold text-sm">{app.name}</p>
+                <img src={app.image} alt={app.name} className="w-full h-32 object-cover rounded-lg mb-3" />
+                <p className="font-bold text-sm mb-2">{app.name}</p>
+                <span className="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-bold">{app.badge}</span>
               </div>
             ))}
           </div>
