@@ -1,4 +1,3 @@
-import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
@@ -56,14 +55,25 @@ function createApp() {
   return app;
 }
 
-// Single app instance for both serverless and traditional server
-const app = createApp();
+// Single app instance shared between serverless and traditional server
+let appInstance: ReturnType<typeof createApp> | null = null;
 
-// Export for Netlify Functions
-export { app as handler };
+function getApp() {
+  if (!appInstance) {
+    appInstance = createApp();
+  }
+  return appInstance;
+}
+
+// Export for Netlify Functions - handler function that returns the app
+export const handler = (req: any, res: any) => {
+  const app = getApp();
+  return app(req, res);
+};
 
 // Traditional server startup (only when run directly)
 async function startServer() {
+  const app = getApp();
   const server = createServer(app);
   
   // Setup Vite in development mode
