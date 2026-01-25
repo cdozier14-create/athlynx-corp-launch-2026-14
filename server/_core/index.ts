@@ -49,9 +49,15 @@ function createApp(): Express {
 }
 
 // Export serverless handler for Netlify Functions
-const app = createApp();
-export const handler = serverless(app);
+let cachedHandler: any;
 
+export const handler = (...args: any[]) => {
+  if (!cachedHandler) {
+    const app = createApp();
+    cachedHandler = serverless(app);
+  }
+  return cachedHandler(...args);
+};
 // Traditional server startup (only when run directly)
 async function startServer() {
   const server = createServer(app);
