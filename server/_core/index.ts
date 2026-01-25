@@ -54,7 +54,6 @@ export const handler = serverless(app);
 
 // Traditional server startup (only when run directly)
 async function startServer() {
-  const app = createApp();
   const server = createServer(app);
   
   // development mode uses Vite, production mode uses static files
